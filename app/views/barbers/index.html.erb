@@ -1,0 +1,9 @@
+<h1>These are all the barbers</h1>
+
+<ul>
+  <% @barbers.each do |barber| %>
+  <li>
+  <%= link_to "#{barber.name}", barber_path(barber) %>
+  </li>
+  <% end %>
+</ul>
