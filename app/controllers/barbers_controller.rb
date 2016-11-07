@@ -1,6 +1,6 @@
 class BarbersController < ApplicationController
 
-  before_action :find_barber
+  before_action :find_barber, only: [:show]
 
   def index
     @barbers = Barber.all
@@ -10,9 +10,11 @@ class BarbersController < ApplicationController
   end
 
   def new
+    @barber = Barber.new
   end
 
   def create
+    @barber = Barber.create()
   end
 
   def edit
@@ -30,5 +32,8 @@ class BarbersController < ApplicationController
     @barber = Barber.find(params[:id])
   end
 
+  def barber_params
+    params.require(:barber).permit(:name, :description, :services)
+  end
 
 end
