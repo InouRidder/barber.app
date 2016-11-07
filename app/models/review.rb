@@ -1,4 +1,5 @@
 class Review < ApplicationRecord
-  belongs_to :users, :barbers
-  validates :rating
+  belongs_to :user
+  belongs_to :barber
+  validates :rating, presence: true
 end
