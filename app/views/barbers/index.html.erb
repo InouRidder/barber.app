@@ -3,7 +3,7 @@
 <ul>
   <% @barbers.each do |barber| %>
   <li>
-    <%= barber.name %>
+  <%= link_to "#{barber.name}", barber_path(barber) %>
   </li>
   <% end %>
 </ul>

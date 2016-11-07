@@ -1,6 +1,6 @@
 class BarbersController < ApplicationController
 
-  before_action :find_barber, only: [:show]
+  before_action :find_barber, only: [:show, :new]
 
   def index
     @barbers = Barber.all
