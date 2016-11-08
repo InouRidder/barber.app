@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your appointments</title>
+  <ul>
+  <% @appointments.each do |appointment| %>
+  <li>
+  <%= link_to "#{appointment.all}", appointment_path(appointment) %>
+  <%= lint_to "#{appointment_new}", appointment_path(appointment) %>
+  </li>
+  <% end %>
+</ul>
+<body>
+
+</body>
+</html>
