@@ -1,12 +1,12 @@
 <h1>Leave a review!</h1>
 
-<%= form_for(@review) do |f| %>
+<%= form_for([@barber, @review]) do |f| %>
 <%= f.label :description %>
 <%= f.text_area :description %>
 
 
 <%= f.label :rating %>
-<%= f.number_area :rating %>
+<%= f.number_field :rating %>
 
 <%= f.submit %>
 

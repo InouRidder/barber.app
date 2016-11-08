@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :find_review, only: [:show, :edit, :update, :destroy]
-  before_action :find_barber, :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_barber, :find_user, only: [:create, :new, :show, :edit, :update, :destroy]
 
   def show
   end
@@ -36,7 +36,8 @@ class ReviewsController < ApplicationController
   end
 
   def find_user
-    @user = User.find(params[:user_id])
+    #ALERT VERANDER
+    @user = User.find(params[:id])
   end
 
   def find_barber
@@ -44,6 +45,6 @@ class ReviewsController < ApplicationController
   end
 
   def params_review
-    params.require(:reviews).permit(:rating, :description)
+    params.require(:review).permit(:rating, :description)
   end
 end
