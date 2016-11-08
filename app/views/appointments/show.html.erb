@@ -1,0 +1,14 @@
+<h1>
+  <strong>
+    Your Appointment with <%= Barber.find(params[:barber_id]).name %>
+  </strong>
+</h1>
+
+<!-- user -->
+The date of your appointment:
+<%= @appointment.date %>
+
+The location of your appointment:
+
+<%= Barber.find(params[:barber_id]).location %>
+

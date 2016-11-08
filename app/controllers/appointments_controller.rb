@@ -1,11 +1,12 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :find_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :find_barber, :find_user, only: [:new, :destroy, :edit, :create, :update, :index]
 
   def index
     @appointments = Appointment.all
-    if @appointments.length == 0
-      flash[:alert] = "You have no appointments. Create one now to get started."
-    end
+  end
+
+  def show
   end
 
   def new
@@ -13,29 +14,43 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.create(appointment_params)
-    if @appointment.nil?
-      flash[:alert] = "This time slot is taken, please select a different one"
-    else
-      redirect_to appointments_path
-    end
+    @appointment = Appointment.new(params_appointment)
+    @appointment.barber = @barber
+    @appointment.user = current_user
+    @appointment.save!
+    redirect_to barber_appointment_path(@barber, @appointment)
   end
 
-  def show
+  def edit
   end
 
   def update
-
+    @appointment.barber = @barber
+    @appointment.user = @user
+    @appointment.update(params_appointment)
+    redirect_to barber_appointments_path(@barber, @user)
   end
 
   def destroy
     @appointment.destroy
-    redirect_to appointments_path
+    redirect_to barber_appointments_path(@barber)
   end
 
   private
 
-  def appointment_params
-    params.require(:appointment).permit(:start, :end).merge(user_id: current_user.id)
+  def find_appointment
+    @appointment = Appointment.find(params[:id])
+  end
+
+  def find_barber
+    @barber = Barber.find(params[:barber_id])
+  end
+
+  def find_user
+    @user = current_user
+  end
+
+  def params_appointment
+    params.require(:appointment).permit(:date).merge(user_id: current_user.id)
   end
 end

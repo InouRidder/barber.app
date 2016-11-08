@@ -1,0 +1,9 @@
+<h1>New appointment with <%= @barber.name %> </h1>
+
+<h4>
+  Availability
+</h4>
+  <%= simple_form_for ([@barber, @appointment]) do |f| %>
+    <%= f.input :date, as: :datetime, html5: true %>
+  <%= f.button :submit %>
+<% end %>
