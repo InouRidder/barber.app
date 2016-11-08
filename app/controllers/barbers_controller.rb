@@ -1,6 +1,6 @@
 class BarbersController < ApplicationController
 
-  before_action :find_barber, only: [:show, :new]
+  before_action :find_barber, only: [:show, :edit, :update, :destroy]
 
   def index
     @barbers = Barber.all
@@ -14,16 +14,21 @@ class BarbersController < ApplicationController
   end
 
   def create
-    @barber = Barber.create()
+    @barber = Barber.create(barber_params)
+    redirect_to barbers_path
   end
 
   def edit
   end
 
   def update
+    @barber.update(barber_params)
+    redirect_to barbers_path
   end
 
   def destroy
+    @barber.destroy
+    redirect_to barbers_path
   end
 
   private
@@ -33,7 +38,7 @@ class BarbersController < ApplicationController
   end
 
   def barber_params
-    params.require(:barber).permit(:name, :description, :services)
+    params.require(:barber).permit(:name, :description, :location, :services)
   end
 
 end

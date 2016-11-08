@@ -1,0 +1,13 @@
+<h1>Add a new barber</h1>
+
+<%= form_for(@barber) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  <%= f.label :services %>
+  <%= f.text_field :services %>
+  <%= f.submit %>
+<% end %>
