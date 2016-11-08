@@ -1,10 +1,12 @@
-class ReviewController < ApplicationController
-  before_action :find_review, only: [:show, :new, :create, :edit, :update, :destroy]
+class ReviewsController < ApplicationController
+  before_action :find_review, only: [:show, :edit, :update, :destroy]
+  before_action :find_barber, :find_user, only: [:show, :edit, :update, :destroy]
 
   def show
   end
 
   def new
+    @review = Review.new
   end
 
   def create
@@ -33,8 +35,15 @@ class ReviewController < ApplicationController
     @review = Review.find(params[:id])
   end
 
+  def find_user
+    @user = User.find(params[:user_id])
+  end
+
+  def find_barber
+    @barber = Barber.find(params[:barber_id])
+  end
+
   def params_review
     params.require(:reviews).permit(:rating, :description)
   end
-
 end
