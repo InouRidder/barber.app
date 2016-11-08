@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: [:show, :edit, :update, :destroy]
-
+  before_action :find_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :find_barber
   def index
     @appointments = Appointment.all
     if @appointments.length == 0
@@ -9,16 +9,15 @@ class AppointmentsController < ApplicationController
   end
 
   def new
-    @appointment = Appointment.new
+    @appointment = Appointment.new(barber_id: @barber.id)
   end
 
   def create
-    @appointment = Appointment.create(appointment_params)
-    if @appointment.nil?
-      flash[:alert] = "This time slot is taken, please select a different one"
-    else
-      redirect_to appointments_path
-    end
+    @appointment = Appointment.new(appointment_params)
+    @appointment.barber = @barber
+    @appointment.user = current_user
+    @appointment.save!
+    redirect_to appointments_path
   end
 
   def show
@@ -35,7 +34,19 @@ class AppointmentsController < ApplicationController
 
   private
 
+  def find_appointment
+    @appointment = Appointment.find(params[:id])
+  end
+
+  def find_barber
+    @barber = Barber.find(params[:barber_id])
+  end
+
+  def find_user
+    @user = User.find(params[:user_id])
+  end
+
   def appointment_params
-    params.require(:appointment).permit(:start, :end).merge(user_id: current_user.id)
+    params.require(:appointment).permit(:datetime).merge(user_id: current_user.id)
   end
 end
