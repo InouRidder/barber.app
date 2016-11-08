@@ -1,3 +1,21 @@
-nav ul a {
+.nav-wrapper {
+  background-color: #f0673b;
 
+}
+
+#nav-mobile li {
+  background-color: #f0673b;
+}
+
+
+#brand-afro {
+  border-radius: 100%;
+  width: 70px;
+  height: 64px;
+  float: left;
+  overflow: hidden;
+}
+
+#brand-afro img {
+  padding-top: 5px;
 }
