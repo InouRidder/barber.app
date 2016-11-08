@@ -11,22 +11,25 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(params_review)
+    @review.barber = @barber
+    @review.user = @user
     @review.save!
-    redirect_to barbers_path
+    redirect_to barber_path(@barber)
   end
 
   def edit
   end
 
   def update
-    @review = Review.new(@review)
-    @review.update
-    redirect_to barbers_path
+    @review.barber = @barber
+    @review.user = @user
+    @review.update(params_review)
+    redirect_to barber_path(@barber)
   end
 
   def destroy
     @review.destroy
-    redirect_to barbers_path
+    redirect_to barber_path(@barber)
   end
 
   private
@@ -36,8 +39,7 @@ class ReviewsController < ApplicationController
   end
 
   def find_user
-    #ALERT VERANDER
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def find_barber
