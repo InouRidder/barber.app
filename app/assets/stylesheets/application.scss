@@ -1,15 +1,24 @@
 // Graphical variables
 @import "config/variables";
-@import "config/bootstrap_variables";
+// @import "config/bootstrap_variables";
 
 // External libraries
-@import "bootstrap-sprockets";
-@import "bootstrap";
+// @import "bootstrap-sprockets";
+
+//  MarializeCSS
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("yellow") !default;
+@import "materialize";
+
+// Font-Awesome
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
 
 // Your CSS
 @import "layout/index";
 @import "components/index";
 @import "pages/index";
 @import "vendor/index";
+
