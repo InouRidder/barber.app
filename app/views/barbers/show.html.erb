@@ -5,6 +5,7 @@
     <li> This guy: <%= @barber.description %> </li>
     <li> This is where my boiii lives:  <%= @barber.location %> </li>
     <li> Dem skillz : <%= @barber.services %> </li>
+    <%= link_to 'Book Appointment', new_barber_appointment_path(@barber) %>
   </p>
 </ul>
 

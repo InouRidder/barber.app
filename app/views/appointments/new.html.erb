@@ -1,6 +1,6 @@
 <h1>New appointment</h1>
 
-<%= simple_form_for @appointment do |f| %>
+<%= simple_form_for ([@barber, @appointment]) do |f| %>
 <%= f.association :barber, error: 'Barber is mandatory, please choose one' %>
 <%= f.input :date %>
 <%= f.button :submit %>
