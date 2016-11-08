@@ -8,6 +8,8 @@
   </p>
 </ul>
 
-<%= link_to "Edit #{@barber.name}", edit_barber_path(@barber) %>
+<%= link_to "Edit #{@barber.name}", edit_barber_path(@barber) %> <br>
+<%= link_to "Delete #{@barber.name}", barber_path(@barber), method: :delete, data: { confirm: "you sure?" } %>
+
 
 

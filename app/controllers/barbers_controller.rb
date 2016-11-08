@@ -1,6 +1,6 @@
 class BarbersController < ApplicationController
 
-  before_action :find_barber, only: [:show, :edit, :update]
+  before_action :find_barber, only: [:show, :edit, :update, :destroy]
 
   def index
     @barbers = Barber.all
@@ -27,6 +27,8 @@ class BarbersController < ApplicationController
   end
 
   def destroy
+    @barber.destroy
+    redirect_to barbers_path
   end
 
   private
