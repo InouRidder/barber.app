@@ -1,8 +1,17 @@
 <nav>
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo">Logo</a>
+    <!-- <a href="#"  class="brand-logo">Logo</a> -->
+    <div id="brand-afro">
+    <%= image_tag "afroman.jpg", class: "responsive-img" %>
+    </div>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <% if user_signed_in? %>
+      <div>
+        <li>
+          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        </li>
+      </div>
       <li>
         <%= link_to "#" do %>
         <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
