@@ -48,9 +48,6 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.3.7)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.6)
     coderay (1.1.1)
@@ -90,6 +87,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    materialize-sass (0.97.8)
+      sass (~> 3.3)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -204,7 +203,6 @@ DEPENDENCIES
   autoprefixer-rails
   better_errors
   binding_of_caller
-  bootstrap-sass
   devise
   figaro
   font-awesome-sass
@@ -212,6 +210,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   omniauth-facebook
+  materialize-sass
   pg
   pry-byebug
   pry-rails
@@ -228,4 +227,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.13.1
+   1.13.2

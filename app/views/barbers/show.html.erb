@@ -2,14 +2,26 @@
 
 <ul>
   <p>
-    <li> <%= @barber.description %> </li>
-    <li> <%= @barber.location %> </li>
-    <li> <%= @barber.services %> </li>
+    <li> This guy: <%= @barber.description %> </li>
+    <li> This is where my boiii lives:  <%= @barber.location %> </li>
+    <li> Dem skillz : <%= @barber.services %> </li>
   </p>
 </ul>
 
+## Some shit people think
+<% @barber.reviews.each do |review| %>
+<ul>
+  <li>
+    <div>
+      <%= review.description %>
+      <%= review.rating %>
+      <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>
+      <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure?" } %>
+    </li>
+  </div>
+</ul>
+<% end %>
+
+<%= link_to 'Leave a review!', new_barber_review_path(@barber) %>
 <%= link_to "Edit #{@barber.name}", edit_barber_path(@barber) %> <br>
 <%= link_to "Delete #{@barber.name}", barber_path(@barber), method: :delete, data: { confirm: "you sure?" } %>
-
-
-

@@ -1,11 +1,11 @@
 class User < ApplicationRecord
+  has_many :appointments, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
-  has_many :appointments
-  has_many :reviews
   validates :email, presence: true
 
   def self.find_for_facebook_oauth(auth)
