@@ -12,4 +12,9 @@ Barber.create(
   services: "shave and haricut"
   )
 
+User.create(
+  name: "A fucking legend",
+  email: "thelegend@legends.com"
+  )
+
 
