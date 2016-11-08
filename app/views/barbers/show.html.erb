@@ -9,3 +9,5 @@
 </ul>
 
 <%= link_to 'Leave a review!', new_barber_review_path(@barber) %>
+<%= link_to "Edit #{@barber.name}", edit_barber_path(@barber) %> <br>
+<%= link_to "Delete #{@barber.name}", barber_path(@barber), method: :delete, data: { confirm: "you sure?" } %>
