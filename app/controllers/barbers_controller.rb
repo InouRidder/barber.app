@@ -4,15 +4,20 @@ class BarbersController < ApplicationController
 
   def index
     @barbers = Barber.where.not(latitude: nil, longitude: nil)
+    # @barbers = Barber.all
 
-    @hash = Gmaps4rails.build_markers(@barbers) do |barber, marker|
+    @coordinates = Gmaps4rails.build_markers(@barbers) do |barber, marker|
       marker.lat barber.latitude
       marker.lng barber.longitude
     end
   end
 
   def show
-    @barber_coordinates = { lat: @barber.latitude, lng: @barber.longitude }.to_json
+    @coordinates = Gmaps4rails.build_markers(@barber) do |barber, marker|
+      marker.lat barber.latitude
+      marker.lng barber.longitude
+    end
+
   end
 
   def new
