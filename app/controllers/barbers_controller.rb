@@ -3,11 +3,16 @@ class BarbersController < ApplicationController
   before_action :find_barber, only: [:show, :edit, :update, :destroy]
 
   def index
-    @barbers = Barber.all
+    @barbers = Barber.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@barbers) do |barber, marker|
+      marker.lat barber.latitude
+      marker.lng barber.longitude
+    end
   end
 
   def show
-    @message = "You are viewing #{@barber.name}"
+    @barber_coordinates = { lat: @barber.latitude, lng: @barber.longitude }.to_json
   end
 
   def new
