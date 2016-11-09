@@ -24,6 +24,24 @@
         <% end %>
       </li>
       <li>
+        <% unless current_user.role.nil? %>
+          <% if current_user.role == "barber" %>
+            <% if current_user.appointments.length == 0 %>
+            <%= link_to 'No Appointments Yet!', barbers_path %>
+            <% else %>
+           <%= link_to 'View Appointments', barber_appointments_path(Appointment.find_by_barber_id(current_user.id)) %>
+           <% end %>
+            <% else current_user.role == "client" %>
+              <% if current_user.appointments.length == 0 %>
+                  <%= link_to 'No Appointments Yet!', barbers_path %>
+                <% else %>
+              <%= link_to 'View Appointment', barber_appointment_path(@appointment = Appointment.find_by_user_id(current_user.id), @barber = Barber.find(@appointment.barber_id)) %>
+              <% end %>
+
+              <% end %>
+            <% end %>
+          </li>
+      <li>
         <%= link_to destroy_user_session_path, method: :delete do %>
         <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
         <% end %>
@@ -35,4 +53,5 @@
     </ul>
   </div>
 </nav>
+
 
