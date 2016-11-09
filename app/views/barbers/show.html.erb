@@ -26,3 +26,23 @@
 <%= link_to 'Leave a review!', new_barber_review_path(@barber) %>
 <%= link_to "Edit #{@barber.name}", edit_barber_path(@barber) %> <br>
 <%= link_to "Delete #{@barber.name}", barber_path(@barber), method: :delete, data: { confirm: "you sure?" } %>
+
+<div id="map" style="width: 50%; height: 300px; padding-left: 90px;"></div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @coordinates.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>

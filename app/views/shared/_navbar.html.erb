@@ -2,23 +2,24 @@
   <div class="nav-wrapper">
     <!-- <a href="#"  class="brand-logo">Logo</a> -->
     <div id="brand-afro">
-    <%= image_tag "afroman.jpg", class: "responsive-img" %>
+      <%= image_tag "barberlogo.jpg", class: "responsive-img" %>
     </div>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <% if user_signed_in? %>
-      <div>
-        <li>
-          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-        </li>
+
+    <% if user_signed_in? %>
+      <div id="login_avatar">
+        <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+        <%= image_tag avatar_url, class: "avatar dropdown-toggle responsive-img", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       </div>
+    <% end %>
+
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li>
         <%= link_to "#" do %>
         <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
         <% end %>
       </li>
       <li>
-        <%= link_to "#" do %>
+        <%= link_to(barbers_path) do %>
         <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
         <% end %>
       </li>
@@ -49,7 +50,6 @@
       <li>
         <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
       </li>
-      <% end %>
     </ul>
   </div>
 </nav>
