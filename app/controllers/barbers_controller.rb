@@ -7,6 +7,7 @@ class BarbersController < ApplicationController
   end
 
   def show
+    @message = "You are viewing #{@barber.name}"
   end
 
   def new
