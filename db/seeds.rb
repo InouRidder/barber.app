@@ -13,8 +13,29 @@ Barber.create(
   )
 
 User.create(
-  name: "A fucking legend",
-  email: "thelegend@legends.com"
+  name: "Ollie S",
+  email: "barbalicious@haircut.com",
+  role: "barber"
   )
 
+User.create(
+  name: "Roel da Cutta",
+  email: "barbersszzz@babrb.com",
+  role: "barber"
+  )
+User.create(
+  name: "Thomas",
+  email: "tgod@ego.com",
+  role: "client"
+  )
+User.create(
+  name: "Lea",
+  email: "lea@lea.com",
+  role: "client"
+  )
+User.create(
+  name: "Xenia",
+  email: "warrior@princess.com",
+  role: "client"
+  )
 

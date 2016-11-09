@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :find_appointment, only: [:show, :edit, :update, :destroy]
-  before_action :find_barber, :find_user, only: [:new, :destroy, :edit, :create, :update, :index]
+  before_action :find_barber, :find_user, only: [:show, :new, :destroy, :edit, :create, :update, :index]
 
   def index
     @appointments = Appointment.all
@@ -18,7 +18,11 @@ class AppointmentsController < ApplicationController
     @appointment.barber = @barber
     @appointment.user = current_user
     @appointment.save!
-    redirect_to barber_appointment_path(@barber, @appointment)
+    if current_user.role =="barber"
+      redirect_to barber_appointments_path(@barber, @appointment)
+    else
+      redirect_to barber_appointment_path(@barber, @appointment)
+    end
   end
 
   def edit
@@ -28,12 +32,20 @@ class AppointmentsController < ApplicationController
     @appointment.barber = @barber
     @appointment.user = @user
     @appointment.update(params_appointment)
-    redirect_to barber_appointments_path(@barber, @user)
+    if current_user.role =="barber"
+      redirect_to barber_appointments_path(@barber, @appointment)
+    else
+      redirect_to barber_appointment_path(@barber, @appointment)
+    end
   end
 
   def destroy
     @appointment.destroy
-    redirect_to barber_appointments_path(@barber)
+    if current_user.role == "barber"
+      redirect_to barber_appointments_path(@barber)
+     else
+      redirect_to root_path
+    end
   end
 
   private
