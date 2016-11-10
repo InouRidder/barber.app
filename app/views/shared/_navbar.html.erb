@@ -3,77 +3,89 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
+  <%= image_tag "barber3.png" %>
   <% end %>
 
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+  <ul class="nav nav-pills">
+    <li role="presentation"><a href="#">Barbers</a></li>
+    <li role="presentation"><a href="#">Appointments</a></li>
+    <li>
+     <% unless current_user.role.nil? %>
+     <% if current_user.role == "barber" %>
+     <% if current_user.appointments.length == 0 %>
+     <%= link_to 'No Appointments Yet!', barbers_path %>
+     <% else %>
+     <%= link_to 'View Appointments', barber_appointments_path(Appointment.find_by_barber_id(current_user.id)) %>
+     <% end %>
+     <% else current_user.role == "client" %>
+     <% if current_user.appointments.length == 0 %>
+     <%= link_to 'No Appointments Yet!', barbers_path %>
+     <% else %>
+     <%= link_to 'View Appointment', barber_appointment_path(@appointment = Appointment.find_by_user_id(current_user.id), @barber = Barber.find(@appointment.barber_id)) %>
+     <% end %>
+     <% end %>
+     <% end %>
+   </li>
+ </ul>
 
-    <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
+ <!-- Right Navigation -->
+ <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <!-- Different navigation if login or not -->
-    <% if user_signed_in? %>
+  <!-- tabs -->
 
-      <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue">3</div>
-        </div>
-      <% end %>
 
-      <!-- Profile picture and dropdown -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
 
-    <% else %>
+  <!-- Different navigation if login or not -->
+  <% if user_signed_in? %>
 
-      <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+  <!-- Notification -->
 
-    <% end %>
 
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
-  </div>
-
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
+  <!-- Profile picture and dropdown -->
+  <div class="navbar-wagon-item">
     <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li>
+          <%= link_to "#" do %>
+          <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+          <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
+
+  <% else %>
+
+  <!-- Login text link -->
+  <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+  <% end %>
+
+  <!-- Button (call-to-action) -->
+  <%= link_to t(".top_call_to_action", default: "Login"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
 </div>
 
-<a class="btn btn-warning" href="">BUTTON</a>
+<!-- Dropdown list appearing on mobile only -->
+<div class="navbar-wagon-item hidden-md hidden-lg">
+  <div class="dropdown">
+    <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+    <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+      <li><a href="#">Some mobile link</a></li>
+      <li><a href="#">Other one</a></li>
+      <li><a href="#">Other one</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+
