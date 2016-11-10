@@ -7,17 +7,23 @@ gem 'pg'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
+gem 'jquery'
 
 gem 'devise'
+gem 'geocoder'
+gem 'coffee-rails'
+gem 'gmaps4rails'
 
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
-gem 'materialize-sass'
+gem 'bootstrap-sass'
+
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'omniauth-facebook'
+
 
 
 group :development, :test do
@@ -31,4 +37,6 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end

@@ -1,0 +1,16 @@
+<h1>
+  <strong>
+    Your Appointment with <%= Barber.find(params[:barber_id]).name %>
+  </strong>
+</h1>
+
+<!-- user -->
+The date of your appointment:
+<%= @appointment.date %>
+
+The location of your appointment:
+
+<%= Barber.find(params[:barber_id]).location %>
+
+<%= link_to 'Update Appointment', edit_barber_appointment_path(@barber, @appointment), class: "btn btn-primary" %>
+        <%= link_to 'Cancel Appointment', barber_appointment_path(@barber, appointment), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?" }

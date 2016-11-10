@@ -1,35 +1,51 @@
 class AppointmentsController < ApplicationController
   before_action :find_appointment, only: [:show, :edit, :update, :destroy]
-  before_action :find_barber
+  before_action :find_barber, :find_user, only: [:show, :new, :destroy, :edit, :create, :update, :index]
+
   def index
     @appointments = Appointment.all
-    if @appointments.length == 0
-      flash[:alert] = "You have no appointments. Create one now to get started."
-    end
-  end
-
-  def new
-    @appointment = Appointment.new(barber_id: @barber.id)
-  end
-
-  def create
-    @appointment = Appointment.new(appointment_params)
-    @appointment.barber = @barber
-    @appointment.user = current_user
-    @appointment.save!
-    redirect_to appointments_path
   end
 
   def show
   end
 
-  def update
+  def new
+    @appointment = Appointment.new
+  end
 
+  def create
+    @appointment = Appointment.new(params_appointment)
+    @appointment.barber = @barber
+    @appointment.user = current_user
+    @appointment.save!
+    if current_user.role =="barber"
+      redirect_to barber_appointments_path(@barber, @appointment)
+    else
+      redirect_to barber_appointment_path(@barber, @appointment)
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    @appointment.barber = @barber
+    @appointment.user = @user
+    @appointment.update(params_appointment)
+    if current_user.role =="barber"
+      redirect_to barber_appointments_path(@barber, @appointment)
+    else
+      redirect_to barber_appointment_path(@barber, @appointment)
+    end
   end
 
   def destroy
     @appointment.destroy
-    redirect_to appointments_path
+    if current_user.role == "barber"
+      redirect_to barber_appointments_path(@barber)
+     else
+      redirect_to root_path
+    end
   end
 
   private
@@ -43,10 +59,10 @@ class AppointmentsController < ApplicationController
   end
 
   def find_user
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
 
-  def appointment_params
-    params.require(:appointment).permit(:datetime).merge(user_id: current_user.id)
+  def params_appointment
+    params.require(:appointment).permit(:date).merge(user_id: current_user.id)
   end
 end
