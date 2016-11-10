@@ -1,26 +1,19 @@
-<!-- modal pop up -->
-
-<section id="homepage-header">
-  <div class="row">
-    <div class="wrapper">
-      <div class= "banner">
-        <div class="banner-content valign-wrapper">
-          <h1>BarberApp</h1>
-          <h2>For all your funky shaves & cuts </h2>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="first">
+  <div class="wrap">
+    <h1 class="effect">A Great Title.</h1>
+    <p class="fade">For a great CTA hover effect</p>
+   </div>
 </section>
 
-<% if current_user.role.nil? %>
-	<h3> Dear User</h3>
-		<p> Please either fill in : client          or        barber
-
-		Please be very specific because we didnt manage to produce options or buttons. Thanks, your amazing. We wont ask again. Probably.</p>
- <% @user = current_user %>
-    <%= simple_form_for @user, :url => user_registration_path, :method => :patch do |f| %>
-     <%= f.input :role %>
-     <%= f.button :submit %>
-	<% end %>
-<% end %>
+<section id="anchor">
+   <div class="wrap">
+    <h2>Lorem ipsum dolor sit amet</h2>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nostrum quaerat recusandae quasi officia commodi mollitia, deleniti explicabo similique voluptatum quam accusamus exercitationem quo, ipsa, soluta laborum consequatur sequi quod.</p>
+  </div>
+</section>
+<section>
+   <div class="wrap">
+    <h2>Lorem ipsum dolor sit amet</h2>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse dolorum ullam ratione necessitatibus numquam inventore nisi illum natus facilis distinctio. Ea velit corporis fugiat dolorem a ipsum tenetur, distinctio maiores.</p>
+  </div>
+</section>
