@@ -3,12 +3,11 @@ class BarbersController < ApplicationController
   before_action :find_barber, only: [:show, :edit, :update, :destroy]
 
   def index
-    @barbers = Barber.where.not(latitude: nil, longitude: nil)
-    # @barbers = Barber.all
+   @barbers = Barber.where.not(latitude: nil, longitude: nil)
 
     @coordinates = Gmaps4rails.build_markers(@barbers) do |barber, marker|
-      marker.lat barber.latitude
-      marker.lng barber.longitude
+     marker.lat barber.latitude
+     marker.lng barber.longitude
     end
   end
 

@@ -13,14 +13,3 @@
   </div>
 </section>
 
-<% if current_user.role.nil? %>
-	<h3> Dear User</h3>
-		<p> Please either fill in : client          or        barber
-
-		Please be very specific because we didnt manage to produce options or buttons. Thanks, your amazing. We wont ask again. Probably.</p>
- <% @user = current_user %>
-    <%= simple_form_for @user, :url => user_registration_path, :method => :patch do |f| %>
-     <%= f.input :role %>
-     <%= f.button :submit %>
-	<% end %>
-<% end %>

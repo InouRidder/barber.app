@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :appointments, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_one :barber
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,

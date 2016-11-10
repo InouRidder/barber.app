@@ -1,11 +1,24 @@
-
-
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png" %>
   <% end %>
-
+            <li>
+              <% if current_user && current_user.barber %>
+                 <% if current_user.barber.appointments.none? %>
+                  <%= link_to 'No Appointments Yet!', barbers_path, class: "btn btn-primary" %>
+                    <% else %>
+                  <%= link_to 'View Appointments', barber_appointments_path(current_user.barber), class: "btn btn-primary"  %>
+                <% end %>
+                <% elsif current_user %>
+                    <% if current_user.appointments.none? %>
+                    <%= link_to 'Book an Appointment!', barbers_path, class: "btn btn-primary"  %>
+                    <% else %>
+                      <%= link_to 'View Appointment', barber_appointments_path(current_user.appointments.first.barber,
+                        current_user.appointments.first), class: "btn btn-primary" %>
+                    <% end %>
+                  <% end %>
+                </li>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
@@ -43,6 +56,7 @@
                 <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
               <% end %>
             </li>
+
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
