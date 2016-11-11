@@ -11,7 +11,7 @@
 
     <%# ############ FIX PROBLEM, need if curent.user for user, useless for barber  %>
 
-		<%# if current_user %>
+		<% if current_user %>
        <% if current_user.barber %>
          <% if current_user.barber.appointments.none? %>
            <%= link_to 'No Appointments Yet!', barbers_path, class: "btn btn-primary" %>
@@ -26,7 +26,7 @@
           current_user.appointments.first), class: "btn btn-primary" %>
        <% end %>
        <% end %>
-     <%# end %>
+     <% end %>
     </li>
  	</ul>
  <!-- Right Navigation -->
