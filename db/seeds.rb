@@ -12,21 +12,24 @@ barber1 = Barber.create(
   name: "God of Cuts",
   description: "Italian barber in Amsterdam",
   location: "Lijnbaansgracht 35, Amsterdam",
-  services: " Haircut, Shave, Trimming"
+  services: " Haircut, Shave, Trimming",
+  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO"
   )
 sleep(1)
 barber2 = Barber.create(
   name: "Ecological and Fair Cuts",
   description: "Goat woll socks to cut yo hairs.",
   location: "Herengracht 327, Amsterdam",
-  services: " Haircut, Shave, Trimming, Serving Whiskey"
+  services: " Haircut, Shave, Trimming, Serving Whiskey",
+  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO"
   )
 sleep(1)
 barber3 = Barber.create(
   name: "Very far away.",
   description: "Doesnt matter, no one ever goes to utrecht",
   location: "Herengracht 75, Utrecht",
-  services: " Haircut, Shave, Trimming, Drinking"
+  services: " Haircut, Shave, Trimming, Drinking",
+  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO"
   )
 sleep(1)
 
@@ -34,28 +37,32 @@ barber4 = Barber.create(
   name: "Love to cut people",
   description: "Just got out of jail, have been good at cutting a while now. Lorem ipsum dolor sit amet.",
   location: "Linnaeusstraat 28, Amsterdam",
-  services: " Haircut, Shave, Trimming, Hiding of Body"
+  services: " Haircut, Shave, Trimming, Hiding of Body",
+  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO"
   )
 sleep(1)
 barber5 = Barber.create(
   name: "Nico",
   description: "Italian barber in Amsterdam",
   location: "Van Woustraat 30, Amsterdam",
-  services: " Haircut, Shave, Trimming"
+  services: " Haircut, Shave, Trimming",
+  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO"
   )
 sleep(1)
 barber6 = Barber.create(
   name: "Microwave",
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque ab quasi voluptates cum omnis, dolores recusandae dolorem voluptas. Mollitia deleniti, recusandae totam ipsam?",
   location: "Leidseplein, Amsterdam",
-  services: " Haircut, Shave, Trimming"
+  services: " Haircut, Shave, Trimming",
+  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO"
   )
 sleep(1)
 barber7 = Barber.create(
   name: "Life is a cut",
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque ab quasi voluptates cum omnis, dolores recusandae dolorem voluptas. Mollitia deleniti, recusandae totam ipsam?",
   location: "Waarderweg, Haarlem",
-  services: " Haircut, Shave, Trimming"
+  services: " Haircut, Shave, Trimming",
+  drinks: " Blood, Woodford Bourbon, Nikka from the Barrel, Remy XO"
   )
 
 User.create(

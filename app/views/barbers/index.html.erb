@@ -18,6 +18,12 @@
 						<%= link_to "#{barber.name}", barber_path(barber) %>
           </h4>
           <p>
+            Drinks Served:
+            <% barber.drinks.split(',').each do |s| %>
+
+            <%= s + " -"%>
+            <% end %>
+
             Services:
             <% barber.services.split(',').each do |s| %>
 

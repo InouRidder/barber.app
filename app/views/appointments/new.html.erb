@@ -5,5 +5,12 @@
 </h4>
   <%= simple_form_for ([@barber, @appointment]) do |f| %>
     <%= f.input :date, as: :datetime, html5: true %>
+    Select your Service
+    <%= f.select :service, @services %>
+
+    Select your drink
+    <%= f.select :drink, @drinks %>
   <%= f.button :submit %>
+
 <% end %>
+
