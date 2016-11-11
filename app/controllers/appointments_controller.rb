@@ -4,6 +4,7 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.all
+    @user = current_user
   end
 
   def show
