@@ -7,7 +7,7 @@
     <li>
     <% current_user.barber.appointments.each do |appointment| %>
 
-        Appointment with <%= appointment.barber.name %> on
+        Appointment with <%= appointment.user.name %> on
         <%= appointment.date %>
         <%= link_to 'Update Appointment', edit_barber_appointment_path(@barber, appointment), class: "btn btn-primary" %>
         <%= link_to 'Cancel Appointment', barber_appointment_path(@barber, appointment), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?" } %>
