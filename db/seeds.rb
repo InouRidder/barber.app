@@ -84,7 +84,7 @@ User.create(
 
 User.create(
   name: "Xenia2",
-  email: "warrior2@princess.com",
+  email: " ",
   password: "password",
   barber: barber6
   )
