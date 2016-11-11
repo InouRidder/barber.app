@@ -9,8 +9,6 @@
             <li> Located at:  <%= @barber.location %> </li>
             <li> Skills and Services: <%= @barber.services %> </li>
             <br>
-            <br>
-
             <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "btn btn-default" %>
           </p>
         </ul>
@@ -32,9 +30,7 @@
             </div>
           </ul>
           <% end %>
-          <p>
           <%= link_to 'Leave a review!', new_barber_review_path(@barber), class: "btn btn-default" %>
-          </p>
         </div>
       </div>
     </div>
