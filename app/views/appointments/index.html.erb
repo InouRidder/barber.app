@@ -1,26 +1,31 @@
-<h1>
+<div class="appointment-body">
+<h2>
     Hi! <%= @user.name %>
-</h1>
+</h2>
 <% if current_user.barber %>
-<h3> These are you appointments for <%= current_user.barber.name %> </h3>
+<h4> These are you appointments for <%= current_user.barber.name %> </h4>
 <ul>
     <li>
     <% current_user.barber.appointments.each do |appointment| %>
 
-
+         <div class="child-btns">
         Appointment with <%= appointment.user.name %> on
         <%= appointment.date %>
         <p> Drink: <%= appointment.drinks  %></p>
         <%= link_to 'Update Appointment', edit_barber_appointment_path(@barber, appointment), class: "btn btn-primary" %>
+        </div>
+        <div class="child-btns">
         <%= link_to 'Cancel Appointment', barber_appointment_path(@barber, appointment), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+
     </li>
 </ul>
 <% end %>
 
 <% else %>
-  <h3> These are you appointments </h3>
+  <h4> These are you appointments </h4>
   <% current_user.appointments.each do |appointment| %>
-    <p> You have an appointment with
+    <p> Appointment with
     <%= appointment.barber.name %> for appointment.service
     </p>
     <p> on  <%= appointment.date %></p>
@@ -28,10 +33,14 @@
     <% if appointment.drink %>
     <p> And your drinking:<%= appointment.drink  %> </p>
     <% end %>
-
+  <div class="child-btns">
     <%= link_to 'Update Appointment', edit_barber_appointment_path(@barber, appointment), class: "btn btn-primary" %>
+  </div>
+    <div class="child-btns">
     <%= link_to 'Cancel Appointment', barber_appointment_path(@barber, appointment), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
   <% end %>
 <% end %>
+</div>
 
 
