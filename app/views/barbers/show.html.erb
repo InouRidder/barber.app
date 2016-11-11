@@ -1,54 +1,71 @@
-<h1> <%= @barber.name %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-9">
+      <div id="barberinfo">
+        <h2> <%= @barber.name %></h2>
+        <ul>
+          <p>
+            <li> About this Barber: <%= @barber.description %> </li>
+            <li> Located at:  <%= @barber.location %> </li>
+            <li> Skills and Services: <%= @barber.services %> </li>
+            <br>
+            <br>
 
-<ul>
-  <p>
-    <li> This guy: <%= @barber.description %> </li>
-    <li> This is where my boiii lives:  <%= @barber.location %> </li>
-    <li> Dem skillz : <%= @barber.services %> </li>
-    <%= link_to 'Book Appointment', new_barber_appointment_path(@barber) %>
-  </p>
-</ul>
+            <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "btn btn-default" %>
+          </p>
+        </ul>
 
-## Some shit people think
-<% @barber.reviews.each do |review| %>
-<ul>
-  <li>
-    <div>
-      <%= review.description %>
-      <%= review.rating %>
+        <div>
+          <h2>Reviews</h2>
+          <% @barber.reviews.each do |review| %>
+          <ul>
+            <li>
+              <div>
+                <%= review.description %>
+                <%= review.rating %>
 
-      <% if review.user == current_user %>
-      <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>
-      <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure? 1" } %>
-      <% end %>
-    </li>
+                <% if review.user == current_user %>
+                <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>
+                <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure? 1" } %>
+                <% end %>
+              </li>
+            </div>
+          </ul>
+          <% end %>
+          <%= link_to 'Leave a review!', new_barber_review_path(@barber), class: "btn btn-default" %>
+        </div>
+      </div>
+    </div>
   </div>
-</ul>
-<% end %>
+</div>
 
-<%= link_to 'Leave a review!', new_barber_review_path(@barber) %>
 
 <% if current_user.barber == @barber %>
 <%= link_to "Edit Profile", edit_barber_path(@barber) %> <br>
 <%= link_to "Delete Profile", barber_path(@barber), method: :delete, data: { confirm: "you sure? 2" } %>
 <% end %>
 
+<br>
+<br>
+<br>
+<br>
+
 <div id="map" style="width: 50%; height: 300px; padding-left: 90px;"></div>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @coordinates.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
+<%= javascript_tag do %>
+$(document).ready(function() {
+var handler = Gmaps.build('Google');
+handler.buildMap({ internal: { id: 'map' } }, function() {
+markers = handler.addMarkers(<%= raw @coordinates.to_json %>);
+handler.bounds.extendWith(markers);
+handler.fitMapToBounds();
+if (markers.length == 0) {
+handler.getMap().setZoom(2);
+} else if (markers.length == 1) {
+handler.getMap().setZoom(14);
+}
+});
+});
+<% end %>
 <% end %>
