@@ -8,6 +8,7 @@ class BarbersController < ApplicationController
     @coordinates = Gmaps4rails.build_markers(@barbers) do |barber, marker|
      marker.lat barber.latitude
      marker.lng barber.longitude
+     marker.infowindow render_to_string(partial: "/barbers/map_box", locals: { barber: barber })
     end
   end
 
