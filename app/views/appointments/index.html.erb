@@ -5,7 +5,7 @@
 <% if current_user.barber %>
 <ul>
     <li>
-    <% current_user.appointments.each do |appointment| %>
+    <% current_user.barber.appointments.each do |appointment| %>
 
         Appointment with <%= appointment.barber.name %> on
         <%= appointment.date %>
