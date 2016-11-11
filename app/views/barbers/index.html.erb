@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-   <div class="col-sm-6 col-md-4">
+   <div class="col-md-9-offset col-md-4-offset">
      <h1>
       Our sciscoring legends
     </h1>
@@ -11,26 +11,34 @@
 <div class="container">
 	<div class="row">
 		<% @barbers.each do |barber| %>
-		<div class="col-sm-6 col-md-4">
+		<div class="col-sm-6 col-md-6">
 			<div class="thumbnail">
 				<div class="caption">
 					<h4>
 						<%= link_to "#{barber.name}", barber_path(barber) %>
+          </h4>
+          <p>
+            Services:
+            <% barber.services.split(',').each do |s| %>
+
+            <%= s + " -"%>
+
+            <% end %>
             <p>
-              <%= barber.description %>
+              <%= barber.description[0..50] %>...
               <% average = 0 %>
               <% barber.reviews.each do |e| %>
               <% average += e.rating.to_i %>
               <% end %>
               <p>Average Rating:</p>
               <% if barber.reviews.length == 0 %>
-                <%= 0 %>
+              <%= 0 %>
               <% else %>
-                <%= average/barber.reviews.length %>
+              <%= average/barber.reviews.length %>
               <% end %>
             </p>
             <%= link_to 'Book Appointment', new_barber_appointment_path(barber) %>
-          </h4>
+          </p>
         </div>
       </div>
     </div>
