@@ -18,11 +18,15 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(params_appointment)
     @appointment.barber = @barber
     @appointment.user = current_user
-    @appointment.save!
-    if current_user.role =="barber"
-      redirect_to barber_appointments_path(@barber, @appointment)
+    if @appointment.save != true
+      flash[:notice] = "Please fill out the form properly"
+      redirect_to new_barber_appointment_path(@barber)
     else
-      redirect_to barber_appointment_path(@barber, @appointment)
+      if current_user.role =="barber"
+        redirect_to barber_appointments_path(@barber, @appointment)
+      else
+        redirect_to barber_appointment_path(@barber, @appointment)
+      end
     end
   end
 
