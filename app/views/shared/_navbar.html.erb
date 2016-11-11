@@ -14,16 +14,16 @@
 		<% if current_user %>
        <% if current_user.barber %>
          <% if current_user.barber.appointments.none? %>
-           <%= link_to 'No Appointments Yet!', barbers_path, class: "btn btn-primary" %>
+           <%= link_to 'No Appointments Yet!', barbers_path %>
               <% else %>
-               <%= link_to 'View Appointments', barber_appointments_path(current_user.barber), class: "btn btn-primary"  %>
+               <%= link_to 'View Appointments', barber_appointments_path(current_user.barber) %>
                 <% end %>
                 	<% elsif current_user %>
                  	<% if current_user.appointments.none? %>
-              	<%= link_to 'Book an Appointment!', barbers_path, class: "btn btn-primary"  %>
+              	<%= link_to 'Book an Appointment!', barbers_path %>
               <% else %>
           <%= link_to 'View Appointment', barber_appointments_path(current_user.appointments.first.barber,
-          current_user.appointments.first), class: "btn btn-primary" %>
+          current_user.appointments.first) %>
        <% end %>
        <% end %>
      <% end %>
