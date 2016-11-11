@@ -1,18 +1,28 @@
 <h1>
-    Hey, <%= @barber.name %>
-    Here are your appointments
+    Yo, <%= @user.name %>
+    these are your appointments
 </h1>
-<% @appointments.each do |appointment| %>
-<% if appointment.barber_id == @barber.id %>
+<% if current_user.barber %>
 <ul>
     <li>
-        Appointment with <%= User.find(appointment.user_id).email %>
+    <% current_user.appointments.each do |appointment| %>
+
+        Appointment with <%= appointment.barber.name %> on
         <%= appointment.date %>
         <%= link_to 'Update Appointment', edit_barber_appointment_path(@barber, appointment), class: "btn btn-primary" %>
         <%= link_to 'Cancel Appointment', barber_appointment_path(@barber, appointment), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?" } %>
     </li>
 </ul>
 <% end %>
+
+<% else %>
+  <% current_user.appointments.each do |appointment| %>
+  <p> You have an appointment with </p>
+  <%= appointment.barber.name %>
+  <p> on  <%= appointment.date %></p>
+  <%= link_to 'Update Appointment', edit_barber_appointment_path(@barber, appointment), class: "btn btn-primary" %>
+        <%= link_to 'Cancel Appointment', barber_appointment_path(@barber, appointment), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
 <% end %>
 
 
