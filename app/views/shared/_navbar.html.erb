@@ -9,84 +9,92 @@
     </li>
     <li>
 
-    <%# ############ FIX PROBLEM, need if curent.user for user, useless for barber  %>
+      <%# ############ FIX PROBLEM, need if curent.user for user, useless for barber  %>
 
-		<% if current_user %>
-       <% if current_user.barber %>
-         <% if current_user.barber.appointments.none? %>
-           <%= link_to 'No Appointments Yet!', barbers_path %>
-              <% else %>
-               <%= link_to 'View Appointments', barber_appointments_path(current_user.barber) %>
-                <% end %>
-                	<% elsif current_user %>
-                 	<% if current_user.appointments.none? %>
-              	<%= link_to 'Book an Appointment!', barbers_path %>
-              <% else %>
-          <%= link_to 'View Appointment', barber_appointments_path(current_user.appointments.first.barber,
-          current_user.appointments.first) %>
-       <% end %>
-       <% end %>
-     <% end %>
+      <% if current_user %>
+      <% if current_user.barber %>
+      <% if current_user.barber.appointments.none? %>
+      <%= link_to 'No Appointments Yet!', barbers_path %>
+      <% else %>
+      <%= link_to 'View Appointments', barber_appointments_path(current_user.barber) %>
+      <% end %>
+      <% elsif current_user %>
+      <% if current_user.appointments.none? %>
+      <%= link_to 'Book an Appointment!', barbers_path %>
+      <% else %>
+      <%= link_to 'View Appointment', barber_appointments_path(current_user.appointments.first.barber,
+      current_user.appointments.first) %>
+      <% end %>
+      <% end %>
+      <% end %>
     </li>
- 	</ul>
- <!-- Right Navigation -->
- <div class="navbar-wagon-right hidden-xs hidden-sm">
+  </ul>
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-  <!-- tabs -->
-
-
-
-  <!-- Different navigation if login or not -->
-  <% if user_signed_in? %>
-
-  <!-- Notification -->
+    <!-- tabs -->
 
 
-  <!-- Profile picture and dropdown -->
-  <div class="navbar-wagon-item">
+
+    <!-- Different navigation if login or not -->
+    <% if user_signed_in? %>
+
+    <!-- Notification -->
+
+
+    <!-- Profile picture and dropdown -->
+    <div class="navbar-wagon-item">
+      <div class="dropdown">
+        <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li>
+            <%= link_to "#" do %>
+            <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "#" do %>
+            <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <% else %>
+
+    <!-- Login text link -->
+    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+    <% end %>
+
+    <!-- Button (call-to-action) -->
+    <% if current_user %>
+      <div id="logout">
+      <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+      <% end %>
+      </div>
+    <% else %>
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <% end %>
+  </div>
+
+  <!-- Dropdown list appearing on mobile only -->
+  <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
-      <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li>
-          <%= link_to "#" do %>
-          <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to "#" do %>
-          <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-          <% end %>
-        </li>
+        <li><a href="#">Some mobile link</a></li>
+        <li><a href="#">Other one</a></li>
+        <li><a href="#">Other one</a></li>
       </ul>
     </div>
   </div>
-
-  <% else %>
-
-  <!-- Login text link -->
-  <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
-  <% end %>
-
-  <!-- Button (call-to-action) -->
-  <%= link_to t(".top_call_to_action", default: "Login"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
-</div>
-
-<!-- Dropdown list appearing on mobile only -->
-<div class="navbar-wagon-item hidden-md hidden-lg">
-  <div class="dropdown">
-    <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-    <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-      <li><a href="#">Some mobile link</a></li>
-      <li><a href="#">Other one</a></li>
-      <li><a href="#">Other one</a></li>
-    </ul>
-  </div>
-</div>
 </div>
 
