@@ -1,27 +1,29 @@
 <h1> <%= @barber.name %></h1>
+<%= image_tag(@barber.picture) %>
 
 <ul>
-  <p>
     <li> This guy: <%= @barber.description %> </li>
     <li> This is where my boiii lives:  <%= @barber.location %> </li>
     <li> Dem skillz : <%= @barber.services %> </li>
-    <%= link_to 'Book Appointment', new_barber_appointment_path(@barber) %>
-  </p>
+    <li> <%= link_to 'Book Appointment', new_barber_appointment_path(@barber) %></li>
 </ul>
 
-## Some shit people think
-<% @barber.reviews.each do |review| %>
-<ul>
-  <li>
-    <div>
-      <%= review.description %>
-      <%= review.rating %>
-      <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>
-      <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure?" } %>
-    </li>
+
+<div class="container">
+  <div class="row">
+    <% @barber.reviews.each do |review| %>
+      <div class="col-sm-12 col-md-4 col-md-offset-4">
+        <div class="card">
+          <%= review.description %>
+          <%= review.rating %>
+          <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>
+          <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+      </div>
+    <% end %>
   </div>
-</ul>
-<% end %>
+</div>
+
 
 <%= link_to 'Leave a review!', new_barber_review_path(@barber) %>
 <%= link_to "Edit #{@barber.name}", edit_barber_path(@barber) %> <br>

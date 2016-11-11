@@ -1,0 +1,14 @@
+
+.barbers .imagery {
+  width: 50%;
+  height: 100%;
+  float: right;
+  overflow: hidden;
+}
+.barbers img {
+  max-width: 100%;
+  height: auto;
+}
+
+.barbers .caption { height: 150px; display: flex; }
+.barbers .name { width: 50%; }
