@@ -1,9 +1,8 @@
 <h1>
   <strong>
-    Your Appointment with <%= @barber.name %>
+    Your Appointment with <%= @barber.name %> for a <%= @appointment.service  %>
   </strong>
 </h1>
-
 <!-- user -->
 
 <ul>
@@ -12,6 +11,10 @@
   </li>
   <li>
     The location of your appointment: <%= @barber.location %>
+  </li>
+  <li>
+  And your drinking <%= @appointment.drink  %>
+
   </li>
 </ul>
 

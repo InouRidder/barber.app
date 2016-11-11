@@ -12,6 +12,8 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
+    @services = @barber.services.split(',')
+    @drinks = @barber.drinks.split(',')
   end
 
   def create
@@ -68,6 +70,6 @@ class AppointmentsController < ApplicationController
   end
 
   def params_appointment
-    params.require(:appointment).permit(:date).merge(user_id: current_user.id)
+    params.require(:appointment).permit(:date, :service, :drink).merge(user_id: current_user.id)
   end
 end
