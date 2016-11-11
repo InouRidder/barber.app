@@ -16,16 +16,22 @@
     <div>
       <%= review.description %>
       <%= review.rating %>
+
+      <% if review.user == current_user %>
       <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>
-      <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure?" } %>
+      <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure? 1" } %>
+      <% end %>
     </li>
   </div>
 </ul>
 <% end %>
 
 <%= link_to 'Leave a review!', new_barber_review_path(@barber) %>
-<%= link_to "Edit #{@barber.name}", edit_barber_path(@barber) %> <br>
-<%= link_to "Delete #{@barber.name}", barber_path(@barber), method: :delete, data: { confirm: "you sure?" } %>
+
+<% if current_user.barber == @barber %>
+<%= link_to "Edit Profile", edit_barber_path(@barber) %> <br>
+<%= link_to "Delete Profile", barber_path(@barber), method: :delete, data: { confirm: "you sure? 2" } %>
+<% end %>
 
 <div id="map" style="width: 50%; height: 300px; padding-left: 90px;"></div>
 
