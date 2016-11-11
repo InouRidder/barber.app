@@ -41,7 +41,7 @@ class AppointmentsController < ApplicationController
 
   def destroy
     @appointment.destroy
-    if current_user.role == "barber"
+    if current_user.barber == @barber
       redirect_to barber_appointments_path(@barber)
      else
       redirect_to root_path
