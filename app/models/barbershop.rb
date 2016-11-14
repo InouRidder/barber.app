@@ -1,0 +1,2 @@
+class Barbershop < ApplicationRecord
+end
