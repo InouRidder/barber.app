@@ -8,11 +8,11 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
 gem 'jquery'
-
 gem 'devise'
 gem 'geocoder'
 gem 'coffee-rails'
 gem 'gmaps4rails'
+gem 'carrierwave'
 
 gem 'sass-rails'
 gem 'jquery-rails'
