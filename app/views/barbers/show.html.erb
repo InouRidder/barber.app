@@ -9,6 +9,13 @@
             <li> About this Barber: <%= @barber.description %> </li>
             <li> Located at:  <%= @barber.location %> </li>
             <li> Skills and Services: <%= @barber.services %> </li>
+            <% if @barber.barbershop_id? %>
+            <li>
+            This barber is located @ <%= link_to "#{@barber.barbershop.name}", barber_barbershop_path(@barber, @barbershop) %>
+              <% else %>
+              This barber works remote within a radius of 5 km. <%= @barber.name %> is locates at <%= @barber.location %>
+              <% end %>
+            </li>
             <br>
             <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "btn btn-default" %>
           </p>
@@ -31,7 +38,7 @@
           </ul>
           <% end %>
           <p>
-          <%= link_to 'Leave a review!', new_barber_review_path(@barber), class: "btn btn-default" %>
+            <%= link_to 'Leave a review!', new_barber_review_path(@barber), class: "btn btn-default" %>
           </p>
         </div>
       </div>

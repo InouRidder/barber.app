@@ -97,7 +97,7 @@ barber5 = Barber.create!(
   services: " Haircut, Shave, Trimming",
   drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
   user: u5,
-  barbershop: "hipstershop"
+  barbershop: hipstershop
   )
 sleep(1)
 barber6 = Barber.create!(
@@ -107,7 +107,7 @@ barber6 = Barber.create!(
   services: " Haircut, Shave, Trimming",
   drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
   user: u6,
-  barbershop: "hipstershop"
+  barbershop: hipstershop
   )
 sleep(1)
 barber7 = Barber.create!(

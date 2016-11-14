@@ -13,6 +13,7 @@ class BarbersController < ApplicationController
   end
 
   def show
+    @barbershop = @barber.barbershop
     @coordinates = Gmaps4rails.build_markers(@barber) do |barber, marker|
       marker.lat barber.latitude
       marker.lng barber.longitude
