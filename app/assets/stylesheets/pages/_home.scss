@@ -22,8 +22,21 @@ body {
   font-family: 'Hind', sans-serif;
 }
 
-h1, h2, h3 {
-  font-family: 'Montserrat', sans-serif;
+h1 {
+  font-family: "Times New Roman", Georgia, Serif;
+  border-bottom: solid 2px black;
+  // display: inline-block;
+  text-align: center;
+}
+
+ h1 span {
+ border-bottom:solid 1px black;
+ padding: 3px;
+}
+
+h2, h3 {
+  // font-family: 'Montserrat', sans-serif;
+  font-family: "Times New Roman", Georgia, Serif
 }
 
 /* H1 EFFECT */
@@ -192,8 +205,6 @@ a.fade {
   opacity: 1;
 }
 
-
-/* bullshit */
 
 section {
   text-align: center;
