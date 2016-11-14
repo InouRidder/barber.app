@@ -7,6 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Barber.destroy_all
 User.destroy_all
+Barbershop.destroy_all
+
+hipstershop = Barbershop.create!(
+  name: "hipstershop",
+  location: "Rijnstraat 25, Amsterdam",
+  description: "cozy barbershop Rivierenbuurt"
+  )
 
 u1 = User.create(
   name: "Ollie S",
@@ -89,7 +96,8 @@ barber5 = Barber.create!(
   location: "Van Woustraat 30, Amsterdam",
   services: " Haircut, Shave, Trimming",
   drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
-  user: u5
+  user: u5,
+  barbershop: hipstershop
   )
 sleep(1)
 barber6 = Barber.create!(
@@ -98,7 +106,8 @@ barber6 = Barber.create!(
   location: "Leidseplein, Amsterdam",
   services: " Haircut, Shave, Trimming",
   drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
-  user: u6
+  user: u6,
+  barbershop: hipstershop
   )
 sleep(1)
 barber7 = Barber.create!(
@@ -109,5 +118,6 @@ barber7 = Barber.create!(
   drinks: " Blood, Woodford Bourbon, Nikka from the Barrel, Remy XO",
   user: u7
   )
+
 
 

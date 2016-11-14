@@ -10,15 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114152320) do
+ActiveRecord::Schema.define(version: 20161114152924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "date"
-    t.string   "user"
-    t.string   "barber"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
@@ -34,14 +32,24 @@ ActiveRecord::Schema.define(version: 20161114152320) do
     t.string   "description"
     t.string   "location"
     t.string   "services"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "user_id"
     t.string   "drinks"
     t.string   "photo"
+    t.integer  "barbershop_id"
+    t.index ["barbershop_id"], name: "index_barbers_on_barbershop_id", using: :btree
     t.index ["user_id"], name: "index_barbers_on_user_id", using: :btree
+  end
+
+  create_table "barbershops", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "location"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -54,6 +62,13 @@ ActiveRecord::Schema.define(version: 20161114152320) do
     t.string   "photo"
     t.index ["barber_id"], name: "index_reviews_on_barber_id", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string   "description"
+    t.string   "duration"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,14 +91,15 @@ ActiveRecord::Schema.define(version: 20161114152320) do
     t.string   "last_name"
     t.string   "token"
     t.datetime "token_expiry"
-    t.string   "role"
     t.string   "name"
+    t.boolean  "admin"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "appointments", "barbers"
   add_foreign_key "appointments", "users"
+  add_foreign_key "barbers", "barbershops"
   add_foreign_key "reviews", "barbers"
   add_foreign_key "reviews", "users"
 end

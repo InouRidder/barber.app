@@ -24,7 +24,7 @@ class AppointmentsController < ApplicationController
       flash[:notice] = "Please fill out the form properly"
       redirect_to new_barber_appointment_path(@barber)
     else
-      if current_user.role =="barber"
+      if current_user.barber
         redirect_to barber_appointments_path(@barber, @appointment)
       else
         redirect_to barber_appointment_path(@barber, @appointment)
@@ -39,7 +39,7 @@ class AppointmentsController < ApplicationController
     @appointment.barber = @barber
     @appointment.user = @user
     @appointment.update(params_appointment)
-    if current_user.role =="barber"
+    if current_user.barber
       redirect_to barber_appointments_path(@barber, @appointment)
     else
       redirect_to barber_appointment_path(@barber, @appointment)
