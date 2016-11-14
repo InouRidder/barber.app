@@ -18,25 +18,13 @@
          <h2>
           <%= link_to "#{barber.name}", barber_path(barber), class: "barbername" %>
         </h2>
-        <p>Services:
-          <% barber.services.split(',').each do |s| %>
-
-          <%= s + " -"%>
-          <% end %>
-        </p>
         <p>
           <%= barber.description[0..50] %>...
           <% average = 0 %>
           <% barber.reviews.each do |e| %>
           <% average += e.rating.to_i %>
           <% end %>
-          <p>
-            Drinks Served:
-            <% barber.drinks.split(',').each do |s| %>
 
-            <%= s + " -"%>
-            <% end %>
-          </p>
           <p>Average Rating:</p>
           <% if barber.reviews.length == 0 %>
           <%= 0 %>
