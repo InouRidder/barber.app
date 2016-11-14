@@ -1,56 +1,59 @@
 <div class="container">
 	<div class="row">
    <div class="col-md-9-offset col-md-4-offset">
-     <h1>
-      Our sciscoring legends
-    </h1>
-  </div>
-</div>
+     <h1><span>
+       Find your favorite barber
+     </span></h1>
+   </div>
+ </div>
 </div>
 
-<div class="container">
-	<div class="row">
-		<% @barbers.each do |barber| %>
-		<div class="col-sm-6 col-md-6">
-			<div class="thumbnail">
-				<div class="caption">
-					<h4>
-						<%= link_to "#{barber.name}", barber_path(barber) %>
-          </h4>
+  <div class="container-index">
+   <div class="row-index">
+    <% @barbers.each do |barber| %>
+    <div class="col-sm-12 col-md-9-centered">
+     <div class="thumbnail">
+       <%= image_tag "beardman.png", class: "avatar-large" %>
+       <div class="caption">
+         <h2>
+          <%= link_to "#{barber.name}", barber_path(barber), class: "barbername" %>
+        </h2>
+        <p>Services:
+          <% barber.services.split(',').each do |s| %>
+
+          <%= s + " -"%>
+          <% end %>
+        </p>
+        <p>
+          <%= barber.description[0..50] %>...
+          <% average = 0 %>
+          <% barber.reviews.each do |e| %>
+          <% average += e.rating.to_i %>
+          <% end %>
           <p>
             Drinks Served:
             <% barber.drinks.split(',').each do |s| %>
 
             <%= s + " -"%>
             <% end %>
-
-            Services:
-            <% barber.services.split(',').each do |s| %>
-
-            <%= s + " -"%>
-
-            <% end %>
-            <p>
-              <%= barber.description[0..50] %>...
-              <% average = 0 %>
-              <% barber.reviews.each do |e| %>
-              <% average += e.rating.to_i %>
-              <% end %>
-              <p>Average Rating:</p>
-              <% if barber.reviews.length == 0 %>
-              <%= 0 %>
-              <% else %>
-              <%= average/barber.reviews.length %>
-              <% end %>
-            </p>
-            <%= link_to 'Book Appointment', new_barber_appointment_path(barber) %>
           </p>
-        </div>
-      </div>
+          <p>Average Rating:</p>
+          <% if barber.reviews.length == 0 %>
+          <%= 0 %>
+          <% else %>
+          <%= average/barber.reviews.length %>
+          <% end %>
+        </p>
+        <%= link_to 'Book Appointment', new_barber_appointment_path(barber) %>
+      </p>
     </div>
-    <% end %>
   </div>
 </div>
+<% end %>
+</div>
+</div>
+
+
 
 <div id="map" style="width: 100%; height: 600px;"></div>
 

@@ -1,3 +1,4 @@
+<h1><span> <%= @barber.name %> </span></h1>
 <div class="container">
   <div class="row">
     <div class="col-sm-9 col-md-9">
@@ -12,7 +13,6 @@
             <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "btn btn-default" %>
           </p>
         </ul>
-
         <div>
           <h2>Reviews</h2>
           <% @barber.reviews.each do |review| %>
