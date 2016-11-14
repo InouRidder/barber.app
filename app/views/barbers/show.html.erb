@@ -62,6 +62,13 @@
   </div>
 </div>
 
+<% @barber.reviews.each do |review| %>
+  <%  if review[:photo] %>
+<%= image_tag review[:photo], class: "barberprofile" %>
+  <% end %>
+<% end %>
+
+
 
 
 <% if current_user.barber == @barber %>

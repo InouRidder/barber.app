@@ -1,13 +1,18 @@
 <h1>Leave a review!</h1>
 
 <%= form_for([@barber, @review]) do |f| %>
-<%= f.label :description %>
-<%= f.text_area :description %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
 
 
-<%= f.label :rating %>
-<%= f.number_field :rating %>
+  <%= f.label :rating %>
+  <%= f.number_field :rating %>
 
-<%= f.submit %>
+<p> Would you like to add a photo of your funky new cut? </p>
+  <%= f.file_field :photo %>
+  <%= f.hidden_field :photo_cache, as: :hidden %>
+  <%= f.submit %>
 
 <% end %>
+
+
