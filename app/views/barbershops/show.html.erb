@@ -5,6 +5,10 @@
       <div class="center-container">
         <h2>Welcome to <%= @barbershop.name %> </h2>
 
+        <h3>located @  <%= @barbershop.location %> </h3>
+
+        <br>
+
         <p> This shop has the following barbers:
 
           <% @barbershop.barbers.each do |barber| %>
