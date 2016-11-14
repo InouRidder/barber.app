@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20161114152924) do
     t.float    "longitude"
     t.integer  "user_id"
     t.string   "drinks"
+    t.string   "photo"
     t.integer  "barbershop_id"
     t.index ["barbershop_id"], name: "index_barbers_on_barbershop_id", using: :btree
     t.index ["user_id"], name: "index_barbers_on_user_id", using: :btree
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 20161114152924) do
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.integer  "barber_id"
+    t.string   "photo"
     t.index ["barber_id"], name: "index_reviews_on_barber_id", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
