@@ -8,12 +8,51 @@
 Barber.destroy_all
 User.destroy_all
 
+u1 = User.create(
+  name: "Ollie S",
+  email: "barbalicious@haircut.com",
+  password: "password"
+  )
+
+u2 = User.create(
+  name: "Roel da Cutta",
+  email: "barbersszzz@babrb.com",
+  password: "password"
+  )
+u3 = User.create(
+  name: "Thomas",
+  email: "tgod@ego.com",
+  password: "password"
+  )
+u4 = User.create(
+  name: "Lea",
+  email: "lea@lea.com",
+  password: "password"
+  )
+u5 = User.create(
+  name: "Xenia",
+  email: "warrior@princess.com",
+  password: "password"
+  )
+
+u6 = User.create(
+  name: "Xenia2",
+  email: "warrior2@princess.com",
+  password: "password"
+  )
+u7 = User.create(
+  name: "Inou",
+  email: "inou@gmail.com",
+  password: "password"
+  )
+
 barber1 = Barber.create(
   name: "God of Cuts",
   description: "Italian barber in Amsterdam",
   location: "Lijnbaansgracht 35, Amsterdam",
   services: " Haircut, Shave, Trimming",
-  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO"
+  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
+  user: u1
   )
 sleep(1)
 barber2 = Barber.create(
@@ -21,7 +60,8 @@ barber2 = Barber.create(
   description: "Goat woll socks to cut yo hairs.",
   location: "Herengracht 327, Amsterdam",
   services: " Haircut, Shave, Trimming, Serving Whiskey",
-  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO"
+  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
+  user: u2
   )
 sleep(1)
 barber3 = Barber.create(
@@ -29,7 +69,8 @@ barber3 = Barber.create(
   description: "Doesnt matter, no one ever goes to utrecht",
   location: "Herengracht 75, Utrecht",
   services: " Haircut, Shave, Trimming, Drinking",
-  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO"
+  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
+  user: u3
   )
 sleep(1)
 
@@ -38,73 +79,35 @@ barber4 = Barber.create(
   description: "Just got out of jail, have been good at cutting a while now. Lorem ipsum dolor sit amet.",
   location: "Linnaeusstraat 28, Amsterdam",
   services: " Haircut, Shave, Trimming, Hiding of Body",
-  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO"
+  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
+  user: u4
   )
 sleep(1)
-barber5 = Barber.create(
+barber5 = Barber.create!(
   name: "Nico",
   description: "Italian barber in Amsterdam",
   location: "Van Woustraat 30, Amsterdam",
   services: " Haircut, Shave, Trimming",
-  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO"
+  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
+  user: u5
   )
 sleep(1)
-barber6 = Barber.create(
+barber6 = Barber.create!(
   name: "Microwave",
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque ab quasi voluptates cum omnis, dolores recusandae dolorem voluptas. Mollitia deleniti, recusandae totam ipsam?",
   location: "Leidseplein, Amsterdam",
   services: " Haircut, Shave, Trimming",
-  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO"
+  drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
+  user: u6
   )
 sleep(1)
-barber7 = Barber.create(
+barber7 = Barber.create!(
   name: "Life is a cut",
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque ab quasi voluptates cum omnis, dolores recusandae dolorem voluptas. Mollitia deleniti, recusandae totam ipsam?",
   location: "Waarderweg, Haarlem",
   services: " Haircut, Shave, Trimming",
-  drinks: " Blood, Woodford Bourbon, Nikka from the Barrel, Remy XO"
+  drinks: " Blood, Woodford Bourbon, Nikka from the Barrel, Remy XO",
+  user: u7
   )
 
-User.create(
-  name: "Ollie S",
-  email: "barbalicious@haircut.com",
-  password: "password",
-  barber: barber1
-  )
 
-User.create(
-  name: "Roel da Cutta",
-  email: "barbersszzz@babrb.com",
-  password: "password",
-  barber: barber2
-  )
-User.create(
-  name: "Thomas",
-  email: "tgod@ego.com",
-  password: "password",
-  barber: barber3
-  )
-User.create(
-  name: "Lea",
-  email: "lea@lea.com",
-  password: "password",
-  barber: barber4
-  )
-User.create(
-  name: "Xenia",
-  email: "warrior@princess.com",
-  password: "password",
-  barber: barber5
-  )
-
-User.create(
-  name: "Xenia2",
-  email: " ",
-  password: "password",
-  barber: barber6
-  )
-User.create(
-  name: "Inou",
-  email: "inou@gmail.com",
-  password: "password"
-  )
