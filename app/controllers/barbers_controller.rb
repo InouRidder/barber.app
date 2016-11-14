@@ -49,7 +49,7 @@ class BarbersController < ApplicationController
   end
 
   def barber_params
-    params.require(:barber).permit(:name, :description, :location, :services)
+    params.require(:barber).permit(:name, :description, :location, :services, :photo, :photo_cache)
   end
 
 end

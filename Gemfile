@@ -13,6 +13,7 @@ gem 'geocoder'
 gem 'coffee-rails'
 gem 'gmaps4rails'
 gem 'carrierwave'
+gem 'cloudinary', '1.1.0'
 
 gem 'sass-rails'
 gem 'jquery-rails'

@@ -1,4 +1,20 @@
+
+
+
+<div class="center_content">
 <h1><span> <%= @barber.name %> </span></h1>
+<div>
+<%= image_tag @barber.photo, class: "barberprofile" %>
+ <%= simple_form_for(@barber) do |f| %>
+  <%= f.input :photo, as: :hidden %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.submit %>
+<% end %>
+<p> Add an if statement as soon as we have user restriction</p>
+</div>
+</div>
+
+
 <div class="container">
   <div class="row">
     <div class="col-sm-9 col-md-9">
@@ -40,6 +56,7 @@
 </div>
 
 
+
 <% if current_user.barber == @barber %>
 <%= link_to "Edit Profile", edit_barber_path(@barber) %> <br>
 <%= link_to "Delete Profile", barber_path(@barber), method: :delete, data: { confirm: "you sure? 2" } %>
@@ -69,3 +86,4 @@ handler.getMap().setZoom(14);
 });
 <% end %>
 <% end %>
+
