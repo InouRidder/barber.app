@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111153030) do
+ActiveRecord::Schema.define(version: 20161114143329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,13 +34,23 @@ ActiveRecord::Schema.define(version: 20161111153030) do
     t.string   "description"
     t.string   "location"
     t.string   "services"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "user_id"
     t.string   "drinks"
+    t.integer  "barbershop_id"
+    t.index ["barbershop_id"], name: "index_barbers_on_barbershop_id", using: :btree
     t.index ["user_id"], name: "index_barbers_on_user_id", using: :btree
+  end
+
+  create_table "barbershops", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "location"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -82,6 +92,7 @@ ActiveRecord::Schema.define(version: 20161111153030) do
 
   add_foreign_key "appointments", "barbers"
   add_foreign_key "appointments", "users"
+  add_foreign_key "barbers", "barbershops"
   add_foreign_key "reviews", "barbers"
   add_foreign_key "reviews", "users"
 end

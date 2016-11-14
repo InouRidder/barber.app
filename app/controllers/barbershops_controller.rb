@@ -1,0 +1,3 @@
+class BarbershopsController < ApplicationController
+
+end
