@@ -18,7 +18,6 @@ class BarbersController < ApplicationController
       marker.lat barber.latitude
       marker.lng barber.longitude
     end
-
   end
 
   def new

@@ -74,6 +74,15 @@
   </div>
 </div>
 
+<% @barber.reviews.each do |review| %>
+  <%  if review[:photo] %>
+<%= image_tag review[:photo], class: "barberprofile" %>
+  <% end %>
+<% end %>
+
+
+<br>
+<br>
 <br>
 <br>
 
