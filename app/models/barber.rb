@@ -6,5 +6,7 @@ class Barber < ApplicationRecord
   has_many :appointments, dependent: :destroy
   has_many :barberservices, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  mount_uploader :photo, PhotoUploader
+
   validates :name, :description, :services, :location, presence: true
 end

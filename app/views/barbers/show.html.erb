@@ -1,4 +1,20 @@
-<h1><span> <%= @barber.name %> </span></h1>
+
+
+
+<div class="center_content">
+  <h1><span> <%= @barber.name %> </span></h1>
+  <div>
+    <%= image_tag @barber.photo, class: "barberprofile" %>
+    <%= simple_form_for(@barber) do |f| %>
+    <%= f.input :photo, as: :hidden %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.submit %>
+    <% end %>
+    <p> Add an if statement as soon as we have user restriction</p>
+  </div>
+</div>
+
+
 <div class="container">
   <div class="row">
     <div class="col-sm-9 col-md-9">
@@ -11,13 +27,25 @@
             <li> Skills and Services: <%= @barber.services %> </li>
             <% if @barber.barbershop_id? %>
             <li>
-            This barber is located @ <%= link_to "#{@barber.barbershop.name}", barber_barbershop_path(@barber, @barbershop) %>
+              You can find this barber @ <%= link_to "#{@barber.barbershop.name}", barber_barbershop_path(@barber, @barbershop) %>
               <% else %>
               This barber works remote within a radius of 5 km. <%= @barber.name %> is locates at <%= @barber.location %>
               <% end %>
             </li>
             <br>
             <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "btn btn-default" %>
+          </p>
+
+          <br>
+          <br>
+
+          <p>
+          <div class="btn-group">
+              <% if current_user.barber == @barber %>
+              <%= link_to "Edit Profile", edit_barber_path(@barber), class: "btn btn-default btn-sm" %> <br>
+              <%= link_to "Delete Profile", barber_path(@barber), class: "btn btn-default btn-sm", method: :delete, data: { confirm: "you sure? 2" } %>
+              <% end %>
+            </div>
           </p>
         </ul>
         <div>
@@ -46,11 +74,12 @@
   </div>
 </div>
 
-
-<% if current_user.barber == @barber %>
-<%= link_to "Edit Profile", edit_barber_path(@barber) %> <br>
-<%= link_to "Delete Profile", barber_path(@barber), method: :delete, data: { confirm: "you sure? 2" } %>
+<% @barber.reviews.each do |review| %>
+  <%  if review[:photo] %>
+<%= image_tag review[:photo], class: "barberprofile" %>
+  <% end %>
 <% end %>
+
 
 <br>
 <br>
@@ -76,3 +105,4 @@ handler.getMap().setZoom(14);
 });
 <% end %>
 <% end %>
+

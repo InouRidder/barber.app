@@ -1,12 +1,13 @@
 class BarbershopsController < ApplicationController
 
-before_action :find_barbershop, only: [:index, :show]
+  before_action :find_barbershop, only: [:index, :show]
 
   def index
 
   end
 
   def show
+
   end
 
   private
