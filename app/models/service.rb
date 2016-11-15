@@ -1,3 +1,3 @@
 class Service < ApplicationRecord
-  belongs_to :barberservice
+  belongs_to :barber_service
 end
