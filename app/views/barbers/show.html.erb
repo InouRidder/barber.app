@@ -103,7 +103,7 @@
 <%= javascript_tag do %>
 $(document).ready(function() {
 var handler = Gmaps.build('Google');
-handler.buildMap({ internal: { id: 'map' } }, function() {
+handler.buildMap({ provider: {scrollwheel: false}, internal: { id: 'map' } }, function() {
 markers = handler.addMarkers(<%= raw @coordinates.to_json %>);
 handler.bounds.extendWith(markers);
 handler.fitMapToBounds();
@@ -111,6 +111,8 @@ if (markers.length == 0) {
 handler.getMap().setZoom(2);
 } else if (markers.length == 1) {
 handler.getMap().setZoom(14);
+handler.disableScrollWheelZoom();
+
 }
 });
 });
