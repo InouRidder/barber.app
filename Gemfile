@@ -14,6 +14,8 @@ gem 'coffee-rails'
 gem 'gmaps4rails'
 gem 'carrierwave'
 gem 'cloudinary', '1.1.0'
+gem 'pg_search'
+
 
 gem 'sass-rails'
 gem 'jquery-rails'
