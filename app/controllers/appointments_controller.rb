@@ -13,7 +13,10 @@ class AppointmentsController < ApplicationController
   end
 
   def new
+    @appointments = Appointment.all
+    @appointments_by_date = @appointments.group_by(&:date).map { |k, v| [k.to_date, v] }.to_h
     @appointment = Appointment.new
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
   def create
