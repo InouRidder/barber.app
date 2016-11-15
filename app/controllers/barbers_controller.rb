@@ -35,6 +35,8 @@ def new
     redirect_to barber_path(current_user.barber)
   else
     @barber = Barber.new
+    @services = Service.all
+    end
   end
 end
 
@@ -45,8 +47,11 @@ def create
   redirect_to barber_path(@barber)
 end
 
-def edit
-end
+
+  def edit
+    @barberservice = BarberService.new
+    @services = Service.all
+  end
 
 def update
   @barber.update(barber_params)

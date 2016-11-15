@@ -1,9 +1,9 @@
 <div class="appointment-body">
   <h2>
-    Hi! <%= @user.name %>
+    Hi! <%= @user.email %>
   </h2>
   <% if current_user.barber %>
-  <h4> These are you appointments for <%= current_user.barber.name %> </h4>
+  <h4> <%= current_user.barber.name %>, these are all your appointments:  </h4>
   <ul>
     <li>
       <% current_user.barber.appointments.each do |appointment| %>
@@ -22,7 +22,7 @@
   <% end %>
 
   <% else %>
-      <h4> These are you appointments </h4>
+      <h4> These are you appointments: </h4>
         <% current_user.appointments.each do |appointment| %>
         <p> Appointment with
         <%= appointment.barber.name %> for appointment.service
@@ -40,6 +40,27 @@
 
   <% end %>
 
+
 </div>
 
+
+<div id="appointments">
+  <h3 id="month">
+  <%= link_to "<", date: @date.prev_month %>
+  <%= @date.strftime("%B %Y") %>
+  <%= link_to ">", date: @date.next_month %>
+  </h3>
+  <%= calendar @date do |date| %>
+    <%= date.day %>
+    <% if @appointments_by_date[date] %>
+      <ul>
+        <% @appointments_by_date.each do |date, appointments| %>
+            <% appointments.each do |appointment| %>
+              <li> <%= link_to appointment.date.strftime("%Hh%M"), barber_appointment_path(@barber, appointment) %> </li>
+            <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+</div>
 

@@ -7,7 +7,32 @@
   <%= f.text_field :description %>
   <%= f.label :location %>
   <%= f.text_field :location %>
-  <%= f.label :services %>
-  <%= f.text_field :services %>
   <%= f.submit %>
+<% end %>
+
+<h2> Add New Services </h2>
+
+<%= simple_form_for([@barber, @barberservice]) do |f| %>
+
+<%#= f.label :service_id %>
+<%#= f.select :service_id, @services %>
+<%= f.association :service %>
+<%= f.input :price  %>
+<%= f.input :duration  %>
+<%#= f.label :price %>
+<%#= f.number_field :price %>
+<%#= f.label :duration %>
+<%#= f.number_field :duration %>
+
+<%= f.submit  %>
+<% end %>
+
+<h2> Current Services</h2>
+
+<% @barber.barber_services.each do |barber_service|  %>
+<li>
+<%= barber_service.service.name %>
+Set Price : <%= barber_service.price %>
+Time Need : <%= barber_service.duration %>
+</li>
 <% end %>
