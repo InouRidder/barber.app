@@ -8,17 +8,4 @@
   <%= f.label :location %>
   <%= f.text_field :location %>
   <%= f.submit %>
-
-  <h2> What services do you offer? </h2>
-
-<%= form_for([@barber, @barberservice]) do |f| %>
-<%= f.label :service_id %>
-<%= f.select :service_id, @services %>
-<%= f.label :price %>
-<%= f.number_field :price %>
-<%= f.label :duration %>
-<%= f.number_field :duration %>
-<%= f.submit  %>
-
 <% end %>
-
