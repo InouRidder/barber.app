@@ -119,5 +119,42 @@ barber7 = Barber.create!(
   user: u7
   )
 
+service1 = Service.create!(
+  name: "Haircut"
+  # description: "Our barbers custom cut your hair to fit your head shape and listen to your special requests so you walk away more than satisfied with your visit."
+  )
 
+service2 = Service.create!(
+  name: "Beard & Moustache trim"
+  # description: "A haircut for your beard which includes shaping, trimming and straight razor shave to outline and clean up all the areas without hair to highlight your awesome beard."
+  )
 
+service3 = Service.create!(
+  name: "Straight Razor Shave"
+  # description: "Done the old fashioned way - Straight razor, hot towels and hot lather with an aftershave to finish it off."
+  )
+
+service4 = Service.create!(
+  name: "Buzz Cut"
+  # description: "Even all around, shape up not included but we'll still shave your hairy neck."
+  )
+
+service5 = Service.create!(
+  name: "Head Shave"
+  # description: "Same as our straight razor shave, but for your noggin."
+  )
+
+service6 = Service.create!(
+  name: "Kids haircut"
+  # description: "We'll make ya kid look even better"
+  )
+
+service7 = Service.create!(
+  name: "Deluxe end to end"
+  # description: "Includes deep cleansing shampoo, scalp massage, precision haircut and style, hot towel neck shave, and rejuvenating shoulder and neck massage."
+  )
+
+service8 = Service.create!(
+  name: "Grey Blending"
+  # description: "Hair color so subtle, all they’ll notice is the younger-looking you. The effect lasts for a month. For an additional charge, color may also be applied to mustache, beard, and sideburns."
+  )
