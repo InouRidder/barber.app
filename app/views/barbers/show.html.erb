@@ -24,7 +24,6 @@
           <p>
             <li> About this Barber: <%= @barber.description %> </li>
             <li> Located at:  <%= @barber.location %> </li>
-            <li> Skills and Services: <%= @barber.services %> </li>
             <% if @barber.barbershop_id? %>
             <li>
               You can find this barber @ <%= link_to "#{@barber.barbershop.name}", barber_barbershop_path(@barber, @barbershop) %>
@@ -41,8 +40,10 @@
 
           <p>
           <div class="btn-group">
-              <% if current_user.barber == @barber %>
+              <% if @barber.user == current_user %>
               <%= link_to "Edit Profile", edit_barber_path(@barber), class: "btn btn-default btn-sm" %> <br>
+              <%= link_to "Add Services", new_barber_barberservice_path(@barber), class: "btn btn-primary" %>
+
               <%= link_to "Delete Profile", barber_path(@barber), class: "btn btn-default btn-sm", method: :delete, data: { confirm: "you sure? 2" } %>
               <% end %>
             </div>
