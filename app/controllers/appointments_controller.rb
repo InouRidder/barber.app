@@ -4,7 +4,9 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.all
+    @appointments_by_date = @appointments.group_by(&:date).map { |k, v| [k.to_date, v] }.to_h
     @user = current_user
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
   def show
