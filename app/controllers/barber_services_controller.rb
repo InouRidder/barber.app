@@ -1,6 +1,7 @@
 class BarberServicesController < ApplicationController
   before_action :find_barber_service, only: [:update, :destroy]
-  before_action :find_service, :find_barber, only: [:update, :destroy, :create]
+  before_action :find_barber, only: [:update, :destroy, :create]
+  before_action :find_service, only: [:create, :update]
 
 
   def new
@@ -10,18 +11,17 @@ class BarberServicesController < ApplicationController
   def create
     @barberservice = BarberService.new(barberservice_params)
     @barberservice.service = @service
-    @barberservice.price = params["price"]
-    @barberservice.price = params["duration"]
+   # @barberservice.price = params["barber_service"]["price"]
+    #@barberservice.duration = params["barber_service"]["duration"]
     @barberservice.barber = @barber
     @barberservice.save!
-    redirect_to barber_path(@barber)
+    redirect_to edit_barber_path(@barber)
   end
 
   def update
     @barberservice.service = @service
-    @barberservice.service = @service
-    @barberservice.price = params["price"]
-    @barberservice.price = params["duration"]
+    # @barberservice.price = params["barber_service"]["price"]
+    # @barberservice.duration = params["barber_service"]["duration"]
     @barberservice.barber = @barber
     @barberservice.save!
     redirect_to barber_path(@barber)
@@ -35,7 +35,7 @@ class BarberServicesController < ApplicationController
   private
 
   def barberservice_params
-    require.params[:barber_service].permit[:duration, :price]
+    params.require(:barber_service).permit(:price, :duration, :service_id)
   end
 
   def find_barber_service
@@ -43,7 +43,7 @@ class BarberServicesController < ApplicationController
   end
 
   def find_service
-    @service = Service.find(params[:service_id])
+    @service = Service.find(params["barber_service"][:service_id])
   end
 
   def find_barber
