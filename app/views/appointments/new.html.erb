@@ -3,19 +3,41 @@
     <div>
       <h2>New appointment with <%= @barber.name %> </h2>
 
-      <h4>
-        Availability
-      </h4>
-      <%= simple_form_for @appointment do |f| %>
+
+      <%= simple_form_for ([@barber, @appointment]) do |f| %>
+
       <%= f.input :date, as: :datetime, html5: true %>
 
       <p>
-      <%= f.button :submit %>
-    </p>
+        <%= f.button :submit %>
+      </p>
 
-    <% end %>
+      <% end %>
+    </div>
+  </div>
+
+<h4> Availability </h4>
+
+  <div id="appointments">
+    <h3 id="month">
+      <%= link_to "<", date: @date.prev_month %>
+      <%= @date.strftime("%B %Y") %>
+      <%= link_to ">", date: @date.next_month %>
+    </h3>
+      <%= calendar @date do |date| %>
+        <%= date.day %>
+        <% if @appointments_by_date[date] %>
+          <ul>
+            <% @appointments_by_date.each do |date, appointments| %>
+              <% appointments.each do |appointment| %>
+                <li> <%= link_to appointment.date.strftime("%Hh%M"), barber_appointment_path(@barber, appointment) %> </li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
   </div>
 </div>
-</div>
+
 
 
