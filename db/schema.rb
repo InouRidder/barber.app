@@ -20,11 +20,9 @@ ActiveRecord::Schema.define(version: 20161115100837) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.integer  "user_id"
-    t.integer  "barber_id"
     t.string   "service"
     t.string   "drink"
     t.integer  "barber_service_id"
-    t.index ["barber_id"], name: "index_appointments_on_barber_id", using: :btree
     t.index ["barber_service_id"], name: "index_appointments_on_barber_service_id", using: :btree
     t.index ["user_id"], name: "index_appointments_on_user_id", using: :btree
   end
@@ -32,10 +30,12 @@ ActiveRecord::Schema.define(version: 20161115100837) do
   create_table "barber_services", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "barber_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "duration"
     t.float    "price"
+    t.integer  "appointment_id"
+    t.index ["appointment_id"], name: "index_barber_services_on_appointment_id", using: :btree
     t.index ["barber_id"], name: "index_barber_services_on_barber_id", using: :btree
     t.index ["service_id"], name: "index_barber_services_on_service_id", using: :btree
   end

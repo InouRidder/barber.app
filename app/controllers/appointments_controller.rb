@@ -17,11 +17,12 @@ class AppointmentsController < ApplicationController
     @appointments_by_date = @appointments.group_by(&:date).map { |k, v| [k.to_date, v] }.to_h
     @appointment = Appointment.new
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    @barber_services = @barber.barber_services
   end
 
   def create
     @appointment = Appointment.new(params_appointment)
-    @appointment.barber = @barber
+    raise 'error'
     @appointment.user = current_user
     if @appointment.save != true
       flash[:notice] = "Please fill out the form properly"
