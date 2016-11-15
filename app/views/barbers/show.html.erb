@@ -23,61 +23,72 @@
         <ul>
           <p>
             <li> About this Barber: <%= @barber.description %> </li>
-            <li> Located at:  <%= @barber.location %> </li>
-            <li> Skills and Services: <%= @barber.services %> </li>
             <% if @barber.barbershop_id? %>
             <li>
               You can find this barber @ <%= link_to "#{@barber.barbershop.name}", barber_barbershop_path(@barber, @barbershop) %>
               <% else %>
-              This barber works remote within a radius of 5 km. <%= @barber.name %> is locates at <%= @barber.location %>
+              This barber works remote within a radius of 5 km. <%= @barber.name %> is located at <%= @barber.location %>
               <% end %>
             </li>
             <br>
-            <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "btn btn-default" %>
-          </p>
 
-          <br>
-          <br>
-
-          <p>
-          <div class="btn-group">
-              <% if current_user.barber == @barber %>
-              <%= link_to "Edit Profile", edit_barber_path(@barber), class: "btn btn-default btn-sm" %> <br>
-              <%= link_to "Delete Profile", barber_path(@barber), class: "btn btn-default btn-sm", method: :delete, data: { confirm: "you sure? 2" } %>
-              <% end %>
-            </div>
-          </p>
-        </ul>
-        <div>
-          <h2>Reviews</h2>
-          <% @barber.reviews.each do |review| %>
-          <ul>
+            <h2> Services</h2>
+            <% @barber.barber_services.each do |barber_service|  %>
             <li>
-              <div>
-                <%= review.description %>
-                <%= review.rating %>
+              <strong> <%= barber_service.service.name %> </strong>
+              <br>
+              Price - <%= barber_service.price %>
+              In about <%= barber_service.duration %> minutes
+            </li>
+            <% end %>
+          </li>
 
-                <% if review.user == current_user %>
-                <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>
-                <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure? 1" } %>
-                <% end %>
-              </li>
-            </div>
-          </ul>
-          <% end %>
-          <p>
-            <%= link_to 'Leave a review!', new_barber_review_path(@barber), class: "btn btn-default" %>
-          </p>
-        </div>
+          <br>
+          <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "btn btn-default" %>
+        </p>
+
+        <br>
+        <br>
+
+        <p>
+          <div class="btn-group">
+            <% if @barber.user == current_user %>
+            <%= link_to "Edit Profile", edit_barber_path(@barber), class: "btn btn-default btn-sm" %> <br>
+            <%= link_to "Delete Profile", barber_path(@barber), class: "btn btn-default btn-sm", method: :delete, data: { confirm: "you sure? 2" } %>
+            <% end %>
+          </div>
+        </p>
+      </ul>
+      <div>
+        <h2>Reviews</h2>
+        <% @barber.reviews.each do |review| %>
+        <ul>
+          <li>
+            <div>
+              <%= review.description %>
+              <%= review.rating %>
+
+              <% if review.user == current_user %>
+              <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>
+              <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure? 1" } %>
+              <% end %>
+            </li>
+          </div>
+        </ul>
+        <% end %>
+        <p>
+          <%= link_to 'Leave a review!', new_barber_review_path(@barber), class: "btn btn-default" %>
+        </p>
       </div>
     </div>
   </div>
 </div>
+</div>
 
 <% @barber.reviews.each do |review| %>
-  <%  if review[:photo] %>
+<%  if review[:photo] %>
 <%= image_tag review[:photo], class: "barberprofile" %>
-  <% end %>
+<% end %>
 <% end %>
 
 

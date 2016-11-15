@@ -14,7 +14,6 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
-    @services = @barber.services.split(',')
   end
 
   def create

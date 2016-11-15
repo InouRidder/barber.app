@@ -26,6 +26,7 @@ class BarbersController < ApplicationController
       redirect_to barber_path(current_user.barber)
     else
     @barber = Barber.new
+    @services = Service.all
     end
   end
 
@@ -37,6 +38,8 @@ class BarbersController < ApplicationController
   end
 
   def edit
+    @barberservice = BarberService.new
+    @services = Service.all
   end
 
   def update
