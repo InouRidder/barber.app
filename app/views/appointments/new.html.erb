@@ -6,7 +6,7 @@
       <h4>
         Availability
       </h4>
-      <%= simple_form_for ([@barber, @appointment]) do |f| %>
+      <%= simple_form_for @appointment do |f| %>
       <%= f.input :date, as: :datetime, html5: true %>
 
       <p>
