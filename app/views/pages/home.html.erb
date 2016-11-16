@@ -1,4 +1,4 @@
-<section id="search-barbers">
+<!-- <section id="search-barbers">
   <div class="row">
     <div class="col-sm-12 col-md-3">
       <div class="outer-container">
@@ -6,6 +6,9 @@
         <input type="text" placeholder="Search Barber" required="">
         <button type="submit">
           <i class="fa fa-search"></i>
+          <%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Barbers" %>
+          <% end %>
         </button>
       </form>
     </div>
@@ -13,12 +16,34 @@
 </div>
 </section>
 
+<section id="search-location">
+  <div class="row">
+    <div class="col-sm-12 col-md-3">
+      <div class="outer-container">
+       <form action="/search.html">
+        <input type="text" placeholder="Search location" required="">
+        <button type="submit">
+          <i class="fa fa-search"></i>
+          <%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
+          <%= text_field_tag :location, params[:search], placeholder: "Search on location"%>
+          <% end %>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+</section> -->
 
-
+<%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Barbers" %>
+<% end %>;
+<%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :location, params[:search], placeholder: "Search on location" %>
+<% end %>
 
 
 <section class="first">
-<div class="">
+  <div class="">
     <h1 class="effect"><span>BarberApp</span></h1>
     <h3 class="fade">Get the best shaves and cuts</h3>
     <%= image_tag("logo3.jpg", :class => "logo")%>
@@ -27,44 +52,38 @@
 
 
 
-<!-- <section id="anchor">
- <div class="wrap"> -->
-  <div class="container text-center padded features">
-    <div class="row">
-      <div class="logo-fonts">
-        <div class="col-xs-12 col-sm-6 col-md-3">
-          <%= image_tag "wondered-hipster.png" %>
-          <h2>Do you have what it takes?</h2>
-          <p>Add your value to our business!</p>
-          <%= link_to ' Join BarberApp as a Barber', new_barber_path, class: "btn btn-primary" %>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-          <%= image_tag "barber.png" %>
-          <h2>Get restyled & renewed</h2>
-          <p>Let your hair get the attention it deserves</p>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-          <%= image_tag "beardman.png" %>
-          <h2>Show off the new you</h2>
-          <p>Because your worth it</p>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-          <%= image_tag "heart.png" %>
-          <h2>Leave a review & share! </h2>
-          <p>And share you experiences</p></br>
-        </br>
-        <p>Are you a business owner?</p>
-        <%= link_to ' Join BarberApp as an owner', new_barber_path, class: "btn btn-primary" %>
+
+<div class="container text-center padded features">
+  <div class="row">
+    <div class="logo-fonts">
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <%= image_tag "wondered-hipster.png" %>
+        <h2>Do you have what it takes?</h2>
+        <p>Add your value to our business!</p>
+        <%= link_to ' Join BarberApp as a Barber', new_barber_path, class: "btn btn-primary" %>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <%= image_tag "barber.png" %>
+        <h2>Get restyled & renewed</h2>
+        <p>Let your hair get the attention it deserves</p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <%= image_tag "beardman.png" %>
+        <h2>Show off the new you</h2>
+        <p>Because your worth it</p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <%= image_tag "heart.png" %>
+        <h2>Leave a review & share! </h2>
+        <p>And share you experiences</p></br>
+      </br>
+      <p>Are you a business owner?</p>
+      <%= link_to ' Join BarberApp as an owner', new_barber_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>
 </div>
-<!-- </div>
-</section> -->
-<!-- <section>
- <div class="wrap">
-  <h2>Lorem ipsum dolor sit amet</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse dolorum ullam ratione necessitatibus numquam inventore nisi illum natus facilis distinctio. Ea velit corporis fugiat dolorem a ipsum tenetur, distinctio maiores.</p>
-</div>
-</section> -->
+
+
+
 
