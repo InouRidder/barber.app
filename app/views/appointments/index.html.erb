@@ -53,10 +53,8 @@
       <%= date.day %>
       <% if @appointments_by_date[date] %>
         <ul>
-          <% @appointments_by_date.each do |date, appointments| %>
-              <% appointments.each do |appointment| %>
+          <% @appointments_by_date[date].each do |appointment| %>
                 <li> <%= link_to appointment.date.strftime("%Hh%M"), barber_appointment_path(@barber, appointment) %> </li>
-              <% end %>
           <% end %>
         </ul>
       <% end %>

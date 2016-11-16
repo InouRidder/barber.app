@@ -29,16 +29,13 @@
         <%= date.day %>
         <% if @appointments_by_date[date] %>
           <ul>
-            <% @appointments_by_date.each do |date, appointments| %>
-              <% appointments.each do |appointment| %>
-                <li> <%= link_to appointment.date.strftime("%Hh%M"), barber_appointment_path(@barber, appointment) %> </li>
-              <% end %>
+            <% @appointments_by_date[date].each do |appointment| %>
+             <li> occupied from <%= appointment.date.strftime("%Hh%M") %> until <%= (appointment.date + (appointment.barber_service.duration * 60)).strftime("%Hh%M") %> </li>
             <% end %>
           </ul>
         <% end %>
       <% end %>
   </div>
 </div>
-
 
 
