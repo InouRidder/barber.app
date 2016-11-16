@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
   before_action :find_barber, only: [:show, :index, :new, :destroy, :edit, :create, :update]
 
   def index
-    @appointments = Appointment.all
+    @appointments = @barber.appointments
     @appointments_by_date = @appointments.group_by(&:date).map { |k, v| [k.to_date, v] }.to_h
     @user = current_user
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
