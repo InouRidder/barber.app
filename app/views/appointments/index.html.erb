@@ -1,7 +1,7 @@
 <div class="container">
   <div class="appointment-body">
     <h2>
-      Hi! <%= @user.email %>
+      Hi! <%= @barber.name %>
     </h2>
     <% if current_user.barber %>
     <h4> <%= current_user.barber.name %>, these are all your appointments:  </h4>
@@ -10,9 +10,8 @@
         <% current_user.barber.appointments.each do |appointment| %>
 
         <div class="child-btns">
-          Appointment with <%= appointment.user.name %> on
-          <%= appointment.date %>
-          <%= link_to 'Update Appointment', edit_barber_appointment_path(@barber, appointment), class: "btn btn-primary" %>
+          Appointment with <%= appointment.barber.name %> for a <%= appointment.barber_service.name  %>
+          on   <%= appointment.date %>
         </div>
         <div class="child-btns">
           <%= link_to 'Cancel Appointment', barber_appointment_path(@barber, appointment), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?" } %>
@@ -26,13 +25,13 @@
         <h4> These are you appointments: </h4>
           <% current_user.appointments.each do |appointment| %>
           <p> Appointment with
-          <%= appointment.barber.name %> for appointment.service
+          <%= appointment.barber.name %> for <%= appointment.service  %>
           </p>
            <p> on  <%= appointment.date %></p>
           <p> The location of your appointment: <%= Barber.find(params[:barber_id]).location %></p>
+          <p> Service : <%= appointment.barber_service.name  %></p>
 
     <div class="child-btns">
-      <%= link_to 'Update Appointment', edit_barber_appointment_path(@barber, appointment), class: "btn btn-primary" %>
     </div>
     <div class="child-btns">
       <%= link_to 'Cancel Appointment', barber_appointment_path(@barber, appointment), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?" } %>
@@ -46,9 +45,9 @@
 
   <div id="appointments">
     <h3 id="month">
-    <%= link_to "<", date: @date.prev_month %>
+    <%= link_to "<", date: @date.prev_week %>
     <%= @date.strftime("%B %Y") %>
-    <%= link_to ">", date: @date.next_month %>
+    <%= link_to ">", date: @date.next_week %>
     </h3>
     <%= calendar @date do |date| %>
       <%= date.day %>

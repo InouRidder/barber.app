@@ -10,19 +10,17 @@ class BarberServicesController < ApplicationController
 
   def create
     @barberservice = BarberService.new(barberservice_params)
-    @barberservice.service = @service
-   # @barberservice.price = params["barber_service"]["price"]
-    #@barberservice.duration = params["barber_service"]["duration"]
+    @barberservice.service_id = @service.id
+    @barberservice.name = @service.name
     @barberservice.barber = @barber
     @barberservice.save!
     redirect_to edit_barber_path(@barber)
   end
 
   def update
-    @barberservice.service = @service
-    # @barberservice.price = params["barber_service"]["price"]
-    # @barberservice.duration = params["barber_service"]["duration"]
+    @barberservice.service_id = @service.id
     @barberservice.barber = @barber
+    @barberservice.name = @service.name
     @barberservice.save!
     redirect_to barber_path(@barber)
   end
@@ -35,7 +33,7 @@ class BarberServicesController < ApplicationController
   private
 
   def barberservice_params
-    params.require(:barber_service).permit(:price, :duration, :service_id)
+    params.require(:barber_service).permit(:price, :duration, :service_id, :barber_id)
   end
 
   def find_barber_service

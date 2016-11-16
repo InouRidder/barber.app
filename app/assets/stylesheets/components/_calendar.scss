@@ -1,3 +1,7 @@
+#appointments {
+  padding-bottom: 50px;
+}
+
 #appointments .calendar {
   border-collapse: collapse;
   width: 100%;
@@ -19,7 +23,7 @@
   td {
     background: #FFF;
     color: #777;
-    height: 80px;
+    height: 120px;
     vertical-align: top;
     font-size: 16px;
   }

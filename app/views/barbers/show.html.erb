@@ -37,7 +37,7 @@
             <h2> Services</h2>
             <% @barber.barber_services.each do |barber_service|  %>
             <li>
-              <strong> <%= barber_service.service.name %> </strong>
+              <strong> <%= barber_service.name %> </strong>
               <br>
               Price - <%= barber_service.price %>
               In about <%= barber_service.duration %> minutes
