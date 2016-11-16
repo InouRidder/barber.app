@@ -46,9 +46,9 @@
 
   <div id="appointments">
     <h3 id="month">
-    <%= link_to "<", date: @date.prev_month %>
+    <%= link_to "<", date: @date.prev_week %>
     <%= @date.strftime("%B %Y") %>
-    <%= link_to ">", date: @date.next_month %>
+    <%= link_to ">", date: @date.next_week %>
     </h3>
     <%= calendar @date do |date| %>
       <%= date.day %>
