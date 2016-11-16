@@ -3,17 +3,19 @@
 
 <div class="center_content">
   <h1><span> <%= @barber.name %> </span></h1>
-  <div>
-    <%= image_tag @barber.photo, class: "barberprofile" %>
-    <%= simple_form_for(@barber) do |f| %>
-    <%= f.input :photo, as: :hidden %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <%= f.submit %>
-    <% end %>
-    <p> Add an if statement as soon as we have user restriction</p>
+  <div> <%= image_tag @barber.photo, class: "barberbanner" %>
   </div>
-</div>
+  <div class="banner-content">
+  </div>
 
+  <% if @barber.user == current_user %>
+  <%= simple_form_for(@barber) do |f| %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.submit %>
+  <% end %>
+  <% end %>
+</div>
 
 <div class="container">
   <div class="row">
@@ -85,11 +87,12 @@
 </div>
 </div>
 
-<% @barber.reviews.each do |review| %>
-<%  if review[:photo] %>
-<%= image_tag review[:photo], class: "barberprofile" %>
-<% end %>
-<% end %>
+
+  <% @barber.reviews.each do |review| %>
+  <div> <%= image_tag @barber.photo, class: "barberbanner" %> </div>
+  <% end %>
+  </a>
+
 
 
 <br>

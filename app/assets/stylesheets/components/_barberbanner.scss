@@ -1,9 +1,17 @@
 .barberbanner {
+  color: white;
+  text-align: center;
+  height: 100vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
-.barberprofile {
-width: 400;
-height: 300;
-crop: fill;
+.barberbanner h1 {
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
 }
