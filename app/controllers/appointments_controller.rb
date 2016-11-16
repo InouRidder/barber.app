@@ -1,6 +1,8 @@
 class AppointmentsController < ApplicationController
   before_action :find_appointment, only: [:show, :edit, :update, :destroy]
-  before_action :find_barber, :find_user, only: [:show, :new, :destroy, :edit, :create, :update, :index]
+  before_action :find_user, only: [:show, :new, :destroy, :edit, :create, :update, :index]
+  before_action :find_barber_service, only: [:update, :destroy, :edit]
+  before_action :find_barber, only: [:show, :index, :new, :destroy, :edit, :create, :update]
 
   def index
     @appointments = Appointment.all
@@ -13,16 +15,17 @@ class AppointmentsController < ApplicationController
   end
 
   def new
-    @appointments = Appointment.all
+    @barber_services = @barber.barber_services
+    @appointments = @barber.appointments
     @appointments_by_date = @appointments.group_by(&:date).map { |k, v| [k.to_date, v] }.to_h
     @appointment = Appointment.new
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
-    @barber_services = @barber.barber_services
   end
 
   def create
     @appointment = Appointment.new(params_appointment)
-    raise 'error'
+    @appointment.barber_service = @barber_service
+    @appointment.barber = @barber
     @appointment.user = current_user
     if @appointment.save != true
       flash[:notice] = "Please fill out the form properly"
@@ -61,12 +64,16 @@ class AppointmentsController < ApplicationController
 
   private
 
+  def find_barber
+    @barber = Barber.find(params[:barber_id])
+  end
+
   def find_appointment
     @appointment = Appointment.find(params[:id])
   end
 
-  def find_barber
-    @barber = Barber.find(params[:barber_id])
+  def find_barber_service
+    @barber_service = BarberService.find(params[:barber_service_id])
   end
 
   def find_user
@@ -74,6 +81,6 @@ class AppointmentsController < ApplicationController
   end
 
   def params_appointment
-    params.require(:appointment).permit(:date, :service, :drink).merge(user_id: current_user.id)
+    params.require(:appointment).permit(:date, :barber_service_id).merge(user_id: current_user.id)
   end
 end
