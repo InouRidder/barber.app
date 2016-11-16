@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20161115170457) do
 
   # These are extensions that must be enabled in order to support this database
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 20161115170457) do
     t.integer  "duration"
     t.float    "price"
     t.integer  "appointment_id"
+    t.string   "name"
     t.index ["appointment_id"], name: "index_barber_services_on_appointment_id", using: :btree
     t.index ["barber_id"], name: "index_barber_services_on_barber_id", using: :btree
     t.index ["service_id"], name: "index_barber_services_on_service_id", using: :btree

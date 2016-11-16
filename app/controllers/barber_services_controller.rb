@@ -11,6 +11,7 @@ class BarberServicesController < ApplicationController
   def create
     @barberservice = BarberService.new(barberservice_params)
     @barberservice.service = @service
+    @barberservice.name = @service.name
    # @barberservice.price = params["barber_service"]["price"]
     #@barberservice.duration = params["barber_service"]["duration"]
     @barberservice.barber = @barber
@@ -23,6 +24,7 @@ class BarberServicesController < ApplicationController
     # @barberservice.price = params["barber_service"]["price"]
     # @barberservice.duration = params["barber_service"]["duration"]
     @barberservice.barber = @barber
+    @barberservice.name = @service.name
     @barberservice.save!
     redirect_to barber_path(@barber)
   end
