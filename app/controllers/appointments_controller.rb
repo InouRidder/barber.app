@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
   before_action :find_appointment, only: [:show, :edit, :update, :destroy]
   before_action :find_user, only: [:show, :new, :destroy, :edit, :create, :update, :index]
-  before_action :find_barber_service, only: [:update, :destroy, :edit]
+  before_action :find_barber_service, only: [:create]
   before_action :find_barber, only: [:show, :index, :new, :destroy, :edit, :create, :update]
 
   def index
@@ -39,19 +39,21 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  # def edit
+  #       @barber_services = @barber.barber_services
 
-  def update
-    @appointment.barber = @barber
-    @appointment.user = @user
-    @appointment.update(params_appointment)
-    if current_user.barber
-      redirect_to barber_appointments_path(@barber, @appointment)
-    else
-      redirect_to barber_appointment_path(@barber, @appointment)
-    end
-  end
+  # end
+
+  # def update
+  #   @appointment.barber_service = @barber_service
+  #   raise
+  #   @appointment.update(params_appointment)
+  #   if current_user.barber
+  #     redirect_to barber_appointments_path(@barber, @appointment)
+  #   else
+  #     redirect_to barber_appointment_path(@barber, @appointment)
+  #   end
+  # end
 
   def destroy
     @appointment.destroy
@@ -73,7 +75,7 @@ class AppointmentsController < ApplicationController
   end
 
   def find_barber_service
-    @barber_service = BarberService.find(params[:barber_service_id])
+    @barber_service = BarberService.find(params["appointment"][:barber_service])
   end
 
   def find_user
