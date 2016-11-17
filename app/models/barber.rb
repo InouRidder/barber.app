@@ -13,6 +13,7 @@ class Barber < ApplicationRecord
   has_many :barber_services, dependent: :destroy
   has_many :services, through: :barber_services
   has_many :reviews, dependent: :destroy
+  has_many :availabilities, dependent: :destroy
   mount_uploader :photo, PhotoUploader
 
 

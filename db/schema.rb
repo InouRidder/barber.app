@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116112107) do
+ActiveRecord::Schema.define(version: 20161117125907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20161116112107) do
     t.integer  "barber_service_id"
     t.index ["barber_service_id"], name: "index_appointments_on_barber_service_id", using: :btree
     t.index ["user_id"], name: "index_appointments_on_user_id", using: :btree
+  end
+
+  create_table "availabilities", force: :cascade do |t|
+    t.datetime "start"
+    t.datetime "end"
+    t.integer  "barber_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["barber_id"], name: "index_availabilities_on_barber_id", using: :btree
   end
 
   create_table "barber_services", force: :cascade do |t|
@@ -86,6 +95,13 @@ ActiveRecord::Schema.define(version: 20161116112107) do
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
+  create_table "services", force: :cascade do |t|
+    t.string   "name"
+    t.string   "default"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
@@ -113,6 +129,7 @@ ActiveRecord::Schema.define(version: 20161116112107) do
   end
 
   add_foreign_key "appointments", "users"
+  add_foreign_key "availabilities", "barbers"
   add_foreign_key "barbers", "barbershops"
   add_foreign_key "reviews", "barbers"
   add_foreign_key "reviews", "users"

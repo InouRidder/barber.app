@@ -1,47 +1,17 @@
 <div class="container">
   <div class="appointment-body">
     <h2>
-      Hi! <%= @barber.name %>
-    </h2>
-    <% if current_user.barber %>
-    <h4> <%= current_user.barber.name %>, these are all your appointments:  </h4>
-    <ul>
-      <li>
-        <% current_user.barber.appointments.each do |appointment| %>
-
-        <div class="child-btns">
-          Appointment with <%= appointment.barber.name %> for a <%= appointment.barber_service.name  %>
-          on   <%= appointment.date %>
-        </div>
-        <div class="child-btns">
-          <%= link_to 'Cancel Appointment', barber_appointment_path(@barber, appointment), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?" } %>
-        </div>
-
-      </li>
-    </ul>
-    <% end %>
-
-    <% else %>
-        <h4> These are you appointments: </h4>
-          <% current_user.appointments.each do |appointment| %>
-          <p> Appointment with
-          <%= appointment.barber.name %> for <%= appointment.service  %>
-          </p>
-           <p> on  <%= appointment.date %></p>
-          <p> The location of your appointment: <%= Barber.find(params[:barber_id]).location %></p>
-          <p> Service : <%= appointment.barber_service.name  %></p>
-
-    <div class="child-btns">
-    </div>
-    <div class="child-btns">
-      <%= link_to 'Cancel Appointment', barber_appointment_path(@barber, appointment), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?" } %>
-    </div>
-    <% end %>
-
-    <% end %>
-
-
+      Hi, <%= @user.name %>
   </div>
+
+
+<h4> Add Availablitiy</h4>
+<%= simple_form_for ([@barber, @availability]) do |f| %>
+ <%= f.input :start, as: :datetime, html5: true %>
+ <%= f.input :end, as: :datetime, html5: true %>
+ <%= f.submit %>
+
+<% end %>
 
   <div id="appointments">
     <h3 id="month">
