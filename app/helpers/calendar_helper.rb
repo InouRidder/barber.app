@@ -6,7 +6,7 @@ module CalendarHelper
   class Calendar < Struct.new(:view, :date, :callback)
     HEADER = %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday]
     START_DAY = :monday
-    TIMESLOTS = %w[unavailable]
+    TIMESLOTS = %w[uur9 uur10 uur11]
 
     delegate :content_tag, to: :view
 
@@ -18,14 +18,20 @@ module CalendarHelper
 
     def header
       content_tag :tr do
-        HEADER.map { |day| content_tag :th, day }.join.html_safe
+        [ content_tag(:th, 'Time'),
+          HEADER.map { |day|
+            content_tag(:th, day)
+          }.join.html_safe
+        ].join.html_safe
       end
     end
 
     def week_rows
       weeks.map do |week|
         content_tag :tr do
-          week.map { |day| day_cell(day) }.join.html_safe
+          [ content_tag(:td, 'hello'),
+            week.map { |day| day_cell(day) }.join.html_safe
+          ].join.html_safe
         end
       end.join.html_safe
     end
