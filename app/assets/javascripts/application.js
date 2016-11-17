@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require swipebox
 //= require bootstrap-sprockets
 //= require underscore
 //= require search

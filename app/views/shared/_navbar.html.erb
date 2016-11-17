@@ -20,7 +20,7 @@
        	<% if current_user.appointments.none? %>
         	<%= link_to 'Book an Appointment!', barbers_path %>
         <% else %>
-          <%= link_to 'View Appointments', barber_appointments_path(current_user.appointments.first.barber,
+          <%= link_to 'View Appointment', barber_appointment_path(current_user.appointments.first.barber,
           current_user.appointments.first) %>
         <% end %>
        <% end %>
