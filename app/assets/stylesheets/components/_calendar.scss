@@ -21,15 +21,15 @@
   }
 
   td {
-    background: #FFF;
+    background: #d64141;
     color: #777;
-    height: 120px;
+    height: 300px;
     vertical-align: top;
     font-size: 16px;
   }
 
   .notmonth { color: #CCC; }
-  .today { background-color: #D7F2FF; }
+  .today { background-color: rgba(0, 255, 8, 0.42); }
 }
 
 #appointments #month {

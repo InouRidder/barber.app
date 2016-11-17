@@ -19,6 +19,9 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
+        <!-- Add alerts -->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
 
     <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=maps&key=#{ENV["GOOGLE_API_BROWSER_KEY"]}" %>
@@ -27,9 +30,6 @@
 
     <%= javascript_include_tag 'application' %>
     <%= yield(:after_js) %>
-        <!-- Add alerts -->
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= render 'shared/flashes' =%>
     <%= render 'shared/footer' %>
   </body>
