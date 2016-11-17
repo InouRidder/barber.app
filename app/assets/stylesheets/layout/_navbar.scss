@@ -1,7 +1,7 @@
 /* Main class */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: #efeae4;
+  background: #474A48;
   transition: all 0.3s ease;
   display: flex;
   height: 70px;
@@ -130,18 +130,19 @@
 }
 
 .nav li a:hover {
-  background-color: #5a5a57;
-  color: white;
+  background-color: white;
+  // #5a5a57;
+  color: black;
   transition: 500ms;
 }
 
 .nav li a {
-  color: #5a5a57;
+  color: white;
   border-radius: 20em;
 }
 
 #logout a {
-  color: #5a5a57;
+  color: white;
   border-radius: 20em;
   text-decoration: none;
 }

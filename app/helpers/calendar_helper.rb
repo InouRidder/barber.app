@@ -1,11 +1,12 @@
 module CalendarHelper
   def calendar(date = Date.today, &block)
-  Calendar.new(self, date, block).table
+    Calendar.new(self, date, block).table
   end
 
   class Calendar < Struct.new(:view, :date, :callback)
     HEADER = %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday]
     START_DAY = :monday
+    TIMESLOTS = %w[unavailable]
 
     delegate :content_tag, to: :view
 
@@ -42,7 +43,7 @@ module CalendarHelper
 
     def weeks
       first = date.beginning_of_week(START_DAY)
-      last = date.end_of_week(START_DAY)+7
+      last = date.end_of_week(START_DAY)
       (first..last).to_a.in_groups_of(7)
     end
   end
