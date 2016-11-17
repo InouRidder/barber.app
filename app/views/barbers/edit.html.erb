@@ -29,5 +29,6 @@
 <%= barber_service.name %>
 Set Price : <%= barber_service.price %>
 Time Need : <%= barber_service.duration %>
+<%= link_to 'Delete', barber_barber_service_path(@barber, barber_service), method: :delete, data: { confirm: "Are you sure? 1" } %>
 </li>
 <% end %>
