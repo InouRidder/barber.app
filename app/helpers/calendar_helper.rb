@@ -29,7 +29,7 @@ module CalendarHelper
     def week_rows
       weeks.map do |week|
         content_tag :tr do
-          [ content_tag(:td, 'hello'),
+          [ content_tag(:td, 'date'),
             week.map { |day| day_cell(day) }.join.html_safe
           ].join.html_safe
         end
