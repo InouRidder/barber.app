@@ -2,7 +2,7 @@
     <div class="banner-content">
       <section class="first">
         <div class="">
-          <h1 class="effect" id="barb-title"><span>BarberApp</span></h1>
+          <h1 class="effect"><span>BarberApp</span></h1>
           <h3 class="fade"><%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
             <%= text_field_tag :search, params[:search], placeholder: "Search your Barber" %>
             <% end %>
@@ -11,7 +11,7 @@
             Or
           </h6>
           <h3 class="fade" >
-            <%= link_to 'Find Available Barbers Near Me', availabilities_path, class: "btn btn-default", id: "find-btn" %>
+            <%= link_to 'Find Available Barbers Near Me', availabilities_path, class: "btn-search", id: "find-btn" %>
             <%#= form_tag(barbers_path, :method => "get", id: "search-form") do %>
             <%#= text_field_tag :location, params[:search], placeholder: "Find Available Barbers Near Me!" %>
             <%# end %>

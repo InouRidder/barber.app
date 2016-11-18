@@ -15,9 +15,6 @@
 @import "vendor/index";
 @import "swipebox";
 
-#barb-title {
-  color: white;
-}
 
 body {
   color: #474A48;
@@ -44,6 +41,13 @@ h2:before {
     background:#000;
 }
 
+.btn-search {
+  background-color: #666a6d;
+  padding:10px;
+  border: solid 1px black;
+  color: #474A48;
+}
+
 .banner {
   align-items: center;
   align-content: center;
@@ -66,4 +70,17 @@ h2:before {
 .buttons {
   margin-top: 50px;
 }
+
+.search-btn:hover {
+  background-color: white;
+  // #5a5a57;
+  color: black;
+  transition: 500ms;
+}
+
+.search-btn {
+  color: white;
+  border-radius: 20em;
+}
+
 
