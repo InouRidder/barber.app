@@ -19,13 +19,10 @@
 
 body {
   background: #FFF;
-  font-family: 'Hind', sans-serif;
 }
 
 h1 {
-  font-family: "Times New Roman", Georgia, Serif;
   border-bottom: solid 2px black;
-  // display: inline-block;
   text-align: center;
 }
 
@@ -35,8 +32,7 @@ h1 {
 }
 
 h2, h3 {
-  // font-family: 'Montserrat', sans-serif;
-  font-family: "Times New Roman", Georgia, Serif;
+
   color: white;
 
 }
@@ -63,7 +59,7 @@ h2, h3 {
   content: "";
   height: 100%;
   width: 100%;
-  background: #eaeaea;
+  background: #9cabc1;
   z-index: 2;
   display: block;
   position: absolute;
@@ -170,7 +166,7 @@ a.cta.outline {
   z-index: 3;
    -webkit-background-clip: text;
   background-clip: text;
-  background: -webkit-linear-gradient(0deg, #FFF 50%, #222 50%);
+  background: -webkit-linear-gradient(0deg, #111 50%, #222 50%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-position: 100% 0;
@@ -207,6 +203,13 @@ a.fade {
   opacity: 1;
 }
 
+.fade textarea{
+  color: white;
+}
+
+.fade input, select, textarea{
+    color:  white;
+}
 
 section {
   text-align: center;

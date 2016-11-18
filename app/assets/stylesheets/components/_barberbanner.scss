@@ -1,7 +1,9 @@
 .barberbanner {
   color: white;
   text-align: center;
-  height: 100vh;
+  height: 40vh;
+  width: 80%;
+  padding-left: 220px;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
