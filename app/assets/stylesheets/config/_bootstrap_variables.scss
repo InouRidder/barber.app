@@ -3,6 +3,11 @@
  * (see http://getbootstrap.com/customize/#less-variables)
  * ------------------------------------- */
 
+// Google fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+$base-font: "Montserrat", "Helvetica", "sans-serif";
+$header-font: "Montserrat", "Helvetica", "sans-serif";
+
 // General style
 $font-family-sans-serif:  $base-font;
 $body-bg:                 white;
