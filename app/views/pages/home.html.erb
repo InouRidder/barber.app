@@ -1,84 +1,49 @@
-<!-- <section id="search-barbers">
-  <div class="row">
-    <div class="col-sm-12 col-md-3">
-      <div class="outer-container">
-       <form action="/search.html">
-        <input type="text" placeholder="Search Barber" required="">
-        <button type="submit">
-          <i class="fa fa-search"></i>
-          <%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Barbers" %>
-          <% end %>
-        </button>
-      </form>
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(168, 0, 0, 0) 0%, rgba(0,36,61,0.6) 50%), url(https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/TexasRichardson_barberShop.jpg/800px-TexasRichardson_barberShop.jpg);">
+    <div class="banner-content">
+      <section class="first">
+        <div class="">
+          <h1 class="effect" id="barb-title"><span>BarberApp</span></h1>
+          <h3 class="fade"><%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search your Barber" %>
+            <% end %>
+          </h3>
+          <h6>
+          Or
+          </h6>
+          <h3 class="fade">
+            <%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :location, params[:search], placeholder: "Find Available Barbers Near Me!" %>
+            <% end %>
+          </h3>
+        </div>
+      </section>
     </div>
   </div>
-</div>
-</section>
 
-<section id="search-location">
-  <div class="row">
-    <div class="col-sm-12 col-md-3">
-      <div class="outer-container">
-       <form action="/search.html">
-        <input type="text" placeholder="Search location" required="">
-        <button type="submit">
-          <i class="fa fa-search"></i>
-          <%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :location, params[:search], placeholder: "Search on location"%>
-          <% end %>
-        </button>
-      </form>
-    </div>
-  </div>
-</div>
-</section> -->
+  <div class="container text-center padded features">
+    <div class="row">
+      <div class="logo-fonts">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <%= image_tag "wondered-hipster.png" %>
+          <h2>Do you have what it takes?</h2>
+          <%= link_to ' Join the BarberApp', new_barber_path, class: "btn btn-default" %>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <%= image_tag "barber.png" %>
+          <h2>Get restyled & renewed</h2>
+          <p>Let your hair get the attention it deserves</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <%= image_tag "beardman.png" %>
+          <h2>Show off the new you</h2>
+          <p>Because your worth it</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <%= image_tag "heart.png" %>
+          <h2>Leave a review & share! </h2>
+          <p>And share you experiences</p></br>
+        </br>
 
-<%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Barbers" %>
-<% end %>;
-<%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :location, params[:search], placeholder: "Search on location" %>
-<% end %>
-
-
-<section class="first">
-  <div class="">
-    <h1 class="effect"><span>BarberApp</span></h1>
-    <h3 class="fade">Get the best shaves and cuts</h3>
-    <%= image_tag("logo3.jpg", :class => "logo")%>
-  </div>
-</section>
-
-
-
-
-<div class="container text-center padded features">
-  <div class="row">
-    <div class="logo-fonts">
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <%= image_tag "wondered-hipster.png" %>
-        <h2>Do you have what it takes?</h2>
-        <p>Add your value to our business!</p>
-        <%= link_to ' Join BarberApp as a Barber', new_barber_path, class: "btn btn-primary" %>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <%= image_tag "barber.png" %>
-        <h2>Get restyled & renewed</h2>
-        <p>Let your hair get the attention it deserves</p>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <%= image_tag "beardman.png" %>
-        <h2>Show off the new you</h2>
-        <p>Because your worth it</p>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <%= image_tag "heart.png" %>
-        <h2>Leave a review & share! </h2>
-        <p>And share you experiences</p></br>
-      </br>
-      <p>Are you a business owner?</p>
-      <%= link_to ' Join BarberApp as an owner', new_barber_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>

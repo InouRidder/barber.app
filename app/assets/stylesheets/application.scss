@@ -15,9 +15,12 @@
 @import "vendor/index";
 @import "swipebox";
 
+#barb-title {
+  color: white;
+}
 
 body {
-  color: #5a5a57;
+  color: white;
   background-image: #f4f4f4;
 }
 
@@ -39,3 +42,27 @@ h2:before {
     height:3px;
     background:#000;
 }
+
+.banner {
+  align-items: center;
+  align-content: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+}
+
+.banner-content {
+  text-align: center;
+
+}
+
+.text{
+  margin-bottom: 50px
+}
+
+.buttons {
+  margin-top: 50px;
+}
+
