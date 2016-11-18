@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+   <div class="col-md-9-offset col-md-4-offset">
+     <h1><span>
+      All the available barbers, closest to your location!
+      </span></h1>
+   </div>
+ </div>
+</div>
+
+<div class="container-index">
+ <div class="row-index">
+  <% @available_slots.each do |e| %>
+  <div class="col-sm-12 col-md-9-centered">
+   <div class="thumbnail">
+     <%= image_tag "beardman.png", class: "avatar-large" %>
+     <div class="caption">
+       <h2>
+        <%= link_to "#{e.barber.name}", barber_path(e.barber), class: "barbername" %>
+      </h2>
+      <p>
+        <%= e.barber.description[0..50] %>...
+        <% average = 0 %>
+        <% e.barber.reviews.each do |e| %>
+        <% average += e.rating.to_i %>
+        <% end %>
+
+        <p>Average Rating:</p>
+        <% if e.barber.reviews.length == 0 %>
+        <%= 0 %>
+        <% else %>
+        <%= average/e.barber.reviews.length %>
+        <% end %>
+        <p>This barber is available from
+          <%= e.start %> untill <%= e.end  %>
+        </p>
+      </p>
+      <%= link_to 'Book Appointment', new_barber_appointment_path(e.barber) %>
+    </p>
+  </div>
+</div>
+</div>
+<% end %>
+</div>
+</div>
+
+
+
+<div id="map" style="width: 100%; height: 600px;"></div>
+
+<% content_for(:after_js) do %>
+<%= javascript_tag do %>
+$(document).ready(function() {
+var handler = Gmaps.build('Google');
+handler.buildMap({ provider: {scrollwheel: false}, internal: { id: 'map' } }, function() {
+markers = handler.addMarkers(<%= raw @coordinates.to_json %>);
+handler.bounds.extendWith(markers);
+handler.fitMapToBounds();
+if (markers.length == 0) {
+handler.getMap().setZoom(2);
+} else if (markers.length == 1) {
+handler.getMap().setZoom(14);
+handler.disableScrollWheelZoom();
+
+}
+});
+});
+<% end %>
+<% end %>

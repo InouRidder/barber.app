@@ -1,5 +1,9 @@
+require 'date'
+require 'time'
+
+
 class AvailabilitiesController < ApplicationController
-  before_action :find_barber
+  before_action :find_barber, only: [:create]
 
   def create
     @availability = Availability.new
@@ -9,6 +13,18 @@ class AvailabilitiesController < ApplicationController
     @availability.save!
     redirect_to barber_appointments_path(@barber)
   end
+
+  def index
+    availablities = Availability.all
+    @available_slots = []
+    availablities.each do |element|
+      if element.end - 40.minutes >= DateTime.now
+    @available_slots << element
+      end
+    end
+   @available_slots
+  end
+
 
   private
 
