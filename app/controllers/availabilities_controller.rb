@@ -15,6 +15,8 @@ class AvailabilitiesController < ApplicationController
   end
 
   def index
+    lat = params[:lat]
+    lng = params[:lng]
     availablities = Availability.all
     @available_slots = []
     availablities.each do |element|
