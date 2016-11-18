@@ -11,14 +11,16 @@
           Or
           </h6>
           <h3 class="fade">
-            <%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
-            <%= text_field_tag :location, params[:search], placeholder: "Find Available Barbers Near Me!" %>
-            <% end %>
+            <%= link_to 'Find Available Barbers Near Me', availabilities_path, class: "btn btn-default" %>
+            <%#= form_tag(barbers_path, :method => "get", id: "search-form") do %>
+            <%#= text_field_tag :location, params[:search], placeholder: "Find Available Barbers Near Me!" %>
+            <%# end %>
           </h3>
         </div>
       </section>
     </div>
   </div>
+
 
   <div class="container text-center padded features">
     <div class="row">
