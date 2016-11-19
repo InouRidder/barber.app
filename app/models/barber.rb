@@ -18,4 +18,14 @@ class Barber < ApplicationRecord
 
 
   validates :name, :description, :location, presence: true
+
+  def distance(lat, lng)
+    barber_lng = self.longitude
+    barber_lat = self.latitude
+    url = "http://maps.googleapis.com/maps/api/directions/json?origin=#{lat},#{lng}&destination=#{barber_lat},#{barber_lng}&sensor=false&mode=BIKING"
+    buffer = open(url).read
+    result = JSON.parse(buffer)
+    return result["routes"][0]["legs"][0]["distance"]["text"]
+  end
+
 end
