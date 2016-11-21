@@ -10,34 +10,35 @@
 
 <div class="container-index">
  <div class="row-index">
-  <% @availabilities.each do |availability| %>
+  <% @available_barbers_by_distance.each do |barber| %>
   <div class="col-sm-12 col-md-9-centered">
    <div class="thumbnail">
      <%= image_tag "beardman.png", class: "avatar-large" %>
      <div class="caption">
        <h2>
-        <%= link_to "#{availability.barber.name}", barber_path(availability.barber), class: "barbername" %>
+        <%= link_to "#{barber.name}", barber_path(barber), class: "barbername" %>
       </h2>
       <p>
-        <%= availability.barber.description[0..50] %>...
+        <%= barber.description[0..50] %>...
         <% average = 0 %>
-        <% availability.barber.reviews.each do |review| %>
+        <% barber.reviews.each do |review| %>
         <% average += review.rating.to_i %>
         <% end %>
 
         <p>Average Rating:</p>
-        <% if availability.barber.reviews.length == 0 %>
+        <% if barber.reviews.length == 0 %>
         <%= 0 %>
         <% else %>
-        <%= average/availability.barber.reviews.length %>
+        <%= average/barber.reviews.length %>
         <% end %>
         <p>This barber is available from
-          <%= availability.start %> untill <%= availability.end %>
+          <%= barber.availabilities.first.start %> untill <%= barber.availabilities.last.end %>
         </p>
-        <p>This barber is only <%= availability.barber.distance(@lat, @lng) %> away!
+        <p>Distance by foot: <%= barber.walk_distance(@lat, @lng) %> (<%= barber.walk_duration(@lat, @lng)  %>) <br>
+          Distance by car: <%= barber.car_distance(@lat, @lng) %> (<%= barber.car_duration(@lat, @lng)  %>) <br>
         </p>
       </p>
-      <%= link_to 'Book Appointment', new_barber_appointment_path(availability.barber) %>
+      <%= link_to 'Book Appointment', new_barber_appointment_path(barber) %>
     </p>
   </div>
 </div>
