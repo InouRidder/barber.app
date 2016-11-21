@@ -28,4 +28,13 @@ class Barber < ApplicationRecord
     return result["routes"][0]["legs"][0]["distance"]["text"]
   end
 
+  def available_times
+    array = []
+    self.availabilities.each do |slot|
+      if slot.appointment == nil
+        array << slot
+      end
+    end
+      return array
+  end
 end
