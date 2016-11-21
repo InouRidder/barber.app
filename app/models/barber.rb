@@ -16,16 +16,42 @@ class Barber < ApplicationRecord
   has_many :availabilities, dependent: :destroy
   mount_uploader :photo, PhotoUploader
 
-
   validates :name, :description, :location, presence: true
 
-  def distance(lat, lng)
+  def walk_distance(lat, lng)
     barber_lng = self.longitude
     barber_lat = self.latitude
-    url = "http://maps.googleapis.com/maps/api/directions/json?origin=#{lat},#{lng}&destination=#{barber_lat},#{barber_lng}&sensor=false&mode=BIKING"
+    url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{lat},#{lng}&destination=#{barber_lat},#{barber_lng}&sensor=false&mode=walking&key=#{ENV["GOOGLE_WEBS_API"]}"
     buffer = open(url).read
     result = JSON.parse(buffer)
-    return result["routes"][0]["legs"][0]["distance"]["text"]
+    result["routes"][0]["legs"][0]["distance"]["text"]
+  end
+
+  def car_distance(lat, lng)
+    barber_lng = self.longitude
+    barber_lat = self.latitude
+    url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{lat},#{lng}&destination=#{barber_lat},#{barber_lng}&sensor=false&mode=driving&key=#{ENV["GOOGLE_WEBS_API"]}"
+    buffer = open(url).read
+    result = JSON.parse(buffer)
+    result["routes"][0]["legs"][0]["distance"]["text"]
+  end
+
+  def walk_duration(lat, lng)
+    barber_lng = self.longitude
+    barber_lat = self.latitude
+    url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{lat},#{lng}&destination=#{barber_lat},#{barber_lng}&sensor=false&mode=walking&key=#{ENV["GOOGLE_WEBS_API"]}"
+    buffer = open(url).read
+    result = JSON.parse(buffer)
+    result["routes"][0]["legs"][0]["duration"]["text"]
+  end
+
+  def car_duration(lat, lng)
+    barber_lng = self.longitude
+    barber_lat = self.latitude
+    url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{lat},#{lng}&destination=#{barber_lat},#{barber_lng}&sensor=false&mode=driving&key=#{ENV["GOOGLE_WEBS_API"]}"
+    buffer = open(url).read
+    result = JSON.parse(buffer)
+    result["routes"][0]["legs"][0]["duration"]["text"]
   end
 
   def available_times
