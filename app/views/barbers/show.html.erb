@@ -49,7 +49,7 @@
           <% if current_user.barber == @barber  %>
           <%= link_to 'Agenda', barber_appointments_path(@barber), class: "btn btn-default"  %>
           <% end %>
-        <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "btn btn-default" %>
+          <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "btn btn-default" %>
 
         </p>
 
@@ -90,15 +90,19 @@
   </div>
 </div>
 </div>
-
-
-<div class="full-height">
-  <div class="flex-row">
-    <% @barber.reviews.each do |review| %>
-    <div class="flex-row">
-      <%= image_tag review.photo, class: "reviewpicture" %>
+<p class="text-center"> Some of the user pictures</p>
+  <div class=container>
+    <div class=row>
+        <% @barber.reviews.each do |review| %>
+      <div class="col-sm-3 ">
+        <div class= image-attr>
+        <a href="<%= review.photo %>" class="swipebox">
+        <%= image_tag review.photo, class: "img-responsive" %>
+        </a>
+        </div>
+      </div>
+        <% end %>
     </div>
-    <% end %>
   </div>
 </div>
 

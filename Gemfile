@@ -15,6 +15,8 @@ gem 'gmaps4rails'
 gem 'carrierwave'
 gem 'cloudinary', '1.1.0'
 gem 'pg_search'
+gem 'rails-assets-swipebox', source: 'https://rails-assets.org'
+
 
 
 gem 'sass-rails'
