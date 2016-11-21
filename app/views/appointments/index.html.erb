@@ -26,3 +26,26 @@
       </p>
     </div>
   </div>
+
+
+<div id="appointments">
+   <h3 id="month">
+   <%= link_to "<", date: @date.prev_week %>
+   <%= @date.strftime("%B %Y") %>
+   <%= link_to ">", date: @date.next_week %>
+   </h3>
+   <%= calendar @date do |date| %>
+     <%= date.day %>
+     <%# if @availabilities[date] %>
+       <!-- <ul> -->
+         <%# @availabilities.each do |date, availability| %>
+             <%# availability.each do |appointment| %>
+               <!-- <li>gelukt!</li> -->
+               <!-- <li> <%#= link_to availability.date.strftime("%Hh%M"), barber_appointment_path(@barber, appointment) %> </li> -->
+             <%# end %>
+         <%# end %>
+       <!-- </ul> -->
+     <%# end %>
+   <% end %>
+ </div>
+</div>

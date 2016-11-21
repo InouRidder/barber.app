@@ -7,10 +7,12 @@ class AppointmentsController < ApplicationController
 
   def index
     @availability = Availability.new
+    @availabilities = Availability.all
     @appointments = @barber.appointments
     #@appointments_by_date = @appointments.group_by(&:date).map { |k, v| [k.to_date, v] }.to_h
     @user = current_user
     #@date = params[:date] ? Date.parse(params[:date]) : Date.today
+    @date = Date.today
   end
 
   def show
@@ -22,6 +24,7 @@ class AppointmentsController < ApplicationController
     #@appointments_by_date = @appointments.group_by(&:date).map { |k, v| [k.to_date, v] }.to_h
     @appointment = Appointment.new
     #@date = params[:date] ? Date.parse(params[:date]) : Date.today
+    @date = Date.today
   end
 
   def create

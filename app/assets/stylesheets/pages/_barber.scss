@@ -1,0 +1,24 @@
+.parent {
+  border: 5px solid lightcoral;
+  display: flex;
+  justify-content: space-around;
+}
+
+.item {
+  width: 100px;
+}
+
+.map_box {
+  background:#2c3e50;
+  color:#fff;
+  font-size:16px;
+  line-height:24px;
+  width:30px;
+  height:15px;
+  border-left:15px solid transparent;
+  border-right:15px solid transparent;
+  border-top:15px solid #2c3e50;
+  }
+.map_box a {
+  color:rgba(255,255,255,0.5);
+  }
