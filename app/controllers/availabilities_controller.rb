@@ -17,10 +17,11 @@ class AvailabilitiesController < ApplicationController
   end
 
   def index
-    @availabilities = Availability.all
     # Availability.where()  << don't use ruby to select data, but an AR query like this
     @lat = params[:lat]
     @lng = params[:lng]
+    distance = 5
+    @available_barbers_by_distance = Barber.includes(:availabilities).where.not(availabilities: {id: nil}).near([@lat, @lng], distance).order("distance")
     @barbers = Availability.select(:barber_id).distinct
 
    #  @coordinates = Gmaps4rails.build_markers(@barbers) do |barber, marker|
