@@ -1,12 +1,15 @@
 <h1>Leave a review!</h1>
 
+<div class: "review-input">
 <%= form_for([@barber, @review]) do |f| %>
-  <%= f.label :description %>
-  <%= f.text_area :description %>
+  <%= f.label :"Tell everyone what you think" %>
+  <%= f.text_area :description, class: "form-control input-lg review-input", placeholder: "Please describe your visit" %>
 
 
   <%= f.label :rating %>
   <%= f.number_field :rating %>
+
+
 
 <p> Would you like to add a photo of your funky new cut? </p>
   <%= f.file_field :photo %>
@@ -14,3 +17,4 @@
   <%= f.submit %>
 
 <% end %>
+</div>

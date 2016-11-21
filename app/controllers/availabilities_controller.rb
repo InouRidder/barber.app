@@ -6,6 +6,7 @@ require 'json'
 
 class AvailabilitiesController < ApplicationController
   before_action :find_barber, only: [:create]
+  before_action :get_distance, only: [:index]
 
   def create
     @availability = Availability.new
@@ -20,10 +21,8 @@ class AvailabilitiesController < ApplicationController
     # Availability.where()  << don't use ruby to select data, but an AR query like this
     @lat = params[:lat]
     @lng = params[:lng]
-    distance = 5
-    @available_barbers_by_distance = Barber.includes(:availabilities).where.not(availabilities: {id: nil}).near([@lat, @lng], distance).order("distance")
+    @available_barbers_by_distance = Barber.includes(:availabilities).where.not(availabilities: {id: nil}).near([@lat, @lng], @distance).order("distance")
     @barbers = Availability.select(:barber_id).distinct
-
 
    #  @coordinates = Gmaps4rails.build_markers(@barbers) do |barber, marker|
    #   marker.lat barber.latitude
@@ -39,6 +38,10 @@ class AvailabilitiesController < ApplicationController
 
   def find_barber
     @barber = Barber.find(params[:barber_id])
+  end
+
+  def get_distance
+    @distance = params[:distance].to_i
   end
 end
 

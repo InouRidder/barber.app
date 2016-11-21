@@ -2,7 +2,7 @@
     <div class="banner-content">
       <section class="first">
         <div class="">
-          <h1 class="effect"><span>BarberApp</span></h1>
+          <h1 class="effect"><span>Barber.App</span></h1>
           <h3 class="fade"><%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
             <%= text_field_tag :search, params[:search], placeholder: "Search your Barber" %>
             <% end %>
@@ -12,6 +12,10 @@
           </h6>
           <h3 class="fade" >
             <%= link_to 'Find Available Barbers Near Me', availabilities_path, class: "search-btn", id: "find-btn" %>
+            <div class="range-slider"> Max Distance
+              <input class="range-slider__range" type="range" value="5" min="0" max="50">
+              <span id="slider-value" class="range-slider__value">0</span>
+            </div>
             <%#= form_tag(barbers_path, :method => "get", id: "search-form") do %>
             <%#= text_field_tag :location, params[:search], placeholder: "Find Available Barbers Near Me!" %>
             <%# end %>

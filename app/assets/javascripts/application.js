@@ -6,5 +6,8 @@
 //= require search
 //= require gmaps/google
 //= require_tree .
+//= require raty
+
+
 
 
