@@ -11,10 +11,13 @@
   <div class="child">
     <ul>
       <li>
-        The date of your appointment: <%= @appointment.date %>
+        The date of your appointment: <%= @appointment.availability.start.strftime("%b %e, %l:%M %p")  %> untill <%= @appointment.availability.end.strftime("%b %e, %l:%M %p")  %>
       </li>
       <li>
         The location of your appointment: <%= @barber.location %>
+      </li>
+      <li>
+        For a <%= @appointment.barber_service.name  %>
       </li>
     </ul>
     <br>

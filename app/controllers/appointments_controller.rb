@@ -3,13 +3,14 @@ class AppointmentsController < ApplicationController
   before_action :find_user, only: [:show, :new, :destroy, :edit, :create, :update, :index]
   before_action :find_barber_service, only: [:create]
   before_action :find_barber, only: [:show, :index, :new, :destroy, :edit, :create, :update]
+  before_action :find_availability, only: [:create]
 
   def index
     @availability = Availability.new
     @appointments = @barber.appointments
-    @appointments_by_date = @appointments.group_by(&:date).map { |k, v| [k.to_date, v] }.to_h
+    #@appointments_by_date = @appointments.group_by(&:date).map { |k, v| [k.to_date, v] }.to_h
     @user = current_user
-    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    #@date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
   def show
@@ -18,22 +19,25 @@ class AppointmentsController < ApplicationController
   def new
     @barber_services = @barber.barber_services
     @appointments = @barber.appointments
-    @appointments_by_date = @appointments.group_by(&:date).map { |k, v| [k.to_date, v] }.to_h
+    #@appointments_by_date = @appointments.group_by(&:date).map { |k, v| [k.to_date, v] }.to_h
     @appointment = Appointment.new
-    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    #@date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
   def create
     @appointment = Appointment.new(params_appointment)
-    @appointment.barber_service = @barber_service
-    @appointment.barber = @barber
+    @appointment.barber_service_id = @barber_service.id
+    @appointment.availability_id = @availability.id
     @appointment.user = current_user
+    @availability.appointment = @appointment.id
+    @availability.save!
+    @appointment.save!
     if @appointment.save != true
       flash[:notice] = "Please fill out the form properly"
       redirect_to new_barber_appointment_path(@barber)
     else
       if current_user.barber
-        redirect_to barber_appointments_path(@barber, @appointment)
+        redirect_to barber_appointment_path(@barber, @appointment)
       else
         redirect_to barber_appointment_path(@barber, @appointment)
       end
@@ -83,7 +87,11 @@ class AppointmentsController < ApplicationController
     @user = current_user
   end
 
+  def find_availability
+    @availability = Availability.find(params["appointment"][:availability_id])
+  end
+
   def params_appointment
-    params.require(:appointment).permit(:date, :barber_service_id).merge(user_id: current_user.id)
+    params.require(:appointment).permit(:availability_id, :barber_service_id, :id).merge(user_id: current_user.id)
   end
 end

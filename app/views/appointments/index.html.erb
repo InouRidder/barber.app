@@ -2,32 +2,27 @@
   <div class="appointment-body">
     <h2>
       Hi, <%= @user.name %>
-  </div>
+    </div>
 
 
-<h4> Add Availablitiy</h4>
-<%= simple_form_for ([@barber, @availability]) do |f| %>
- <%= f.input :start, as: :datetime, html5: true %>
- <%= f.input :end, as: :datetime, html5: true %>
- <%= f.submit %>
-
-<% end %>
-
-  <div id="appointments">
-    <h3 id="month">
-    <%= link_to "<", date: @date.prev_week %>
-    <%= @date.strftime("%B %Y") %>
-    <%= link_to ">", date: @date.next_week %>
-    </h3>
-    <%= calendar @date do |date| %>
-      <%= date.day %>
-      <% if @appointments_by_date[date] %>
-        <ul>
-          <% @appointments_by_date[date].each do |appointment| %>
-                <li> <%= link_to appointment.date.strftime("%Hh%M"), barber_appointment_path(@barber, appointment) %> </li>
-          <% end %>
-        </ul>
-      <% end %>
+    <h4> Add Availablitiy</h4>
+    <%= simple_form_for ([@barber, @availability]) do |f| %>
+    <%= f.input :start, as: :datetime, html5: true %>
+    <%= f.input :end, as: :datetime, html5: true %>
+    <%= f.submit %>
     <% end %>
+
   </div>
-</div>
+  <div class="appointment-body">
+    <h2>
+      These are your booked appointments!
+    </h2>
+    <div class="row">
+
+      <% @barber.appointments.each do |appointment| %>
+      <p>Appointment with <%= appointment.user.name %> on the
+        <%= appointment.availability.start.strftime("%b %e, %l:%M %p") %> untill <%= appointment.availability.end.strftime("%b %e, %l:%M %p") %> for a <%= appointment.barber_service.name %>
+        <% end %>
+      </p>
+    </div>
+  </div>

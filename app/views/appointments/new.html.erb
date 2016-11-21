@@ -1,41 +1,52 @@
 <div class="container">
   <div class="row">
     <div>
-      <h2>New appointment with <%= @barber.name %> </h2>
 
+      <% if @barber.availabilities.any? %>
+
+      <h2>New appointment with <%= @barber.name %> </h2>
 
       <%= simple_form_for ([@barber, @appointment]) do |f| %>
 
-      <%= f.input :date, as: :datetime, html5: true %>
+      <%= f.input :availability_id, collection: @barber.available_times, label_method: :start, value_method: :id %>
+
       <%= f.input :barber_service, collection: @barber_services  %>
       <p>
         <%= f.button :submit %>
       </p>
-
-
+      <% end %>
+      <% else %>
+      <p>
+        This barber does not have any availability...
+      </p>
       <% end %>
     </div>
   </div>
 
-<h4> Agenda </h4>
-
-  <div id="appointments">
-    <h3 id="month">
-      <%= link_to "<", date: @date.prev_week %>
-      <%= @date.strftime("%B %Y") %>
-      <%= link_to ">", date: @date.next_week %>
-    </h3>
-      <%= calendar @date do |date| %>
-        <%= date.day %>
-        <% if @appointments_by_date[date] %>
-          <ul>
-            <% @appointments_by_date[date].each do |appointment| %>
-             <li> occupied from <%= appointment.date.strftime("%Hh%M") %> until <%= (appointment.date + (appointment.barber_service.duration * 60)).strftime("%Hh%M") %> </li>
-            <% end %>
-          </ul>
-        <% end %>
-      <% end %>
+  <h2> Spots still open</h2>
+  <div class="row"">
+    <% @barber.availabilities.each do |availability| %>
+    <% if availability.appointment.nil? %>
+    <div>
+      <%= "#{availability.start.strftime("%b %e, %l:%M %p")} to #{availability.end.strftime("%b %e, %l:%M %p")}" %>
+      <%# raise %>
+      <br>
+    </div>
+    <% end %>
+    <% end %>
   </div>
+
+
+
+<!--   <h3>
+    This barber has the following available time slots!
+  </h3>
+
+  <%# @barber.availabilities.each do |slot| %>
+  <%#= link_to "#{slot.start} - #{slot.end}",  %>
+-->
+
+
 </div>
 
 
