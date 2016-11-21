@@ -92,11 +92,15 @@
 </div>
 
 
-  <% @barber.reviews.each do |review| %>
-  <div> <%= image_tag @barber.photo, class: "barberbanner" %> </div>
-  <% end %>
-  </a>
-
+<div class="full-height">
+  <div class="flex-row">
+    <% @barber.reviews.each do |review| %>
+    <div class="flex-row">
+      <%= image_tag review.photo, class: "reviewpicture" %>
+    </div>
+    <% end %>
+  </div>
+</div>
 
 
 <br>
