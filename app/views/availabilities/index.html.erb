@@ -4,10 +4,10 @@
      <h1><span>
       All the available barbers, closest to your location!
       </span></h1>
+      <h4>Range :  <%= @distance %> km</h4>
    </div>
  </div>
 </div>
-
 <div class="container-index">
  <div class="row-index">
   <% @available_barbers_by_distance.each do |barber| %>
