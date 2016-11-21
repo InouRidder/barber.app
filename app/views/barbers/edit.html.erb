@@ -13,7 +13,7 @@
 <h2> Add New Services </h2>
 
 <%= simple_form_for([@barber, @barberservice]) do |f| %>
-
+<% raise error %>
 <%= f.association :service %>
 <%= f.input :price  %>
 <%= f.input :duration  %>

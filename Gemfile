@@ -16,6 +16,8 @@ gem 'carrierwave'
 gem 'cloudinary', '1.1.0'
 gem 'pg_search'
 gem 'rails-assets-swipebox', source: 'https://rails-assets.org'
+gem 'rails-assets-raty', source: 'https://rails-assets.org'
+
 
 
 
@@ -24,6 +26,7 @@ gem 'jquery-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
 gem 'swipebox'
+
 
 gem 'font-awesome-sass'
 gem 'simple_form'
