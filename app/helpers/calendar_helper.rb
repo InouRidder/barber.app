@@ -18,20 +18,20 @@ module CalendarHelper
 
     def header
       content_tag :tr do
-        [ content_tag(:th, 'Time'),
+        # [ content_tag(:th, 'Time'),
           HEADER.map { |day|
             content_tag(:th, day)
           }.join.html_safe
-        ].join.html_safe
+        # ].join.html_safe
       end
     end
 
     def week_rows
       weeks.map do |week|
         content_tag :tr do
-          [ content_tag(:td, 'date'),
+          # [ content_tag(:td, 'date'),
             week.map { |day| day_cell(day) }.join.html_safe
-          ].join.html_safe
+          # ].join.html_safe
         end
       end.join.html_safe
     end

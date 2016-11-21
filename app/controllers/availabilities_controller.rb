@@ -23,6 +23,7 @@ class AvailabilitiesController < ApplicationController
     @lng = params[:lng]
     @available_barbers_by_distance = Barber.includes(:availabilities).where.not(availabilities: {id: nil}).near([@lat, @lng], @distance).order("distance")
     @barbers = Availability.select(:barber_id).distinct
+
    #  @coordinates = Gmaps4rails.build_markers(@barbers) do |barber, marker|
    #   marker.lat barber.latitude
    #   marker.lng barber.longitude
@@ -30,16 +31,8 @@ class AvailabilitiesController < ApplicationController
    # end
  end
 
-  # def available
-  #   availabilities = Availability.all
-  #   available_slots = []
   #   availabilities.each do |element|
   #     # if element.end - 40.minutes >= DateTime.now
-  #   available_slots << element
-  #     # end
-  #   end
-  #   return available_slots
-  # end
 
   private
 
