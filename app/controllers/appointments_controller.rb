@@ -7,7 +7,8 @@ class AppointmentsController < ApplicationController
 
   def index
     @availability = Availability.new
-    @availabilities = Availability.all
+    @availabilities = Availability.where(barber: @barber)
+
     @appointments = @barber.appointments
     #@appointments_by_date = @appointments.group_by(&:date).map { |k, v| [k.to_date, v] }.to_h
     @user = current_user

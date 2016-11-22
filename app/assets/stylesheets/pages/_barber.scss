@@ -9,16 +9,20 @@
 }
 
 .map_box {
-  background:#2c3e50;
-  color:#fff;
-  font-size:16px;
-  line-height:24px;
-  width:30px;
-  height:15px;
-  border-left:15px solid transparent;
-  border-right:15px solid transparent;
-  border-top:15px solid #2c3e50;
-  }
-.map_box a {
-  color:rgba(255,255,255,0.5);
-  }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 20px;
+    padding-left: 16px;
+    background-color: white;
+    border-radius: 45px;
+    margin-left: 15px;
+}
+
+.barber-flex {
+  display: flex;
+}
