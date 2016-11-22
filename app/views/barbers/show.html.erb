@@ -42,9 +42,13 @@
         <div>
           <h2> Services</h2>
             <% @barber.barber_services.each do |barber_service|  %>
-              <p><strong> <%= barber_service.name %> </strong></p>
-              <p>Price - <%= barber_service.price %></p>
-              <p>In about <%= barber_service.duration %> minutes</p>
+
+            <li>
+              <%= barber_service.name %>
+              <br>
+              Price - <%= barber_service.price %>
+              In about <%= barber_service.duration %> minutes
+            </li>
             <% end %>
 
             <% if current_user.barber == @barber  %>

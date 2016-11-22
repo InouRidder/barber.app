@@ -6,12 +6,33 @@
   color: black;
   font-size: 15px;
   line-height: 1.3333333;
- border-radius: 2px;
+  border-radius: 2px;
 
 }
 textarea.input-lg {
-height: 200px;
+  height: 200px;
 }
 .star-rating {
 
+}
+
+.edit-input {
+ width: 670px;
+ height: 200px;
+ border-color: black;
+ color: black;
+ font-size: 15px;
+ // line-height: 1.3333333;
+ border-radius: 2px;
+ text-align: left;
+ text-align: top;
+ padding-left:0;
+padding-top:0;
+padding-bottom:0.4em;
+padding-right: 0.4em;
+
+}
+
+.input-name {
+  height: 50px;
 }
