@@ -1,4 +1,4 @@
-class AppointmentsController < ApplicationController
+  class AppointmentsController < ApplicationController
   before_action :find_appointment, only: [:show, :edit, :update, :destroy]
   before_action :find_user, only: [:show, :new, :destroy, :edit, :create, :update, :index]
   before_action :find_barber_service, only: [:create]
@@ -13,7 +13,7 @@ class AppointmentsController < ApplicationController
     #@appointments_by_date = @appointments.group_by(&:date).map { |k, v| [k.to_date, v] }.to_h
     @user = current_user
     #@date = params[:date] ? Date.parse(params[:date]) : Date.today
-    @date = Date.today
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end
 
   def show
@@ -21,11 +21,12 @@ class AppointmentsController < ApplicationController
 
   def new
     @barber_services = @barber.barber_services
+    @availabilities = Availability.where(barber: @barber)
     @appointments = @barber.appointments
     #@appointments_by_date = @appointments.group_by(&:date).map { |k, v| [k.to_date, v] }.to_h
     @appointment = Appointment.new
     #@date = params[:date] ? Date.parse(params[:date]) : Date.today
-    @date = Date.today
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
   def create

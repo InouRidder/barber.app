@@ -60,11 +60,13 @@
       <% cover = availability.start.to_date.between?(calendar_date, calendar_date.end_of_day) %>
 
        <% if cover %>
-        <div class="appointment-availability">
-          <%= availability.start.strftime("%l:%M %p") %>
-          -
-          <%= availability.end.strftime("%l:%M %p") %>
-        </div>
+        <a href="">
+          <div class="appointment-availability">
+            <%= availability.start.strftime("%l:%M %p") %>
+            -
+            <%= availability.end.strftime("%l:%M %p") %>
+          </div>
+        </a>
        <% end %>
       <% end %>
    <% end %>

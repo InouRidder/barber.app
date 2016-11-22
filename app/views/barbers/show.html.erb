@@ -22,7 +22,7 @@
     <div class="col-sm-12 col-md-12">
       <div id="barberinfo" class="barber-container">
         <div class="barber-flex">
-          <div>
+          <div class="barber-info">
             <h2> <%= @barber.name %></h2>
               <h4>About this Barber: <%= @barber.description %></h4>
               <% if @barber.barbershop_id? %>
@@ -34,7 +34,7 @@
 
           <div>
             <div class="map-style">
-              <div id="map" style="width: 250px; height: 250px; margin-top: 40px; border-style: groove;"></div>
+              <div id="map" style="width: 250px; height: 250px; margin-top: 40px; margin-left: 40px; border-style: groove;"></div>
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@
             <% end %>
           </div>
         </div>
-        <div>
+        <div class="review-box">
           <h2>Reviews</h2>
           <% @barber.reviews.each do |review| %>
             <div>
