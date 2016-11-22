@@ -22,12 +22,11 @@ body {
 }
 
 h1 {
-  border-bottom: solid 2px black;
   text-align: center;
 }
 
  h1 span {
- border-bottom:solid 1px black;
+ // border-bottom:solid 1px black;
  padding: 3px;
 }
 
@@ -216,6 +215,8 @@ section {
   top: 50%;
   transform: translateY(-50%);
 }
+
 p {
   margin: 10px 0 0 0;
 }
+

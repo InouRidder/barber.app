@@ -1,34 +1,50 @@
-<h1> Edit <%= @barber.name %></h1>
 
-<%= form_for(@barber) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label :location %>
-  <%= f.text_field :location %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
 
-<h2> Add New Services </h2>
+      <h1> Edit your page </h1>
+      <%= @barber.name %>
 
-<%= simple_form_for([@barber, @barberservice]) do |f| %>
-<% raise error %>
-<%= f.association :service %>
-<%= f.input :price  %>
-<%= f.input :duration  %>
+      <%= form_for(@barber) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control input-lg edit-input input-name" %>
+      <br />
+      <br />
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control input-lg edit-input" %>
+      <br />
+      <br />
+      <%= f.label :location %>
+      <%= f.text_field :location, class: "form-control input-lg edit-input" %>
+      <%= f.submit %>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <h2> Add New Services </h2>
+
+      <%= simple_form_for([@barber, @barberservice]) do |f| %>
+      <%= f.association :service %>
+      <%= f.input :price%>
+      <%= f.input :duration %>
 
 
-<%= f.submit  %>
-<% end %>
+      <%= f.submit %>
+      <% end %>
 
-<h2> Current Services</h2>
+      <h2> Current Services</h2>
 
-<% @barber.barber_services.each do |barber_service|  %>
-<li>
-<%= barber_service.name %>
-Set Price : <%= barber_service.price %>
-Time Need : <%= barber_service.duration %>
-<%= link_to 'Delete', barber_barber_service_path(@barber, barber_service), method: :delete, data: { confirm: "Are you sure? 1" } %>
-</li>
-<% end %>
+      <% @barber.barber_services.each do |barber_service|  %>
+      <li>
+        <%= barber_service.name %>
+        Set Price : <%= barber_service.price %>
+        Time Need : <%= barber_service.duration %>
+        <%= link_to 'Delete', barber_barber_service_path(@barber, barber_service), method: :delete, data: { confirm: "Are you sure? 1" } %>
+      </li>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
