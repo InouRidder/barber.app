@@ -3,8 +3,8 @@
   <div class="row">
     <div class="col-md-8">
 
-      <h1> Edit your page </h1>
-      <%= @barber.name %>
+      <h1> Edit your page: <%= @barber.name %> </h1>
+
 
       <%= form_for(@barber) do |f| %>
       <%= f.label :name %>
