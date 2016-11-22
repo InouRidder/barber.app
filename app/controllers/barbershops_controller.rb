@@ -1,5 +1,5 @@
 class BarbershopsController < ApplicationController
-
+  skip_before_action :authenticate_user!
   before_action :find_barbershop, only: [:index, :show]
 
   def index
