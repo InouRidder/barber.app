@@ -10,7 +10,7 @@
 }
 
 .container-index {
-  width: 1000;
+  width: 100%;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -20,7 +20,7 @@
 .row-index {
   padding-top: 100px;
   justify-content: center;
-  width: 800px;
+  width: 100%;
 }
 
 .col-centered{
@@ -38,3 +38,61 @@
 background-image: url('../images/card_picture2.jpg');
 color: red;
 }
+
+// LE WAGON CARD - DESIGN
+/* Card design */
+.card {
+  height: 250px;
+  width: 400px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  position: relative;
+  margin: 20px;
+  border: 2px solid black;
+  opacity: 1;
+  transition: 400ms ease;
+}
+
+.card:hover {
+  opacity: 0.8;
+}
+
+.card-user {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.card-rating{
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}
+.card-category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.card-description {
+  position: absolute;
+  left: 20px;
+  top: 70px;
+}
+
+.card-appointment-link {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+.card-title {
+  position: absolute;
+  top: 5px;
+  left: 30px;
+  text-align: left;
+}
+
+

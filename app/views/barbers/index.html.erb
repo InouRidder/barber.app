@@ -8,37 +8,44 @@
  </div>
 </div>
 
-  <div class="container-index">
-   <div class="row-index">
+<div class="container container-index">
+  <div class="row row-index">
     <% @barbers.each do |barber| %>
-    <div class="col-sm-12 col-md-9-centered">
-     <div class="thumbnail">
-       <%= image_tag "beardman.png", class: "avatar-large" %>
-       <div class="caption">
-         <h2>
-          <%= link_to "#{barber.name}", barber_path(barber), class: "barbername" %>
-        </h2>
-        <p>
-          <%= barber.description[0..50] %>...
-          <% average = 0 %>
-          <% barber.reviews.each do |e| %>
-          <% average += e.rating.to_i %>
-          <% end %>
+    <div class="col-xs-12 col-md-4">
 
-          <p>Average Rating:</p>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(barber.picture);">
+      <div class="card-title">
+          <h2>
+            <%= link_to "#{barber.name}", barber_path(barber), class: "barbername" %>
+          </h2>
+
+<!--         <div class="card-description">
+ -->          <p>
+            <%= barber.description[0..100] %>...
+            <% average = 0 %>
+            <% barber.reviews.each do |e| %>
+            <% average += e.rating.to_i %>
+            <% end %>
+          </p>
+        <!-- </div> -->
+         </div>
+
+        <div class="card-rating">
+          Rating:
+
           <% if barber.reviews.length == 0 %>
-          <%= 0 %>
+          <%= "Not Rated Yet!" %>
           <% else %>
           <%= average/barber.reviews.length %>
           <% end %>
-        </p>
-        <%= link_to 'Book Appointment', new_barber_appointment_path(barber) %>
-      </p>
+        </div>
+        <%= link_to 'Book Appointment', new_barber_appointment_path(barber), class: "card-appointment-link"%>
+        <%= image_tag "beardman.png", class: "card-user avatar" %>
+
+      </div>
     </div>
+    <% end %>
   </div>
-</div>
-<% end %>
-</div>
 </div>
 
 
