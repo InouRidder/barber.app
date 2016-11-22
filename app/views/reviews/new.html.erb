@@ -1,20 +1,22 @@
 <h1>Leave a review!</h1>
 
-<div class: "review-input">
-<%= form_for([@barber, @review]) do |f| %>
-  <%= f.label :"Tell everyone what you think" %>
-  <%= f.text_area :description, class: "form-control input-lg review-input", placeholder: "Please describe your visit" %>
+<div class="test">
+  <div class: "review-input">
+    <%= form_for([@barber, @review]) do |f| %>
+    <%= f.label :"Tell everyone what you think" %>
+    <%= f.text_area :description, class: "form-control input-lg review-input", placeholder: "Please describe your visit" %>
 
 
-  <%= f.label :rating %>
-  <%= f.number_field :rating %>
+    <%= f.label :rating %>
+    <%= f.number_field :rating, min: 1, max: 5 %>
 
 
 
-<p> Would you like to add a photo of your funky new cut? </p>
-  <%= f.file_field :photo %>
-  <%= f.hidden_field :photo_cache, as: :hidden %>
-  <%= f.submit %>
+    <p> Would you like to add a photo of your funky new cut? </p>
+    <%= f.file_field :photo %>
+    <%= f.hidden_field :photo_cache, as: :hidden %>
+    <%= f.submit %>
 
-<% end %>
+    <% end %>
+  </div>
 </div>
