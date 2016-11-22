@@ -26,3 +26,12 @@
 .barber-flex {
   display: flex;
 }
+
+.services-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.services-flex a {
+  width: 200px;
+}

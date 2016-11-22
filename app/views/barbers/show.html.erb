@@ -34,12 +34,12 @@
 
           <div>
             <div class="map-style">
-              <div id="map" style="width: 250px; height: 250px; border-style: groove;"></div>
+              <div id="map" style="width: 250px; height: 250px; margin-top: 40px; border-style: groove;"></div>
             </div>
           </div>
         </div>
 
-        <div>
+        <div class="services-flex">
           <h2> Services</h2>
             <% @barber.barber_services.each do |barber_service|  %>
 
@@ -103,6 +103,8 @@
   </div>
 </div>
 </div>
+
+
 
 <% content_for(:after_js) do %>
 <%= javascript_tag do %>
