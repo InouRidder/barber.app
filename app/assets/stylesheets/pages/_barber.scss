@@ -27,6 +27,10 @@
   display: flex;
 }
 
+.barber-info {
+  width: 600px;
+}
+
 .services-flex {
   display: flex;
   flex-direction: column;
@@ -34,4 +38,8 @@
 
 .services-flex a {
   width: 200px;
+}
+
+.review-box {
+  width: 600px;
 }
