@@ -1,123 +1,116 @@
-<div class="center_content">
-  <h1><span> <%= @barber.name %> </span></h1>
-  <a href="<%= @barber.photo %>" class=""></a>
-    <div> <%= image_tag @barber.photo, class: "barberbanner" %>
+  <div class="profile-banner" style="background-image: linear-gradient(250deg, rgba(245, 245, 245, 0.58) 0%, rgba(132, 138, 142, 0.7) 20%), url( <%= image_path("#{@barber.photo}") %>);">
+    <div class="profile-banner-content">
+      <section class="first">
+        <h1 class="effect"><span><%= @barber.name %></span></h1>
+      </section>
     </div>
-    <div class="banner-content">
-    </div>
+  </div>
 
+  <!-- Barber_banner_2.png -->
+
+<div class="button-flex">
+  <div class="file-upload">
+      <% if @barber.user == current_user %>
+      <%= simple_form_for(@barber) do |f| %>
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
+      <%= f.submit "Update Profile picture", class: "btn-update" %>
+      <% end %>
+      <% end %>
+  </div>
+
+  <div class="btn-group">
     <% if @barber.user == current_user %>
-    <%= simple_form_for(@barber) do |f| %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <%= f.submit %>
+    <%= link_to "Edit Profile", edit_barber_path(@barber), class: "btn btn-default btn-sm" %>
+    <br>
+    <%= link_to "Delete Profile", barber_path(@barber), class: "btn btn-default btn-sm", method: :delete, data: { confirm: "you sure? 2" } %>
     <% end %>
-    <% end %>
-</div>
-
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-12">
-      <div id="barberinfo" class="barber-container">
-        <div class="barber-flex">
-          <div class="barber-info">
-            <h2> <%= @barber.name %></h2>
-              <h4>About this Barber: <%= @barber.description %></h4>
-              <% if @barber.barbershop_id? %>
-                <p>You can find this barber @ <%= link_to "#{@barber.barbershop.name}", barber_barbershop_path(@barber, @barbershop) %></p>
-              <% else %>
-                <p>This barber works remote within a radius of 5 km. <%= @barber.name %> is located at <%= @barber.location %></p>
-              <% end %>
-          </div>
-
-          <div class="profile-map-style">
-            <div class="map-style">
-              <div id="map" style="width: 250px; height: 250px; margin-top: 40px; margin-left: 40px; border-style: groove;"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="services-flex">
-          <h2> Services</h2>
-            <% @barber.barber_services.each do |barber_service|  %>
-
-            <li>
-              <%= barber_service.name %>
-              <br>
-              Price - <%= barber_service.price %>
-              In about <%= barber_service.duration %> minutes
-            </li>
-            <% end %>
-
-            <% if current_user.barber == @barber  %>
-              <%= link_to 'Agenda', barber_appointments_path(@barber), class: "btn btn-default"  %>
-            <% end %>
-            <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "btn btn-default" %>
-        </div>
-
-        <div>
-          <div class="btn-group">
-            <% if @barber.user == current_user %>
-              <%= link_to "Edit Profile", edit_barber_path(@barber), class: "btn btn-default btn-sm" %>
-              <br>
-              <%= link_to "Delete Profile", barber_path(@barber), class: "btn btn-default btn-sm", method: :delete, data: { confirm: "you sure? 2" } %>
-            <% end %>
-          </div>
-        </div>
-        <div class="review-box">
-          <h2>Reviews</h2>
-          <% @barber.reviews.each do |review| %>
-            <div>
-              <p><%= review.description %></p>
-              <p><%= review.rating %> <i class="fa fa-star" aria-hidden="true"></i></p>
-
-              <% if review.user == current_user %>
-               <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>
-               <br>
-                <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure? 1" } %>
-              <% end %>
-            </div>
-          <% end %>
-          <p><%= link_to 'Leave a review!', new_barber_review_path(@barber), class: "btn btn-default" %></p>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
+<div class="barber-container">
+  <div class="services-flex">
+    <h2> Services</h2>
+    <% @barber.barber_services.each do |barber_service|  %>
 
-<p class="text-center"> Some of the user pictures</p>
-<div class=container>
-  <div class=row>
+    <li>
+      <%= barber_service.name %>
+      <br>
+      Price - <%= barber_service.price %>
+      In about <%= barber_service.duration %> minutes
+    </li>
+    <% end %>
+
+    <% if current_user.barber == @barber  %>
+    <%= link_to 'Agenda', barber_appointments_path(@barber), class: "btn btn-default"  %>
+    <% end %>
+    <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "btn btn-default" %>
+  </div>
+
+
+  <div class="barber-info">
+    <h2> <%= @barber.description %> </h2>
+    <% if @barber.barbershop_id? %>
+    <h3>You can find this barber @ <%= link_to "#{@barber.barbershop.name}", barber_barbershop_path(@barber, @barbershop) %></h3>
+    <% else %>
+    <h3>This barber works remote within a radius of 5 km. <%= @barber.name %> is located at <%= @barber.location %></h3>
+    <% end %>
+  </div>
+</div>
+
+    <div id="map" style="width: 100%; height: 350px; border-style: groove;"></div>
+
+   <div class="review-box">
+    <h2>Reviews</h2>
     <% @barber.reviews.each do |review| %>
-    <div class="col-sm-3 ">
-      <div class= image-attr>
-        <a href="<%= review.photo %>" class="swipebox">
-          <%= image_tag review.photo, class: "img-responsive" %>
-        </a>
+      <p><%= review.description %></p>
+      <p><%= review.rating %> <i class="fa fa-star" aria-hidden="true"></i></p>
+      <% if review.user == current_user %>
+        <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>
+          <br>
+        <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure? 1" } %>
+      <% end %>
+      <% end %>
+      <% if current_user.barber %>
+          <p></p>
+      <% else %>
+        <p><%= link_to 'Leave a review!', new_barber_review_path(@barber), class: "btn btn-default" %></p>
+     <% end %>
+  </div>
+
+
+  <div class="review-photos">
+    <div class=container>
+      <div class=row>
+        <h3> Some of the user pictures</h3>
+        <% @barber.reviews.each do |review| %>
+        <div class="col-sm-3 ">
+          <div class= image-attr>
+            <a href="<%= review.photo %>" class="swipebox">
+              <%= image_tag review.photo, class: "img-responsive" %>
+            </a>
+          </div>
+        </div>
+        <% end %>
       </div>
     </div>
-    <% end %>
   </div>
-</div>
-</div>
 
 
 
-<% content_for(:after_js) do %>
-<%= javascript_tag do %>
-var styles = [{"featureType":"landscape","stylers":[{"hue":"#FFBB00"},{"saturation":43.400000000000006},{"lightness":37.599999999999994},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#FFC200"},{"saturation":-61.8},{"lightness":45.599999999999994},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":51.19999999999999},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":52},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#0078FF"},{"saturation":-13.200000000000003},{"lightness":2.4000000000000057},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#00FF6A"},{"saturation":-1.0989010989011234},{"lightness":11.200000000000017},{"gamma":1}]}]
 
-$(document).ready(function() {
-var handler = Gmaps.build('Google');
-handler.buildMap({ provider: {scrollwheel: false, styles: styles}, internal: { id: 'map' } }, function() {
-markers = handler.addMarkers(<%= raw @coordinates.to_json %>);
-handler.bounds.extendWith(markers);
-handler.fitMapToBounds();
-if (markers.length == 0) {
-handler.getMap().setZoom(2);
+  <% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+  var styles = [{"featureType":"landscape","stylers":[{"hue":"#FFBB00"},{"saturation":43.400000000000006},{"lightness":37.599999999999994},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#FFC200"},{"saturation":-61.8},{"lightness":45.599999999999994},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":51.19999999999999},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":52},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#0078FF"},{"saturation":-13.200000000000003},{"lightness":2.4000000000000057},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#00FF6A"},{"saturation":-1.0989010989011234},{"lightness":11.200000000000017},{"gamma":1}]}]
+
+  $(document).ready(function() {
+  var handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {scrollwheel: false, styles: styles}, internal: { id: 'map' } }, function() {
+  markers = handler.addMarkers(<%= raw @coordinates.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  if (markers.length == 0) {
+  handler.getMap().setZoom(2);
 } else if (markers.length == 1) {
 handler.getMap().setZoom(14);
 handler.disableScrollWheelZoom();

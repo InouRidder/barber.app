@@ -36,59 +36,65 @@
   <div class="row row-index">
     <% @available_barbers_by_distance.each do |barber| %>
     <div class="card-available-container">
-      <div class="col-xs-12">
-        <%= link_to(barber) do %>
-        <div class="card-background-available">
-          <div class="card-available" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path(barber.picture) %>);">
-            <%= image_tag "beardman.png", class: "card-user-available avatar" %>
-          </div>
-          <div class="card-location-available">
-            <p> <%= barber.location %> </p>
-          </div>
-          <div class="card-hover-available">
-            <p>
-              <%= barber.description[0..100] %>...
-              <% average = 0 %>
-              <% barber.reviews.each do |e| %>
-              <% average += e.rating.to_i %>
-              <% end %>
-            </p>
-          </div>
-          <h4>
-            <%= link_to "#{barber.name}", barber_path(barber), class: "barber-name" %>
-          </h4>
-          <div class="card-rating-available">
-            Rating:
-            <% if barber.reviews.length == 0 %>
-            <%= "Not Rated Yet!" %>
-            <% else %>
-            <%= average/barber.reviews.length %>
+    <div class="card-available-container">
+      <%= link_to(barber) do %>
+      <div class="card-background-available">
+        <div class="card-available" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path(barber.picture) %>);">
+          <%= image_tag "beardman.png", class: "card-user-available avatar" %>
+        </div>
+        <div class="card-location-available">
+          <p> <%= barber.location %> </p>
+        </div>
+        <div class="card-hover-available">
+          <p>
+            <%= barber.description[0..100] %>...
+            <% average = 0 %>
+            <% barber.reviews.each do |e| %>
+            <% average += e.rating.to_i %>
             <% end %>
-          </div>
+          </p>
+        </div>
+        <h4>
+          <%= link_to "#{barber.name}", barber_path(barber), class: "barber-name" %>
+        </h4>
+        <div class="card-rating-available">
+          Rating:
+          <% if barber.reviews.length == 0 %>
+          <%= "Not Rated Yet!" %>
+          <% else %>
+          <%= average/barber.reviews.length %>
+          <% end %>
         </div>
         <% end  %>
       </div>
       <div class="card-distance-available">
         <% if barber.availabilities %>
         <% barber.availabilities.each do |a| %>
-        <p> <strong>Available</strong> from <%= a.start.strftime("%b %e, %l:%M %p") %>
-         untill <%= a.end.strftime("%b %e, %l:%M %p") %>
-         <% end %>
-         <% end %>
-         <br>
-         Distance by foot: <%= barber.walk_distance(@lat, @lng) %> (<%= barber.walk_duration(@lat, @lng)  %>)
-         <br>
-         Distance by car: <%= barber.car_distance(@lat, @lng) %> (<%= barber.car_duration(@lat, @lng)  %>)
-         <br>
-       </p>
+        <%= link_to new_barber_appointment_path(a.barber) do  %>
+        <div class="btn btn-default" id="availability-buttons">
+          <p>
+            <strong>Available</strong> from <%= a.start.strftime("%b %e, %l:%M %p") %>
+            untill <%= a.end.strftime("%b %e, %l:%M %p") %>
+          </p>
+        </div>
+        <% end %>
+        <% end %>
+        <% end %>
+        <br>
+        <div class="distance-stats">
+         <h5>
+           Distance by foot: <%= barber.walk_distance(@lat, @lng) %> (<%= barber.walk_duration(@lat, @lng)  %>)
+           <br>
+           Distance by car: <%= barber.car_distance(@lat, @lng) %> (<%= barber.car_duration(@lat, @lng)  %>)
+           <br>
+         </h5>
+
+       </div>
+       </div>
+     <div id="map" style="width: 350px; height: 430px; margin-top: 4px; margin-left: 40px; border-style: groove;">
      </div>
    </div>
  </div>
-
- <div class="profile-map-style">
-  <div class="map-style">
-    <div id="map" style="width: 250px; height: 250px; margin-top: 40px; margin-left: 40px; border-style: groove;"></div>
-  </div>
 </div>
 </div>
 <% end %>
