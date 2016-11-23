@@ -9,18 +9,18 @@
 }
 
 .map_box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Helvetica', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    padding: 20px;
-    padding-left: 16px;
-    background-color: white;
-    border-radius: 45px;
-    margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 20px;
+  padding-left: 16px;
+  background-color: white;
+  border-radius: 45px;
+  margin-left: 15px;
 }
 
 .barber-flex {
@@ -28,7 +28,9 @@
 }
 
 .barber-info {
-  width: 600px;
+  width: 50%;
+  margin-bottom: 90px;
+  text-align: center;
 }
 
 .services-flex {
@@ -41,5 +43,23 @@
 }
 
 .review-box {
-  width: 600px;
+  width: 100%;
+  background-color: #f3f3f3;
+  text-align: center;
+  padding: 20px;
+}
+
+.barber-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.review-photos {
+  text-align: center;
+}
+
+.button-flex {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f3f3f3;
 }

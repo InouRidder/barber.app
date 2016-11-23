@@ -105,3 +105,35 @@ h2 {
   color: #999999;
 }
 
+.profile-banner {
+  align-items: center;
+  align-content: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  height: 350px;
+  color: white;
+}
+
+.profile-banner-content {
+   text-align: center;
+}
+
+.btn-update {
+  color: black;
+  border-radius: 20em;
+  transition: 500ms;
+  padding: 10px;
+}.btn-update:hover{
+  background-color: #d1d1d1;
+}
+
+#barber_photo {
+  color: black;
+  border-radius: 20em;
+  transition: 500ms;
+  padding: 10px;
+}#barber_photo:hover{
+  background-color: #d1d1d1;
+}
+
