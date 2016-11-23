@@ -202,7 +202,7 @@ a.fade {
 }
 
 .fade input, select, textarea{
-    color:  white;
+    color: black;
 }
 
 section {
@@ -220,3 +220,31 @@ p {
   margin: 10px 0 0 0;
 }
 
+.searchfunction{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background-color: white;
+    color: black;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.search-one {
+    margin: 1px;
+    padding: 0;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    color: black;
+    background: transparent;
+    border: none;
+}
+
+.search-two {
+    // border: 1px solid;
+    // padding: 6px 43px 6px 6px;
+    // margin: 5px 40px;
+  }

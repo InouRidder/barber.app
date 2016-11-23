@@ -12,11 +12,11 @@
       <br />
       <br />
       <%= f.label :description %>
-      <%= f.text_field :description, class: "form-control input-lg edit-input" %>
+      <%= f.text_area :description, class: "form-control input-lg edit-input" %>
       <br />
       <br />
       <%= f.label :location %>
-      <%= f.text_field :location, class: "form-control input-lg edit-input" %>
+      <%= f.text_area :location, class: "form-control input-lg edit-input" %>
       <%= f.submit %>
       <% end %>
     </div>
@@ -26,7 +26,7 @@
 
       <%= simple_form_for([@barber, @barberservice]) do |f| %>
       <%= f.association :service %>
-      <%= f.input :price%>
+      <%= f.input :price %>
       <%= f.input :duration %>
 
 
