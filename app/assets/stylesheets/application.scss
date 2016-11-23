@@ -62,6 +62,7 @@ h2 {
   justify-content: center;
   height: 80vh;
   color: white;
+  padding-left: 100px;
 }
 
 
@@ -91,15 +92,16 @@ h2 {
 
 }
 
-.search-btn {
+.search-btn-avail{
   color: black;
-  border-radius: 20em;
-  background-size: 50px;
-  border-color: black;
+  border: 1px solid black;
+  padding: 10px 15px;
+  border-radius: 50px;
 }
 
-.search-btn:hover {
-  color: black;
-  transition: 300ms;
+.search-btn-avail:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: #999999;
 }
 
