@@ -17,6 +17,8 @@ gem 'cloudinary', '1.1.0'
 gem 'pg_search'
 gem 'rails-assets-swipebox', source: 'https://rails-assets.org'
 gem 'rails-assets-raty', source: 'https://rails-assets.org'
+gem 'rails-assets-bootstrap-star-rating', source: 'https://rails-assets.org'
+
 
 
 
