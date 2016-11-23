@@ -71,7 +71,7 @@
           <% @barber.reviews.each do |review| %>
             <div>
               <p><%= review.description %></p>
-              <p><%= review.rating %></p>
+              <p><%= review.rating %> <i class="fa fa-star" aria-hidden="true"></i></p>
 
               <% if review.user == current_user %>
                <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>

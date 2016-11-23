@@ -5,6 +5,8 @@
   before_action :find_barber, only: [:show, :index, :new, :destroy, :edit, :create, :update]
   before_action :find_availability, only: [:create]
 
+  respond_to :html, :js
+
   def index
     @availability = Availability.new
     @availabilities = Availability.where(barber: @barber)
@@ -14,6 +16,10 @@
     @user = current_user
     #@date = params[:date] ? Date.parse(params[:date]) : Date.today
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
+
+    respond_to do |format|
+      format.html
+    end
   end
 
   def show
