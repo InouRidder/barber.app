@@ -29,31 +29,31 @@
 
 
 <div id="appointments">
-   <h3 id="month">
-   <%= link_to "<", date: @date.prev_week %>
-   <%= @date.strftime("%B %Y") %>
-   <%= link_to ">", date: @date.next_week %>
-   </h3>
-   <%= calendar @date do |calendar_date| %>
-     <%= calendar_date.day %>
+    <h3 id="month">
+    <%= link_to "<", date: @date.prev_week %>
+    <%= @date.strftime("%B %Y") %>
+    <%= link_to ">", date: @date.next_week %>
+    </h3>
+    <%= calendar @date do |calendar_date| %>
+      <%= calendar_date.day %>
       <% @availabilities.each do |availability| %>
-      <% cover = availability.start.to_date.between?(calendar_date, calendar_date.end_of_day) %>
-       <% if cover %>
+        <% cover = availability.start.to_date.between?(calendar_date, calendar_date.end_of_day) %>
+        <% if cover %>
           <% if availability.appointment  %>
-          <div class="appointment-booked">
+              <div class="appointment-booked">
               <%= availability.start.strftime("%l:%M %p") %>
                 -
               <%= availability.end.strftime("%l:%M %p") %>
-          </div>
+              </div>
             <% else %>
               <div class="appointment-availability">
                 <%= availability.start.strftime("%l:%M %p") %>
                   -
                 <%= availability.end.strftime("%l:%M %p") %>
               </div>
+          <% end %>
         <% end %>
-       <% end %>
       <% end %>
-   <% end %>
+    <% end %>
  </div>
 </div>
