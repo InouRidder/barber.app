@@ -21,3 +21,51 @@
   padding: 30px;
   background-color: #DDD;
 }
+
+
+.appointment-booked {
+  border: 1px solid black;
+  background-color: #CC2936;
+  padding: 10px;
+  font-size: 11px;
+}
+
+.appointment-booked p {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.appointment-availability{
+
+  padding: 10px;
+  margin: 10px;
+  font-size: 11px;
+}
+
+.appointment-background {
+  position: relative;
+  background-color: #456990;
+  border: 1px solid black;
+}
+
+.appointment-hover {
+  position: absolute;
+  opacity: 0;
+  left: 20px;
+  right: 0px;
+  bottom: 10px;
+  width: 100px;
+  transition: opacity 300ms;
+}
+
+.appointment-background:hover .appointment-availability {
+  opacity: 0;
+}
+
+.appointment-background:hover .appointment-hover {
+  opacity: 1;
+}
+
+#book-btn {
+  background-color: #18F42E;
+}
