@@ -55,6 +55,10 @@ $range-label-width: 60px !default;
   padding: 0;
   margin: 0;
 
+.slider-search {
+  display: flex !important;
+  flex-direction: row !important;
+}
   // Range Handle
   &::-webkit-slider-thumb {
     appearance: none;

@@ -1,13 +1,38 @@
+<div class="banner-index" style="background-image: url( <%= image_path("Hipster-banner-index.jpg") %>);">
+  <section class="first">
+   <h1 class="banner-content-index">
+    All the available barbers,
+    <br>
+    closest to you!
+  </h1>
+</div>
+</section>
+
+
+
+
+
+
 <div class="container">
   <div class="row">
-   <div class="col-md-9-offset col-md-4-offset">
-     <h1><span>
-      All the available barbers, closest to your location!
-      </span></h1>
-      <h4>Range :  <%= @distance %> km</h4>
-   </div>
- </div>
+    <div class="col-sm-8">
+      <div class="slider-search">
+        <div>
+          <h4>Current search range :  <%= @distance %> km</h4>
+        </div>
+        <!-- </div> -->
+        <!-- <div class="col-sm-3"> -->
+        <div class="range-slider"> Max Distance
+          <input class="range-slider__range" type="range" value="5" min="0" max="50">
+          <span id="slider-value" class="range-slider__value"></span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<h4><%= link_to 'Find Available Barbers Near Me', availabilities_path, class: "search-btn", id: "find-btn" %>
+</h4>
+
 <div class="container-index">
  <div class="row-index">
   <% @available_barbers_by_distance.each do |barber| %>

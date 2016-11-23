@@ -50,7 +50,24 @@ h2 {
 
 .banner-content {
   text-align: center;
+  padding-bottom: 200px;
 
+}
+
+.banner-index {
+ align-items: center;
+  align-content: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  color: white;
+}
+
+
+.banner-content-index {
+  color: white;
+  text-align: left;
 }
 
 .text{
@@ -62,15 +79,16 @@ h2 {
 }
 
 .search-btn:hover {
-  // #5a5a57;
-  color: black;
-  transition: 500ms;
+  color: #fceeed;
+  transition: 300ms;
 }
 
 .search-btn {
   color: black;
   border-radius: 20em;
   background-size: 50px;
+  border-color: black;
+
 }
 
 
