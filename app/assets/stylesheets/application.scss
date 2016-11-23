@@ -105,6 +105,16 @@ h2 {
   color: #999999;
 }
 
+
+.search-btn-home {
+  color: #8A95A5;
+}
+
+.seach-btn-home:hover {
+
+  text-decoration: none;
+  color: black;
+
 .profile-banner {
   align-items: center;
   align-content: center;
@@ -124,6 +134,7 @@ h2 {
   border-radius: 20em;
   transition: 500ms;
   padding: 10px;
+
 }.btn-update:hover{
   background-color: #d1d1d1;
 }
@@ -133,7 +144,10 @@ h2 {
   border-radius: 20em;
   transition: 500ms;
   padding: 10px;
-}#barber_photo:hover{
+}
+
+#barber_photo:hover{
   background-color: #d1d1d1;
+
 }
 

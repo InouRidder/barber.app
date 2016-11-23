@@ -1,104 +1,88 @@
   <div class="banner" style="background-image: linear-gradient(250deg, rgba(245, 245, 245, 0.58) 0%, rgba(132, 138, 142, 0.7) 20%), url( <%= image_path("Barber_banner_2.png") %>);">
     <div class="banner-content">
       <section class="first">
-          <h1 class="effect"><span>Barber.App</span></h1>
-          <h3 class="fade" >
-            <%= link_to 'Find Available Barbers Near Me', availabilities_path, class: "search-btn-two", id: "find-btn" %>
-            </h3>
-        </section>
-      </div>
+        <h1 class="effect"><span>Barber.App</span></h1>
+        <h3 class="fade" >
+          <%= link_to 'Find Available Barbers Near Me', availabilities_path, class: "search-btn-two", id: "find-btn" %>
+        </h3>
+      </section>
     </div>
+  </div>
 
-<!-- wrapper for how site works -->
-    <!-- <div class="wrapper-how-to"> -->
-
-
-    <!-- </div> -->
-
-
-
-
-
-
-
-    <div class= "container searchfunction">
-      <div class= "row">
+  <!-- wrapper for how site works -->
+  <div class="wrapper-how-to">
+    <div class="container">
+      <div class="row">
         <div class="col-xs-12">
+          <h2 style="margin-top: 30px;">How to use Barb.App<h2>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <%= image_tag "magnifying_glass.png" %>
+            <h3> Find Your Perfect Barber</h3>
+            <p> Search by name or location </p>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <%= image_tag "winners-ribbon.png" %>
+            <h3> Who's availible & nearby</h3>
+            <p>Check out the adress on the map and see user reviews and photo's </p>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <%= image_tag "calendar.png" %>
+            <h3> Book an appointment right away </h3>
+            <p> See what availible slots the barber has in our calender and book right away</p>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <%= image_tag "newstyle.png" %>
+            <h3> Get restyled and renewed</h3>
+            <p> Get a fresh new haircut, groom and trim at the barber of you choice</p>
+          </div>
+        </div>
+      </div>
 
-          <div class= "search-one">
-            <h3 class="fade"><%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
-              <%= text_field_tag :search, params[:search], placeholder: "Search your Barber" %>
-              <% end %>
-            </h3>
-            <h6>
+      <div class= "container searchfunction">
+        <div class= "row">
+          <div class="col-xs-12">
+            <div class= "search-one">
+              <h3 class="fade"><%= form_tag(barbers_path, :method => "get", id: "search-form") do %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search barber by name" %>
+                <% end %>
+              </h3>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <br>
-    <br>
+      <div class= "container searchfunction">
+        <div class= "row">
+          <div class="col-xs-12">
+            <div class= "search-two">
+            <h3 class="fade" color: black; ><%= link_to 'Find Available Barbers Near Me', availabilities_path, class: "search-btn-home" %> </h3>
 
-    <div class= "container searchfunction">
-      <div class= "row">
-        <div class="col-xs-12">
-          <div class= "search-two">
-
-
-          </div>
-        </div>
-    </div>
-  </div>
+           </div>
+         </div>
+       </div>
+     </div>
 
 
-  <div class="container text-center padded features">
-    <div class="row">
-      <div class="logo-fonts">
-        <div class="col-xs-12 col-sm-6 col-md-3">
-          <%= image_tag "wondered-hipster.png" %>
-          <h2>Do you have what it takes?</h2>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-          <%= image_tag "barber.png" %>
-          <h2>Get restyled & renewed</h2>
-          <p>Let your hair get the attention it deserves</p>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-          <%= image_tag "beardman.png" %>
-          <h2>Show off the new you</h2>
-          <p>Because your worth it</p>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-          <%= image_tag "heart.png" %>
-          <h2>Leave a review & share! </h2>
-          <p>And share you experiences</p></br>
-        </br>
+     <div id="map" style="width: 100%; height: 600px; margin-top: 60px; border-style: groove;"></div>
 
-      </div>
-    </div>
-  </div>
-</div>
+     <% content_for(:after_js) do %>
+     <%= javascript_tag do %>
+     var styles = [{"featureType":"landscape","stylers":[{"hue":"#FFBB00"},{"saturation":43.400000000000006},{"lightness":37.599999999999994},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#FFC200"},{"saturation":-61.8},{"lightness":45.599999999999994},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":51.19999999999999},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":52},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#0078FF"},{"saturation":-13.200000000000003},{"lightness":2.4000000000000057},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#00FF6A"},{"saturation":-1.0989010989011234},{"lightness":11.200000000000017},{"gamma":1}]}]
 
-<div id="map" style="width: 100%; height: 600px; border-style: groove;"></div>
+     $(document).ready(function() {
+     var handler = Gmaps.build('Google');
+     handler.buildMap({ provider: {scrollwheel: false, styles: styles}, internal: { id: 'map' } }, function() {
+     markers = handler.addMarkers(<%= raw @coordinates.to_json %>);
+     handler.bounds.extendWith(markers);
+     handler.fitMapToBounds();
+     if (markers.length == 0) {
+     handler.getMap().setZoom(2);
+   } else if (markers.length == 1) {
+   handler.getMap().setZoom(14);
+   handler.disableScrollWheelZoom();
 
-<% content_for(:after_js) do %>
-<%= javascript_tag do %>
-var styles = [{"featureType":"landscape","stylers":[{"hue":"#FFBB00"},{"saturation":43.400000000000006},{"lightness":37.599999999999994},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#FFC200"},{"saturation":-61.8},{"lightness":45.599999999999994},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":51.19999999999999},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":52},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#0078FF"},{"saturation":-13.200000000000003},{"lightness":2.4000000000000057},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#00FF6A"},{"saturation":-1.0989010989011234},{"lightness":11.200000000000017},{"gamma":1}]}]
-
-$(document).ready(function() {
-var handler = Gmaps.build('Google');
-handler.buildMap({ provider: {scrollwheel: false, styles: styles}, internal: { id: 'map' } }, function() {
-markers = handler.addMarkers(<%= raw @coordinates.to_json %>);
-handler.bounds.extendWith(markers);
-handler.fitMapToBounds();
-if (markers.length == 0) {
-handler.getMap().setZoom(2);
-} else if (markers.length == 1) {
-handler.getMap().setZoom(14);
-handler.disableScrollWheelZoom();
-
-}
+ }
 });
 });
 <% end %>
