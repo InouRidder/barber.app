@@ -9,34 +9,29 @@
 </section>
 
 
-
-
-
+<br>
+<br>
 
 <div class="container">
   <div class="row">
     <div class="col-sm-8">
       <div class="slider-search">
-        <div>
-          <h4>Current search range :  <%= @distance %> km</h4>
-        </div>
-        <!-- </div> -->
-        <!-- <div class="col-sm-3"> -->
-        <div class="range-slider"> Max Distance
-          <input class="range-slider__range" type="range" value="5" min="0" max="50">
-          <span id="slider-value" class="range-slider__value"></span>
-        </div>
+        <h4>Current search range :  <%= @distance %> km</h4>
       </div>
+      <div class="range-slider"> Max Distance
+        <input class="range-slider__range" type="range" value="5" min="0" max="50">
+        <span id="slider-value" class="range-slider__value"></span>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <h4><%= link_to 'Change the Range', availabilities_path, class: "search-btn-avail", id: "find-btn" %>
+      </h4>
     </div>
   </div>
 </div>
-<h4><%= link_to 'Change the Range', availabilities_path, class: "search-btn", id: "find-btn" %>
-</h4>
 
 
-  </div>
-</div>
-</div>
+
 <div class="container container-index">
   <div class="row row-index">
     <% @available_barbers_by_distance.each do |barber| %>
