@@ -1,0 +1,19 @@
+<%# if @barber.availabilities.any? %>
+
+
+<%= simple_form_for([@barber, @appointment]) do |f| %>
+
+  <%= f.input :availability_id, collection: @barber.available_times, label_method: :start, value_method: :id %>
+
+  <%= f.input :barber_service, collection: @barber_services  %>
+<!-- <p> -->
+  <%= f.button :submit %>
+<!-- </p> -->
+<% end %>
+
+
+<%# else %>
+<!-- <p>
+  This barber does not have any availability...
+</p> -->
+<%# end %>
