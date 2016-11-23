@@ -1,11 +1,26 @@
-  <div class="banner" style="background-image: linear-gradient(250deg, rgba(245, 245, 245, 0.58) 0%, rgba(132, 138, 142, 0.7) 50%), url( <%= image_path("Barber_banner_2.png") %>);">
+  <div class="banner" style="background-image: linear-gradient(250deg, rgba(245, 245, 245, 0.58) 0%, rgba(132, 138, 142, 0.7) 20%), url( <%= image_path("Barber_banner_2.png") %>);">
     <div class="banner-content">
       <section class="first">
         <div class="">
           <h1 class="effect"><span>Barber.App</span></h1>
+          <h3 class="fade" >
+            <%= link_to 'Find Available Barbers Near Me', availabilities_path, class: "search-btn", id: "find-btn" %>
+            </h3>
         </section>
       </div>
     </div>
+
+<!-- wrapper for how site works -->
+    <div class="wrapper-how-to">
+
+
+    </div>
+
+
+
+
+
+
 
     <div class= "container searchfunction">
       <div class= "row">
@@ -23,6 +38,9 @@
       </div>
     </div>
 
+    <br>
+    <br>
+    <h4 class="text-center"> Or you can find from your location </h4>
 
     <div class= "container searchfunction">
       <div class= "row">
