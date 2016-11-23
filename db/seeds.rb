@@ -19,7 +19,7 @@ hipstershop = Barbershop.create!(
 u1 = User.create(
   name: "Ollie S",
   email: "barbalicious@haircut.com",
-  password: "password"
+  password: "password",
   )
 
 u2 = User.create(
@@ -59,7 +59,8 @@ barber1 = Barber.create(
   description: "Italian barber in Amsterdam",
   location: "Lijnbaansgracht 35, Amsterdam",
   drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
-  user: u1
+  user: u1,
+  picture: "barber1.jpg"
   )
 sleep(1)
 barber2 = Barber.create(
@@ -67,7 +68,8 @@ barber2 = Barber.create(
   description: "Goat woll socks to cut yo hairs.",
   location: "Herengracht 327, Amsterdam",
   drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
-  user: u2
+  user: u2,
+  picture: "barber2.jpg"
   )
 sleep(1)
 barber3 = Barber.create(
@@ -75,7 +77,8 @@ barber3 = Barber.create(
   description: "Doesnt matter, no one ever goes to utrecht",
   location: "Herengracht 75, Utrecht",
   drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
-  user: u3
+  user: u3,
+  picture: "barber3.jpg"
   )
 sleep(1)
 
@@ -84,7 +87,8 @@ barber4 = Barber.create(
   description: "Just got out of jail, have been good at cutting a while now. Lorem ipsum dolor sit amet.",
   location: "Linnaeusstraat 28, Amsterdam",
   drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
-  user: u4
+  user: u4,
+  picture: "barber4.jpg"
   )
 sleep(1)
 barber5 = Barber.create!(
@@ -93,7 +97,8 @@ barber5 = Barber.create!(
   location: "Van Woustraat 30, Amsterdam",
   drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
   user: u5,
-  barbershop: hipstershop
+  barbershop: hipstershop,
+  picture: "barber5.jpg"
   )
 sleep(1)
 barber6 = Barber.create!(
@@ -102,7 +107,8 @@ barber6 = Barber.create!(
   location: "Leidseplein, Amsterdam",
   drinks: " Woodford Bourbon, Nikka from the Barrel, Remy XO",
   user: u6,
-  barbershop: hipstershop
+  barbershop: hipstershop,
+  picture: "barber6.jpg"
   )
 sleep(1)
 barber7 = Barber.create!(
@@ -110,8 +116,27 @@ barber7 = Barber.create!(
   description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque ab quasi voluptates cum omnis, dolores recusandae dolorem voluptas. Mollitia deleniti, recusandae totam ipsam?",
   location: "Waarderweg, Haarlem",
   drinks: " Blood, Woodford Bourbon, Nikka from the Barrel, Remy XO",
-  user: u7
+  user: u7,
+  picture: "barber7.jpg"
   )
+sleep(1)
+barber8 = Barber.create!(
+  name: "Gentleman's Club",
+  description: "If a cut and a drink is what your looking for, halt your search and be seated.",
+  location: "Keizersgracht 430, Amsterdam",
+  drinks: " XO Hennessy",
+  picture: "barber8.jpg"
+  )
+
+sleep(1)
+barber9 = Barber.create!(
+  name: "Edward Sharp's Office",
+  description: "Our hands and knives cant be seperated, hence skill with hair equals your ability to grab a drink",
+  location: "Olympiaplein, Amsterdam",
+  picture: "barber9.jpg",
+  drinks: " Nikka from the Barrel"
+  )
+
 
 service1 = Service.create!(
   name: "Haircut"
