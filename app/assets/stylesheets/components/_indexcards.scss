@@ -42,15 +42,19 @@ background-image: url('../images/card_picture2.jpg');
 /* Card design */
 .card {
   height: 250px;
-  // width: 400px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: white;
   position: relative;
-  margin: 20px;
-  border: 2px solid black;
   opacity: 1;
   transition: 400ms ease;
+}
+
+.card-background {
+  background-color: white;
+  border: 1px solid black;
+  height:325px;
+  margin: 10px;
 }
 
 .card:hover {
