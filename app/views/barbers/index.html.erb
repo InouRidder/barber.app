@@ -1,9 +1,9 @@
 <div class="container">
 	<div class="row">
    <div class="col-md-9-offset col-md-4-offset">
-     <h1><span>
+     <h1>
        Find your favorite barber
-     </span></h1>
+     </h1>
    </div>
  </div>
 </div>
@@ -12,38 +12,36 @@
   <div class="row row-index">
     <% @barbers.each do |barber| %>
     <div class="col-xs-12  col-md-4">
-    <div class="card-background">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path(barber.picture) %>);">
-       <div class="card-title">
-
-
-<!--         <div class="card-description">
- -->          <p>
+    <%= link_to(barber) do %>
+      <div class="card-background">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path(barber.picture) %>);">
+          <%= image_tag "beardman.png", class: "card-user avatar" %>
+        </div>
+        <div class="card-location">
+          <p> <%= barber.location %> </p>
+        </div>
+        <div class="card-hover">
+          <p>
             <%= barber.description[0..100] %>...
             <% average = 0 %>
             <% barber.reviews.each do |e| %>
             <% average += e.rating.to_i %>
             <% end %>
           </p>
-        <!-- </div> -->
-         </div>
-
+        </div>
+        <h4>
+          <%= link_to "#{barber.name}", barber_path(barber), class: "barber-name" %>
+        </h4>
         <div class="card-rating">
           Rating:
-
           <% if barber.reviews.length == 0 %>
           <%= "Not Rated Yet!" %>
           <% else %>
           <%= average/barber.reviews.length %>
           <% end %>
         </div>
-        <%= image_tag "beardman.png", class: "card-user avatar" %>
-
       </div>
-        <h2>
-          <%= link_to "#{barber.name}", barber_path(barber), class: "barbername" %>
-        </h2>
-      </div>
+      <% end  %>
     </div>
     <% end %>
   </div>

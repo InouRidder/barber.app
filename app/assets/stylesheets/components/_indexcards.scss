@@ -1,7 +1,9 @@
-.barbername {
-  text-align: center;
-  color: #BCAB79;
-  vertical-align: middle;
+.barber-name {
+  color: black;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  position: absolute;
 }
 
 .span {
@@ -38,27 +40,60 @@
 background-image: url('../images/card_picture2.jpg');
 }
 
-// LE WAGON CARD - DESIGN
-/* Card design */
+// STYLE FOR BARBER INDEX
+// ##############################################################
 .card {
-  height: 250px;
+  height: 300px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: white;
-  position: relative;
-  opacity: 1;
   transition: 400ms ease;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 .card-background {
-  background-color: white;
-  border: 1px solid black;
-  height:325px;
+  position: relative;
+  background-color: #FBFFFF;
+  height:375px;
   margin: 10px;
+  border-radius: 5px;
+  box-shadow: 3px 4px 30px 0px rgba(0,0,0,0.75);
+
 }
 
+.card-hover {
+  position: absolute;
+  opacity: 0;
+  top: 75px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity 300ms;
+}
+.card-hover p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-location{
+  bottom: 40px;
+  right: 15px;
+  position: absolute;
+}
+.card-background:hover .card {
+  opacity: 0.4;
+}
+
+.card-background:hover .card-hover {
+  opacity: 1;
+}
 .card:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .card-user {
@@ -67,7 +102,7 @@ background-image: url('../images/card_picture2.jpg');
   top: 15px;
 }
 
-.card-rating{
+.card-rating {
   position: absolute;
   right: 15px;
   bottom: 15px;
@@ -80,17 +115,10 @@ background-image: url('../images/card_picture2.jpg');
   text-transform: uppercase;
 }
 
-.card-description {
-  position: absolute;
-  left: 20px;
-  top: 70px;
+.card-background-hover {
+  opacity: 0.8;
 }
 
-.card-appointment-link {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-}
 .card-title {
   position: absolute;
   top: 5px;
@@ -98,4 +126,102 @@ background-image: url('../images/card_picture2.jpg');
   text-align: left;
 }
 
+// STYLE FOR AVAILABILITY INDEX
+// ##############################################################
 
+.card-available-container {
+  position: relative;
+  width: 100%;
+  height: 700px;
+}
+
+.card-available {
+  height: 300px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  transition: 400ms ease;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.card-background-available {
+  position: relative;
+  background-color: #FBFFFF;
+  height:375px;
+  width: 450px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 3px 4px 30px 0px rgba(0,0,0,0.75);
+
+}
+
+.card-hover-available {
+  position: absolute;
+  opacity: 0;
+  top: 75px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity 300ms;
+}
+.card-hover-available p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-location-available{
+  bottom: 40px;
+  right: 15px;
+  position: absolute;
+}
+.card-background-available:hover .card-available {
+  opacity: 0.4;
+}
+
+.card-background-available:hover .card-hover-available {
+  opacity: 1;
+}
+.card-available:hover {
+  opacity: 0.6;
+}
+
+.card-user-available {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.card-rating-available {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}
+.card-category-available {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.card-background-hover-available {
+  opacity: 0.8;
+}
+
+.card-title-available {
+  position: absolute;
+  top: 5px;
+  left: 30px;
+  text-align: left;
+}
+
+.card-distance-available {
+  position: absolute;
+  top: 40px;
+  right: 50px;
+}
