@@ -78,12 +78,12 @@ h2 {
   margin-top: 50px;
 }
 
-.search-btn:hover {
+.search-btn-two:hover {
   color: #fceeed;
   transition: 300ms;
 }
 
-.search-btn {
+.search-btn-two {
   color: black;
   border-radius: 20em;
   background-size: 50px;
@@ -91,4 +91,15 @@ h2 {
 
 }
 
+.search-btn {
+  color: black;
+  border-radius: 20em;
+  background-size: 50px;
+  border-color: black;
+}
+
+.search-btn:hover {
+  color: black;
+  transition: 300ms;
+}
 
