@@ -51,10 +51,10 @@
 // #myModal {
 
 // }
-
-
-footer {
-
+.join-app-btn{
+  position: absolute;
+  left: 15px;
+  top: 50px;
 }
 
 html {
@@ -67,7 +67,7 @@ body {
 footer {
   position: absolute;
   bottom: 0;
-  background-color: #474A48;
+  background: #FBFFFF;
   width: 100%;
   display: flex;
   justify-content: center;
