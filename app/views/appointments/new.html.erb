@@ -25,19 +25,23 @@
         <% if cover %>
           <% if availability.appointment  %>
             <div class="appointment-booked">
-              <%= availability.start.strftime("%l:%M %p") %>
-                -
-              <%= availability.end.strftime("%l:%M %p") %>
+              <p>Booked</p>
             </div>
           <% else %>
+          <div class="appointment-background">
             <div class="appointment-availability">
               <%= availability.start.strftime("%l:%M %p") %>
               -
               <%= availability.end.strftime("%l:%M %p") %>
               <br>
-              <button type="button" class="btn btn-default appointment-book" data-toggle="modal" data-target="#book-modal" data-start-time="<%= availability.start %>">
-                Book </button>
+
             </div>
+            <div class="appointment-hover">
+                <button type="button" id="book-btn" class="btn btn-default btn-block appointment-book" data-toggle="modal" data-target="  #book-modal" data-start-time="<%= availability.start %>">
+                  Book
+                </button>
+            </div>
+          </div>
           <% end %>
         <% end %>
       <% end %>
