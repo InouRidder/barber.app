@@ -37,16 +37,21 @@
    <%= calendar @date do |calendar_date| %>
      <%= calendar_date.day %>
       <% @availabilities.each do |availability| %>
-
-
       <% cover = availability.start.to_date.between?(calendar_date, calendar_date.end_of_day) %>
-
        <% if cover %>
-        <div class="appointment-availability">
-          <%= availability.start.strftime("%l:%M %p") %>
-          -
-          <%= availability.end.strftime("%l:%M %p") %>
-        </div>
+          <% if availability.appointment  %>
+          <div class="appointment-booked">
+              <%= availability.start.strftime("%l:%M %p") %>
+                -
+              <%= availability.end.strftime("%l:%M %p") %>
+          </div>
+            <% else %>
+              <div class="appointment-availability">
+                <%= availability.start.strftime("%l:%M %p") %>
+                  -
+                <%= availability.end.strftime("%l:%M %p") %>
+              </div>
+        <% end %>
        <% end %>
       <% end %>
    <% end %>
