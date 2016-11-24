@@ -31,20 +31,17 @@
 <div class="barber-container">
   <div class="services-flex">
     <h2> Services</h2>
+  <div class="services-info">
     <% @barber.barber_services.each do |barber_service|  %>
-
-    <li>
-      <%= barber_service.name %>
-      <br>
-      Price - <%= barber_service.price %>
-      In about <%= barber_service.duration %> minutes
-    </li>
+      <i class="fa fa-scissors" aria-hidden="true"></i> <%= barber_service.name %> Price - <%= barber_service.price %> (+- <%= barber_service.duration %> minutes)
     <% end %>
-
-    <% if current_user.barber == @barber  %>
-    <%= link_to 'Agenda', barber_appointments_path(@barber), class: "btn btn-default"  %>
-    <% end %>
-    <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "btn btn-default" %>
+    </div>
+    <div class="services-buttons-flex">
+      <% if current_user.barber == @barber  %>
+      <%= link_to 'Agenda', barber_appointments_path(@barber), class: "edit-btn"  %>
+      <% end %>
+      <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "edit-btn" %>
+    </div>
   </div>
 
 
