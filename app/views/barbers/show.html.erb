@@ -21,9 +21,9 @@
 
   <div class="btn-group">
     <% if @barber.user == current_user %>
-    <%= link_to "Edit Profile", edit_barber_path(@barber), class: "btn btn-default btn-sm" %>
+    <%= link_to "Edit Profile", edit_barber_path(@barber), class: "edit-btn" %>
     <br>
-    <%= link_to "Delete Profile", barber_path(@barber), class: "btn btn-default btn-sm", method: :delete, data: { confirm: "you sure? 2" } %>
+    <%= link_to "Delete Profile", barber_path(@barber), class: "edit-btn", method: :delete, data: { confirm: "you sure?" } %>
     <% end %>
   </div>
 </div>
@@ -68,7 +68,7 @@
       <% if review.user == current_user %>
         <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>
           <br>
-        <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure? 1" } %>
+        <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure?" } %>
       <% end %>
       <% end %>
       <% if current_user.barber %>
