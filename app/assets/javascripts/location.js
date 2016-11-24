@@ -7,11 +7,8 @@ $(document).ready(function () {
 
     var _href = $('#find-btn').attr('href');
     $("#find-btn").attr("href", _href + '?lat=' + lat + '&lng=' + lng);
-
   }
-
   navigator.geolocation.getCurrentPosition(success);
-
 });
 
 

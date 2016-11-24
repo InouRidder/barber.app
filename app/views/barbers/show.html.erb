@@ -8,8 +8,8 @@
 
   <!-- Barber_banner_2.png -->
 
-<div class="button-flex">
-  <div class="file-upload">
+  <div class="button-flex">
+    <div class="file-upload">
       <% if @barber.user == current_user %>
       <%= simple_form_for(@barber) do |f| %>
       <%= f.input :photo %>
@@ -17,62 +17,63 @@
       <%= f.submit "Update Profile picture", class: "btn-update" %>
       <% end %>
       <% end %>
-  </div>
-
-  <div class="btn-group">
-    <% if @barber.user == current_user %>
-    <%= link_to "Edit Profile", edit_barber_path(@barber), class: "edit-btn" %>
-    <br>
-    <%= link_to "Delete Profile", barber_path(@barber), class: "edit-btn", method: :delete, data: { confirm: "you sure?" } %>
-    <% end %>
-  </div>
-</div>
-
-<div class="barber-container">
-  <div class="services-flex">
-    <h2> Services</h2>
-  <div class="services-info">
-    <% @barber.barber_services.each do |barber_service|  %>
-      <i class="fa fa-scissors" aria-hidden="true"></i> <%= barber_service.name %> Price - <%= barber_service.price %> (+- <%= barber_service.duration %> minutes)
-    <% end %>
     </div>
-    <div class="services-buttons-flex">
-      <% if current_user.barber == @barber  %>
-      <%= link_to 'Agenda', barber_appointments_path(@barber), class: "edit-btn"  %>
+
+    <div class="btn-group">
+      <% if @barber.user == current_user %>
+      <%= link_to "Edit Profile", edit_barber_path(@barber), class: "edit-btn" %>
+      <br>
+      <%= link_to "Delete Profile", barber_path(@barber), class: "edit-btn", method: :delete, data: { confirm: "you sure?" } %>
       <% end %>
-      <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "edit-btn" %>
     </div>
   </div>
 
+  <div class="barber-container">
+    <div class="services-flex">
+      <h2> Services</h2>
+      <div class="services-info">
+        <% @barber.barber_services.each do |barber_service|  %>
+        <i class="fa fa-scissors" aria-hidden="true"></i> <%= barber_service.name %> Price - <%= barber_service.price %> (+- <%= barber_service.duration %> minutes)
+        <% end %>
+      </div>
+      <div class="services-buttons-flex">
+        <% if current_user.barber == @barber  %>
+        <%= link_to 'Agenda', barber_appointments_path(@barber), class: "edit-btn"  %>
+        <% end %>
+        <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "edit-btn" %>
+      </div>
+    </div>
 
-  <div class="barber-info">
-    <h2> <%= @barber.description %> </h2>
-    <% if @barber.barbershop_id? %>
-    <h3>You can find this barber @ <%= link_to "#{@barber.barbershop.name}", barber_barbershop_path(@barber, @barbershop) %></h3>
-    <% else %>
-    <h3>This barber works remote within a radius of 5 km. <%= @barber.name %> is located at <%= @barber.location %></h3>
-    <% end %>
+
+    <div class="barber-info">
+      <h2> <%= @barber.description %> </h2>
+      <% if @barber.barbershop_id? %>
+      <h3>You can find this barber @ <%= link_to "#{@barber.barbershop.name}", barber_barbershop_path(@barber, @barbershop) %></h3>
+      <% else %>
+      <h3>This barber works remote within a radius of 5 km. <%= @barber.name %> is located at <%= @barber.location %></h3>
+      <% end %>
+    </div>
   </div>
-</div>
 
-    <div id="map" style="width: 100%; height: 350px; border-style: groove;"></div>
+  <div id="map" style="width: 100%; height: 350px; border-style: groove;"></div>
 
-   <div class="review-box">
+  <div class="review-box">
     <h2>Reviews</h2>
     <% @barber.reviews.each do |review| %>
-      <p><%= review.description %></p>
-      <p><%= review.rating %> <i class="fa fa-star" aria-hidden="true"></i></p>
-      <% if review.user == current_user %>
-        <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>
-          <br>
-        <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure?" } %>
-      <% end %>
-      <% end %>
-      <% if current_user.barber %>
-          <p></p>
-      <% else %>
-        <p><%= link_to 'Leave a review!', new_barber_review_path(@barber), class: "btn btn-default" %></p>
-     <% end %>
+
+    <h4>  <%= review.description %></h4>
+    <p> posted by : <%= review.user.email %> at <%= review.user.created_at.strftime("%b %e, %l:%M %p") %></p>
+
+    <p><% review.rating.to_i.times do %> <i class='fa fa-star' aria-hidden='true'></i> <% end %> </p>
+    <% if review.user == current_user %>
+    <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>
+    <br>
+    <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+    <% end %>
+    <% if current_user.barber != @barber %>
+    <%= link_to 'Leave a review!', new_barber_review_path(@barber), class: "btn btn-default" %>
+    <% end %>
   </div>
 
 

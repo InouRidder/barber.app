@@ -14,7 +14,7 @@
     <div class="col-xs-12  col-md-4">
     <%= link_to(barber) do %>
       <div class="card-background">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path(barber.picture) %>);">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path(barber.picture ? barber.picture : "http://www.belmontbarbershop.com/wp-content/uploads/2013/05/intro_image.jpg" ) %>);">
           <%= image_tag "beardman.png", class: "card-user avatar" %>
         </div>
         <div class="card-location">
