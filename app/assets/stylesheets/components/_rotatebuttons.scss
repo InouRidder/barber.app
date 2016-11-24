@@ -1,0 +1,30 @@
+// .btn-barber {
+//   display:block;
+//   height: 100px;
+//   width: 100px;
+//   border-radius: 50%;
+//   border: 1px solid red;
+//   background-color: red;
+// }
+.btn-barber {
+  color: white;
+  border: 3px solid;
+  padding: 80px 40px;
+  border-radius: 50%;
+  font-weight: bold;
+  height: 300px;
+  width: 300px;
+  opacity: 0.6;
+  background-color: black;
+  margin-top: 100px;
+  transition: all .2s ease-in-out;
+  -webkit-transition: all 1s ease;
+}
+
+.btn-barber:hover {
+  text-decoration: none;
+  color: white;
+  transform: scale(1.1);
+}
+
+

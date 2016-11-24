@@ -3,9 +3,9 @@
  * (margin/padding adjustments)
  * ------------------------------------- */
 
-@import url('https://fonts.googleapis.com/css?family=Hind|Montserrat');
+ @import url('https://fonts.googleapis.com/css?family=Hind|Montserrat');
 
-* {
+ * {
   margin:0;
   padding:0;
   outline:none;
@@ -25,7 +25,7 @@ h1 {
   text-align: center;
 }
 
- h1 span {
+h1 span {
  // border-bottom:solid 1px black;
  padding: 3px;
 }
@@ -39,7 +39,7 @@ h1 {
   font-weight: 700;
   display: inline-block;
   position: relative;
- -webkit-background-clip: text;
+  -webkit-background-clip: text;
   background-clip: text;
   background: -webkit-linear-gradient(0deg, #222 50%, transparent 50%);
   -webkit-background-clip: text;
@@ -78,10 +78,10 @@ h1 {
 }
 
 .effect.active:before {
-    animation: anime 1.2s cubic-bezier(0.860, 0.000, 0.070, 1.000) forwards;
+  animation: anime 1.2s cubic-bezier(0.860, 0.000, 0.070, 1.000) forwards;
 }
 .effect.active:after {
-    animation: anime 1.2s 0.5s cubic-bezier(0.860, 0.000, 0.070, 1.000) forwards;
+  animation: anime 1.2s 0.5s cubic-bezier(0.860, 0.000, 0.070, 1.000) forwards;
 }
 
 
@@ -104,8 +104,8 @@ h1 {
 }
 
 .logo {
-width: 400px;
-length: 400px;
+  width: 400px;
+  length: 400px;
 }
 
 /* CTA EFFECT */
@@ -160,7 +160,7 @@ a.cta.outline {
 .cta.outline span {
   position: relative;
   z-index: 3;
-   -webkit-background-clip: text;
+  -webkit-background-clip: text;
   background-clip: text;
   background: -webkit-linear-gradient(0deg, #111 50%, #222 50%);
   -webkit-background-clip: text;
@@ -204,7 +204,7 @@ a.fade {
 }
 
 .fade input, select, textarea{
-    color: black;
+  color: black;
 }
 
 section {
@@ -222,36 +222,54 @@ p {
   margin: 10px 0 0 0;
 }
 
-.wrapper-how-to {
-    background-color: #f3f3f3;
-    text-align: center;
-    padding-bottom: 50px;
+.wrapper-join-as-barber {
+  background-size: cover;
+  background-position: left;
+  height: 400px;
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 100px;
 }
 
+.wrapper-how-to {
+  background-color: #f3f3f3;
+  text-align: center;
+  padding-bottom: 50px;
+
+}
+
+.white-words {
+ color: white;
+}
+
+.white-words-2 {
+  color: white;
+  padding-bottom: 30px;
+}
 
 .searchfunction{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-    background-color: white;
-    color: black;
-    margin-top: 20px;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background-color: white;
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .search-one {
-    margin: 1px;
-    padding: 0;
-    outline: none;
-    list-style: none;
-    text-decoration: none;
-    box-sizing: border-box;
-    color: black;
-    background: transparent;
-    border: 1px solid;
-    border-color: #F0F8FF;
-    text-align: center;
+  margin: 1px;
+  padding: 0;
+  outline: none;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: black;
+  background: transparent;
+  // border: 1px solid;
+  // border-color: #F0F8FF;
+  text-align: center;
 }
 
 .search-two {
@@ -259,3 +277,42 @@ p {
     // padding: 6px 43px 6px 6px;
     // margin: 5px 40px;
   }
+
+  .second {
+    padding-left: 100px;
+  }
+
+  .second-join-as {
+    padding-left: 250px;
+  }
+
+  .left {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    width: 500px;
+    height: 400px;
+    background-color: rgba(1, 1, 1, 0.8);
+  // background-color: blue;
+  // justify-content: center;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: rgba(1, 1, 1, 0.8);
+  width: 500px;
+  height: 400px;
+  // background-color: red;
+  // justify-content: center;
+}
+
+.test_left_right {
+  background-image: url("barber_banner_home.jpg");
+  background-position: top;
+  // background-position: 50% 70%;
+  display: flex;
+  justify-content: space-around;
+}
