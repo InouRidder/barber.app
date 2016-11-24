@@ -29,12 +29,7 @@ class AvailabilitiesController < ApplicationController
      marker.lng available.barber.longitude
      marker.infowindow render_to_string(partial: "/barbers/map_box", locals: { barber: available.barber })
    end
-     raise "error"
-
- end
-  #   availabilities.each do |element|
-  #     # if element.end - 40.minutes >= DateTime.now
-
+  end
 
   private
 
