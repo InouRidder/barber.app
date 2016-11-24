@@ -54,6 +54,12 @@ u7 = User.create(
   password: "password"
   )
 
+u8 = User.create(
+  name: "Godmin",
+  email: "god@ad.min",
+  password: "password"
+  )
+
 barber1 = Barber.create(
   name: "God of Cuts",
   description: "Italian barber in Amsterdam",
@@ -193,6 +199,7 @@ barber15 = Barber.create!(
   description: "We make le dog Ze most beautifoel creature of your life, oke",
   location: "68 Avenue de la République, 75011 Paris, Frankrijk",
   picture: "barber9.jpg",
+  user: u8,
   drinks: " Nikka from the Barrel"
   )
 

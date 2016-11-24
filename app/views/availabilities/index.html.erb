@@ -9,11 +9,8 @@
 </section>
 
 
-
-<!--
-<div class="container">
-  <div class="row">
-  -->    <% @available_barbers_by_distance.each do |barber| %>
+<% if @available_barbers_by_distance %>
+  <% @available_barbers_by_distance.each do |barber| %>
   <div class="card-available-container">
     <%= link_to(barber) do %>
     <div class="card-background-available">
@@ -72,23 +69,26 @@
    </div>
    <div id="map" style="width: 350px; height: 375px; margin-right: 70px; border-style: groove;">
    </div>
- </div>
+  </div>
   <hr>
- <% end %>
+  <% end %>
+<% else %>
+      ################################<h2> No barbers available right now...</h2>
+<% end %>
 
 
 
 
- <% content_for(:after_js) do %>
- <%= javascript_tag do %>
- $(document).ready(function() {
- var handler = Gmaps.build('Google');
- handler.buildMap({ provider: {scrollwheel: false}, internal: { id: 'map' } }, function() {
- markers = handler.addMarkers(<%= raw @coordinates.to_json %>);
- handler.bounds.extendWith(markers);
- handler.fitMapToBounds();
- if (markers.length == 0) {
- handler.getMap().setZoom(2);
+<% content_for(:after_js) do %>
+<%= javascript_tag do %>
+$(document).ready(function() {
+var handler = Gmaps.build('Google');
+handler.buildMap({ provider: {scrollwheel: false}, internal: { id: 'map' } }, function() {
+markers = handler.addMarkers(<%= raw @coordinates.to_json %>);
+handler.bounds.extendWith(markers);
+handler.fitMapToBounds();
+if (markers.length == 0) {
+handler.getMap().setZoom(2);
 } else if (markers.length == 1) {
 handler.getMap().setZoom(14);
 handler.disableScrollWheelZoom();
