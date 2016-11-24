@@ -21,6 +21,7 @@ class AvailabilitiesController < ApplicationController
     # Availability.where()  << don't use ruby to select data, but an AR query like this
     @lat = params[:lat]
     @lng = params[:lng]
+    @distance = 100
     @available_barbers_by_distance = Barber.includes(:availabilities).where.not(availabilities: {id: nil}).near([@lat, @lng], @distance).order("distance")
     @barbers = Availability.select(:barber_id).distinct
 
@@ -29,8 +30,9 @@ class AvailabilitiesController < ApplicationController
      marker.lng available.barber.longitude
      marker.infowindow render_to_string(partial: "/barbers/map_box", locals: { barber: available.barber })
    end
- end
+     raise "error"
 
+ end
   #   availabilities.each do |element|
   #     # if element.end - 40.minutes >= DateTime.now
 
