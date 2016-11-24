@@ -4,7 +4,7 @@
   background: #FBFFFF;
   transition: all 0.3s ease;
   display: flex;
-  height: 70px;
+  height: 75px;
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
@@ -21,7 +21,7 @@
 
 /* Navbar logo */
 .navbar-wagon-brand img {
-  width: 80px;
+  width: 55px;
 }
 
 /* Navbar right section (with form, links, button) */
@@ -52,16 +52,17 @@
 .navbar-wagon-button {
   margin-left: 10px;
   padding: 0 20px;
-  border-radius: 20em;
+  border-radius: 0em;
   line-height: 40px;
-  background-color: #474A48;
-  color: white;
+  color: black;
   font-size: 14px;
   transition: 500ms;
+  border: 1px solid #444349;
 }
 .navbar-wagon-button:hover {
-  color: black;
-  background: white;
+  background-color: #444349;
+  color: white;
+  border-radius: 5px;
 }
 
 /* Navbar search form */
@@ -130,15 +131,17 @@
 }
 
 .nav li a:hover {
-  background-color: #d1d1d1;
+  background-color: #444349;
   // #5a5a57;
-  color: black;
+  color: white;
+  border-radius: 5px;
 }
 
 .nav li a {
   color: black;
-  border-radius: 20em;
+  border-radius: 0em;
   transition: 500ms;
+  border: 1px solid #444349;
 }
 
 #logout a {

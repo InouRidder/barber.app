@@ -9,5 +9,10 @@
 }
 
 .btn-group {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 219px;
+  align-items: flex-end;
+  margin: 20px;
 }
