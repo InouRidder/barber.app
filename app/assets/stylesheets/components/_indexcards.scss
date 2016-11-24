@@ -130,11 +130,11 @@ background-image: url('../images/card_picture2.jpg');
 // ##############################################################
 
 .card-available-container {
+  margin-bottom: 60px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
-  background-color: #9CABAB;
 
 }
 
@@ -153,7 +153,7 @@ background-image: url('../images/card_picture2.jpg');
   background-color: #FBFFFF;
   height:375px;
   width: 450px;
-  margin: 10px;
+  margin: 3px;
   border-radius: 5px;
   box-shadow: 3px 4px 30px 0px rgba(0,0,0,0.75);
 
@@ -235,4 +235,16 @@ background-image: url('../images/card_picture2.jpg');
 
 .distance-stats {
   margin: 5px;
+}
+.banner-available {
+   align-items: center;
+  align-content: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  height: 50vh;
+  color: white;
+  padding-left: 100px;
+  background-position: 0% 25%;
+  margin-bottom: 50px;
 }

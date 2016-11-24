@@ -1,4 +1,4 @@
-<div class="banner-index" style="background-image: url( <%= image_path("Hipster-banner-index.jpg") %>);">
+<div class="banner-available" style="background-image: linear-gradient(250deg, rgba(245, 245, 245, 0.58) 0%, rgba(132, 138, 142, 0.7) 20%), url( <%= image_path("Hipster-banner-index.jpg") %>);">
   <section class="first">
    <h1 class="banner-content-index">
     All the available barbers,
@@ -9,110 +9,86 @@
 </section>
 
 
-<br>
-<br>
 
+<!--
 <div class="container">
   <div class="row">
-    <div class="col-sm-8">
-      <div class="slider-search">
-        <h4>Current search range :  <%= @distance %> km</h4>
+  -->    <% @available_barbers_by_distance.each do |barber| %>
+  <div class="card-available-container">
+    <%= link_to(barber) do %>
+    <div class="card-background-available">
+      <div class="card-available" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path(barber.picture) %>);">
+        <%= image_tag "beardman.png", class: "card-user-available avatar" %>
       </div>
-      <div class="range-slider"> Max Distance
-        <input class="range-slider__range" type="range" value="5" min="0" max="50">
-        <span id="slider-value" class="range-slider__value"></span>
+      <div class="card-location-available">
+        <p> <%= barber.location %> </p>
       </div>
-    </div>
-    <div class="col-sm-4">
-      <h4><%= link_to 'Change the Range', availabilities_path, class: "search-btn-avail", id: "find-btn" %>
-      </h4>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="container container-index">
-  <div class="row row-index">
-    <% @available_barbers_by_distance.each do |barber| %>
-    <div class="card-available-container">
-    <div class="card-available-container">
-      <%= link_to(barber) do %>
-      <div class="card-background-available">
-        <div class="card-available" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path(barber.picture) %>);">
-          <%= image_tag "beardman.png", class: "card-user-available avatar" %>
-        </div>
-        <div class="card-location-available">
-          <p> <%= barber.location %> </p>
-        </div>
-        <div class="card-hover-available">
-          <p>
-            <%= barber.description[0..100] %>...
-            <% average = 0 %>
-            <% barber.reviews.each do |e| %>
-            <% average += e.rating.to_i %>
-            <% end %>
-          </p>
-        </div>
-        <h4>
-          <%= link_to "#{barber.name}", barber_path(barber), class: "barber-name" %>
-        </h4>
-        <div class="card-rating-available">
-          Rating:
-          <% if barber.reviews.length == 0 %>
-          <%= "Not Rated Yet!" %>
-          <% else %>
-          <%= average/barber.reviews.length %>
+      <div class="card-hover-available">
+        <p>
+          <%= barber.description[0..100] %>...
+          <% average = 0 %>
+          <% barber.reviews.each do |e| %>
+          <% average += e.rating.to_i %>
           <% end %>
-        </div>
-        <% end  %>
+        </p>
       </div>
-      <div class="card-distance-available">
-        <% if barber.availabilities %>
-        <% barber.availabilities.each do |a| %>
-        <%= link_to new_barber_appointment_path(a.barber) do  %>
-        <div class="btn btn-default" id="availability-buttons">
-          <p>
-            <strong>Available</strong> from <%= a.start.strftime("%b %e, %l:%M %p") %>
-            untill <%= a.end.strftime("%b %e, %l:%M %p") %>
-          </p>
-        </div>
+      <h4>
+        <%= link_to "#{barber.name}", barber_path(barber), class: "barber-name" %>
+      </h4>
+      <div class="card-rating-available">
+        Rating:
+        <% if barber.reviews.length == 0 %>
+        <%= "Not Rated Yet!" %>
+        <% else %>
+        <%= average/barber.reviews.length %>
         <% end %>
-        <% end %>
-        <% end %>
-        <br>
-        <div class="distance-stats">
-         <h5>
-           Distance by foot: <%= barber.walk_distance(@lat, @lng) %> (<%= barber.walk_duration(@lat, @lng)  %>)
-           <br>
-           Distance by car: <%= barber.car_distance(@lat, @lng) %> (<%= barber.car_duration(@lat, @lng)  %>)
-           <br>
-         </h5>
-
-       </div>
-       </div>
-     <div id="map" style="width: 350px; height: 430px; margin-top: 4px; margin-left: 40px; border-style: groove;">
+      </div>
+      <% end  %>
+    </div>
+    <div class="card-distance-available">
+      <% if barber.availabilities %>
+      <h3>This barber has <%= barber.availabilities.length %> available spots!</h3>
+      <% barber.availabilities.each do |a| %>
+      <%= link_to new_barber_appointment_path(a.barber) do  %>
+      <div class="btn btn-default" id="availability-buttons">
+        <p>
+          <strong>Available</strong> from <%= a.start.strftime("%b %e, %l:%M %p") %>
+          untill <%= a.end.strftime("%b %e, %l:%M %p") %>
+        </p>
+      </div>
+      <% end %>
+      <% end %>
+      <% end %>
+      <br>
+      <div class="distance-stats">
+       <h3>Distance</h3>
+       <h4>
+         - by <strong> foot: </strong> <%= barber.walk_distance(@lat, @lng) %> (<%= barber.walk_duration(@lat, @lng) %>)
+         <br>
+         - by <strong> car: </strong> <%= barber.car_distance(@lat, @lng) %> (<%= barber.car_duration(@lat, @lng)  %>)
+         <br>
+       </h4>
      </div>
    </div>
+   <div id="map" style="width: 350px; height: 375px; margin-right: 70px; border-style: groove;">
+   </div>
  </div>
-</div>
-</div>
-<% end %>
+  <hr>
+ <% end %>
 
 
 
-<div id="map" style="width: 100%; height: 600px;"></div>
 
-<% content_for(:after_js) do %>
-<%= javascript_tag do %>
-$(document).ready(function() {
-var handler = Gmaps.build('Google');
-handler.buildMap({ provider: {scrollwheel: false}, internal: { id: 'map' } }, function() {
-markers = handler.addMarkers(<%= raw @coordinates.to_json %>);
-handler.bounds.extendWith(markers);
-handler.fitMapToBounds();
-if (markers.length == 0) {
-handler.getMap().setZoom(2);
+ <% content_for(:after_js) do %>
+ <%= javascript_tag do %>
+ $(document).ready(function() {
+ var handler = Gmaps.build('Google');
+ handler.buildMap({ provider: {scrollwheel: false}, internal: { id: 'map' } }, function() {
+ markers = handler.addMarkers(<%= raw @coordinates.to_json %>);
+ handler.bounds.extendWith(markers);
+ handler.fitMapToBounds();
+ if (markers.length == 0) {
+ handler.getMap().setZoom(2);
 } else if (markers.length == 1) {
 handler.getMap().setZoom(14);
 handler.disableScrollWheelZoom();
@@ -122,3 +98,18 @@ handler.disableScrollWheelZoom();
 });
 <% end %>
 <% end %>
+
+
+<div class="sticky-footer-available">
+ <div class="range-slider"> Current Range
+  <input class="range-slider__range" type="range" value=<%= "#{@distance} " + "KM" %> min="0" max="50">
+  <span id="slider-value" class="range-slider__value"></span>
+</div>
+
+<div class='range-btn-available'>
+  <h4><%= link_to 'Change Range', availabilities_path, class: "btn btn-default", id: "find-btn" %>
+  </h4>
+</div>
+</div>
+
+
