@@ -1,4 +1,4 @@
-meta_title "Barber.App"
-meta_description "Find a Barber near you"
-meta_image "meta-page.jpg" # A picture in your app / assets / images /
-twitter_account "@nomdevotrecompte" # essential for Twitter Cards
+meta_title: "Barber.App"
+meta_description: "Find a Barber near you"
+meta_image: "winners-ribbon.png" # Une image dans votre dossier app/assets/images/
+twitter_account: "@RoeldJ92" # indispensable pour les Twitter Cards
