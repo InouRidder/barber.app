@@ -21,10 +21,9 @@ class AvailabilitiesController < ApplicationController
     # Availability.where()  << don't use ruby to select data, but an AR query like this
     @lat = params[:lat]
     @lng = params[:lng]
-    @distance = 100
-    @available_barbers_by_distance = Barber.includes(:availabilities).where.not(availabilities: {id: nil}).near([@lat, @lng], @distance).order("distance")
+    distance = 40
+    @available_barbers_by_distance = Barber.includes(:availabilities).where.not(availabilities: {id: nil}).near([@lat, @lng], distance).order("distance")
     @barbers = Availability.select(:barber_id).distinct
-
     @coordinates = Gmaps4rails.build_markers(@barbers) do |available, marker|
      marker.lat available.barber.latitude
      marker.lng available.barber.longitude
@@ -32,9 +31,12 @@ class AvailabilitiesController < ApplicationController
    end
      raise "error"
 
+<<<<<<< HEAD
  end
   #   availabilities.each do |element|
   #     # if element.end - 40.minutes >= DateTime.now
+=======
+>>>>>>> f9b1c240b1c36126825d1ad9b91314faf97cddd1
 
   private
 
