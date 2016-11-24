@@ -236,3 +236,15 @@ background-image: url('../images/card_picture2.jpg');
 .distance-stats {
   margin: 5px;
 }
+.banner-available {
+   align-items: center;
+  align-content: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  height: 50vh;
+  color: white;
+  padding-left: 100px;
+  background-position: 0% 25%;
+  margin-bottom: 50px;
+}

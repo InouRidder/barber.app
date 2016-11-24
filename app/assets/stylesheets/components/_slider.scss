@@ -5,27 +5,7 @@ $shade-0: #fff !default;
 $teal: #1abc9c !default;
 
 
-// Reset
-* {
-  &,
-  &:before,
-  &:after {
-    box-sizing: border-box;
-  }
-}
 
-body {
-  font-family: sans-serif;
-  padding: 60px 20px;
-
-  @media (min-width: 600px) {
-    padding: 60px;
-  }
-}
-
-.range-slider {
-  margin: 60px 0 0 0%;
-}
 
 
 // Range Slider
@@ -42,7 +22,19 @@ $range-label-color: $shade-10 !default;
 $range-label-width: 60px !default;
 
 .range-slider {
-  width: $range-width;
+  width: 650px;
+
+}
+
+.sticky-footer-available {
+  display: inline-flex;
+  justify-content: space-around;
+  bottom: 0;
+  position: fixed;
+  right: 0;
+  left: 0;
+  background-color: #FBFFFF;
+
 }
 
 .range-slider__range {
@@ -58,6 +50,7 @@ $range-label-width: 60px !default;
 .slider-search {
   display: flex !important;
   flex-direction: row !important;
+  padding: 5px;
 }
   // Range Handle
   &::-webkit-slider-thumb {
@@ -125,22 +118,4 @@ $range-label-width: 60px !default;
 }
 
 
-// Firefox Overrides
-::-moz-range-track {
-    background: $range-track-color;
-    border: 0;
-}
 
-input::-moz-focus-inner,
-input::-moz-focus-outer {
-  border: 0;
-}
-
-.slide-container {
-  position: relative;
-}
-
-.range-btn-available {
-  position: absolute;
-  top: 30px;
-}
