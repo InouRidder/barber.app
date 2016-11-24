@@ -151,7 +151,7 @@ barber10 = Barber.create!(
   name: "Original Barbershop",
   description: "Fancy a haircut? We are original.",
   location: "502 Hudson St, New York, NY 10014, Verenigde Staten",
-  picture: "barber9.jpg",
+  picture: "barber10.jpg",
   drinks: " Nikka from the Barrel"
   )
 
@@ -160,7 +160,7 @@ barber11 = Barber.create!(
   name: "Slice and Dice",
   description: "Circles, Ovals or Straight Up Razors Shaves, we will dice and slice your hair with ease",
   location: "89 Lincoln St, Boston, Cape Town, 7530, Zuid-Afrika",
-  picture: "barber9.jpg",
+  picture: "barber11.jpg",
   drinks: " Nikka from the Barrel"
   )
 
@@ -169,7 +169,7 @@ barber12 = Barber.create!(
   name: "Barbers From Heaven",
   description: "For all your divine cuts and heavenly shaves",
   location: "506 Hudson St, New York, NY 10014, Verenigde Staten",
-  picture: "barber9.jpg",
+  picture: "barber12.jpg",
   drinks: " Nikka from the Barrel"
   )
 
@@ -178,7 +178,7 @@ barber13 = Barber.create!(
   name: "New York Barbershop",
   description: "Our hands and knives cant be seperated, hence skill with hair equals your ability to grab a drink",
   location: "Avenida de América, 6, 28028 Madrid, Spanje",
-  picture: "barber9.jpg",
+  picture: "barber13.jpg",
   drinks: " Nikka from the Barrel"
   )
 
@@ -187,7 +187,7 @@ barber14 = Barber.create!(
   name: "Ministry of Hairy Affairs",
   description: "Politically correct cuts, cut to the chase",
   location: "Thonglor soi 5-7, Bangkok, Thailand 10110, Thailand",
-  picture: "barber9.jpg",
+  picture: "barber14.jpg",
   drinks: " Nikka from the Barrel"
   )
 
@@ -198,7 +198,7 @@ barber15 = Barber.create!(
   name: "Le Bon Magnifique",
   description: "We make le dog Ze most beautifoel creature of your life, oke",
   location: "68 Avenue de la République, 75011 Paris, Frankrijk",
-  picture: "barber9.jpg",
+  picture: "barber15.jpg",
   user: u8,
   drinks: " Nikka from the Barrel"
   )
