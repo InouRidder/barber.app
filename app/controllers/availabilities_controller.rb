@@ -24,14 +24,19 @@ class AvailabilitiesController < ApplicationController
     distance = 40
     @available_barbers_by_distance = Barber.includes(:availabilities).where.not(availabilities: {id: nil}).near([@lat, @lng], distance).order("distance")
     @barbers = Availability.select(:barber_id).distinct
-
     @coordinates = Gmaps4rails.build_markers(@barbers) do |available, marker|
      marker.lat available.barber.latitude
      marker.lng available.barber.longitude
      marker.infowindow render_to_string(partial: "/barbers/map_box", locals: { barber: available.barber })
    end
- end
+     raise "error"
 
+<<<<<<< HEAD
+ end
+  #   availabilities.each do |element|
+  #     # if element.end - 40.minutes >= DateTime.now
+=======
+>>>>>>> f9b1c240b1c36126825d1ad9b91314faf97cddd1
 
   private
 
