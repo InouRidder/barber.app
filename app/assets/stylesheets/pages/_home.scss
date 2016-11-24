@@ -239,8 +239,8 @@ p {
 }
 
 .white-words {
-   color: white;
- }
+ color: white;
+}
 
 .white-words-2 {
   color: white;
@@ -267,8 +267,8 @@ p {
   box-sizing: border-box;
   color: black;
   background: transparent;
-  border: 1px solid;
-  border-color: #F0F8FF;
+  // border: 1px solid;
+  // border-color: #F0F8FF;
   text-align: center;
 }
 
@@ -282,6 +282,37 @@ p {
     padding-left: 100px;
   }
 
-.second-join-as {
-padding-left: 250px;
+  .second-join-as {
+    padding-left: 250px;
+  }
+
+  .left {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    width: 500px;
+    height: 400px;
+    background-color: rgba(1, 1, 1, 0.8);
+  // background-color: blue;
+  // justify-content: center;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: rgba(1, 1, 1, 0.8);
+  width: 500px;
+  height: 400px;
+  // background-color: red;
+  // justify-content: center;
+}
+
+.test_left_right {
+  background-image: url("barber_banner_home.jpg");
+  background-position: top;
+  // background-position: 50% 70%;
+  display: flex;
+  justify-content: space-around;
 }

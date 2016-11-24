@@ -8,7 +8,7 @@
 // }
 .btn-barber {
   color: white;
-  border: 1px solid #999999;
+  border: 3px solid;
   padding: 80px 40px;
   border-radius: 50%;
   font-weight: bold;
@@ -17,4 +17,16 @@
   opacity: 0.6;
   background-color: black;
   margin-top: 100px;
+  transition: all .2s ease-in-out;
+  -webkit-transition: all 1s ease;
 }
+
+.btn-barber:hover {
+  text-decoration: none;
+  color: white;
+  -webkit-transform: scale(1.3);
+  -ms-transform: scale(1.3);
+  transform: scale(1.3);
+}
+
+

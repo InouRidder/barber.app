@@ -1,4 +1,4 @@
-  <div class="banner" style="background-image: linear-gradient(250deg, rgba(245, 245, 245, 0.58) 0%, rgba(132, 138, 142, 0.7) 20%), url( <%= image_path("Barber_banner_2.png") %>);">
+  <div class="banner" style="background-image: linear-gradient(250deg, rgba(245, 245, 245, 0.58) 0%, rgba(245, 245, 245, 0.7) 20%), url( <%= image_path("Barber_banner_2.png") %>);">
     <div class="banner-content">
       <section class="first">
         <h1 class="effect"><span>Barber.App</span></h1>
@@ -14,7 +14,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <h2> >How to use Barber.App <h2>
+          <h2> How to use Barber.App <h2>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3">
             <%= image_tag "magnifying_glass.png" %>
@@ -67,43 +67,38 @@
 </div>
 
 
-
-<div class="wrapper-join-as-barber", style="background-image: url( <%= image_path("stardust.png")%>);">
-  <div class= "container">
-    <div class="row">
-      <div class="col-md-6">
-      <h2 class= "white-words"> <%= Barber.all.length %> barbers </h2>
-        <br>
-        <h3 class="white-words-2">are currently using Barb.App</h3>
-        <br>
-        <br>
-        <br>
-        <div><a href="#" class="btn-barber">Join as a Barber</a>
-        </div>
-      </div>
-
-      <div class="col-md-6 second-join-as">
-       <h2 class= "white-words"> <%= User.all.length %> users </h2>
-        <br>
-        <h3 class="white-words-2">are currently using Barb.App</h3>
-        <br>
-        <br>
-        <br>
-        <div><a href="#" class="btn-barber">Join as a user</a>
-        </div>
-      </div>
+<div class="test_left_right">
+  <div class="left">
+    <h3 class= "white-words"> 96 Barbers.At  </h3>
+    <h3 class="white-words-2">
+      Barber.App
+    </h3>
+    <br>
+    <br>
+    <br>
+    <div>
+      <a href="#" class="btn-barber">Join as a Barber</a>
     </div>
+  </div>
 
+  <div class="right">
+    <h3 class= "white-words"> 512 Users.At </h3>
+    <h3 class="white-words-2">Barber.App</h3>
+    <br>
+    <br>
+    <br>
+    <div>
+      <a href="#" class="btn-barber">Join as a user</a>
+    </div>
   </div>
 </div>
 
-
-
-
-
-
-<div><h1 class=""> Here you can check out all the locations of our barbers</h1>
+  <div class="wrapper-how-to">
+  <br>
+  <br>
+<div> <h2>See all our barbers on the map! </h2> </div>
   <div id="map" style="width: 100%; height: 600px; margin-top: 60px; border-style: groove;"></div>
+</div>
 </div>
 
 <% content_for(:after_js) do %>
