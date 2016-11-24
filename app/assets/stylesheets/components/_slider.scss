@@ -135,3 +135,12 @@ input::-moz-focus-inner,
 input::-moz-focus-outer {
   border: 0;
 }
+
+.slide-container {
+  position: relative;
+}
+
+.range-btn-available {
+  position: absolute;
+  top: 30px;
+}
