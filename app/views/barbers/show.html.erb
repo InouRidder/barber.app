@@ -43,8 +43,9 @@
 
     <% if current_user.barber == @barber  %>
     <%= link_to 'Agenda', barber_appointments_path(@barber), class: "btn btn-default"  %>
-    <% end %>
+    <% else %>
     <%= link_to 'Book Appointment', new_barber_appointment_path(@barber), class: "btn btn-default" %>
+    <% end %>
   </div>
 
 
@@ -63,18 +64,19 @@
    <div class="review-box">
     <h2>Reviews</h2>
     <% @barber.reviews.each do |review| %>
-      <p><%= review.description %></p>
-      <p><%= review.rating %> <i class="fa fa-star" aria-hidden="true"></i></p>
+
+      <h4>  <%= review.description %></h4>
+      <p> posted by : <%= review.user.email %> at <%= review.user.created_at.strftime("%b %e, %l:%M %p") %></p>
+
+      <p><% review.rating.to_i.times do %> <i class='fa fa-star' aria-hidden='true'></i> <% end %> </p>
       <% if review.user == current_user %>
         <%= link_to 'Edit Review', edit_barber_review_path(@barber, review) %>
           <br>
         <%= link_to "Delete", barber_review_path(@barber, review), method: :delete, data: { confirm: "Are you sure?" } %>
       <% end %>
-      <% end %>
-      <% if current_user.barber %>
-          <p></p>
-      <% else %>
-        <p><%= link_to 'Leave a review!', new_barber_review_path(@barber), class: "btn btn-default" %></p>
+       <% end %>
+      <% if current_user.barber != @barber %>
+          <%= link_to 'Leave a review!', new_barber_review_path(@barber), class: "btn btn-default" %>
      <% end %>
   </div>
 
