@@ -6,7 +6,7 @@ $(document).ready(function () {
     var lng = position.coords.longitude;
 
     var _href = $('#find-btn').attr('href');
-    $("#find-btn").attr("href", _href + '?lat=' + lat + '&lng=' + lng);
+    $("#find-btn").attr("href", _href + '?lat=' + lat + '&lng=' + lng + "&distance=40");
   }
   navigator.geolocation.getCurrentPosition(success);
 });
