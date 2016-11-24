@@ -1,5 +1,13 @@
-.barberupload {
-  height: 300;
-  width: 400;
+.edit-btn {
+  color: black;
+  border-radius: 0em;
+  transition: 500ms;
+  border: 1px solid #444349;
+  padding: 10px;
 }
 
+.edit-btn:hover {
+  background-color: #444349;
+  color: white;
+  border-radius: 5px;
+}
