@@ -53,7 +53,7 @@ h1 span {
   content: "";
   height: 100%;
   width: 100%;
-  background: #9cabc1;
+  background: black;
   z-index: 2;
   display: block;
   position: absolute;
@@ -65,7 +65,7 @@ h1 span {
   content: "";
   height: 100%;
   width: 100%;
-  background: #222;
+  background: white;
   z-index: 2;
   display: block;
   position: absolute;
@@ -315,4 +315,8 @@ p {
   // background-position: 50% 70%;
   display: flex;
   justify-content: space-around;
+}
+
+.text-white {
+  color: white;
 }
