@@ -71,8 +71,8 @@ h2 {
   text-align: left;
 }
 
-.text{
-  margin-bottom: 50px
+.text {
+  margin-bottom: 50px;
 }
 
 .buttons {
@@ -114,6 +114,7 @@ h2 {
 
   text-decoration: none;
   color: black;
+}
 
 .profile-banner {
   align-items: center;
@@ -135,7 +136,9 @@ h2 {
   transition: 500ms;
   padding: 10px;
 
-}.btn-update:hover{
+}
+
+.btn-update:hover{
   background-color: #d1d1d1;
 }
 
@@ -148,6 +151,5 @@ h2 {
 
 #barber_photo:hover{
   background-color: #d1d1d1;
-
 }
 
