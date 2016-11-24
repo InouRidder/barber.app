@@ -1,4 +1,4 @@
-<div class="banner-index" style="background-image: url( <%= image_path("Hipster-banner-index.jpg") %>);">
+<div class="banner-index" style="background-image: linear-gradient(250deg, rgba(245, 245, 245, 0.58) 0%, rgba(132, 138, 142, 0.7) 20%), url( <%= image_path("Hipster-banner-index.jpg") %>);">
   <section class="first">
    <h1 class="banner-content-index">
     All the available barbers,
@@ -9,33 +9,31 @@
 </section>
 
 
-<br>
-<br>
 
-<div class="container">
+<div class="container slide-container">
   <div class="row">
     <div class="col-sm-8">
       <div class="slider-search">
         <h4>Current search range :  <%= @distance %> km</h4>
       </div>
-      <div class="range-slider"> Max Distance
-        <input class="range-slider__range" type="range" value="5" min="0" max="50">
+      <div class="range-slider"> Choose your range!
+        <input class="range-slider__range" type="range" value="25" min="0" max="50">
         <span id="slider-value" class="range-slider__value"></span>
       </div>
-    </div>
-    <div class="col-sm-4">
-      <h4><%= link_to 'Change the Range', availabilities_path, class: "search-btn-avail", id: "find-btn" %>
+
+    <div class='range-btn-available'>
+      <h4><%= link_to 'Change the Range', availabilities_path, class: "btn btn-default", id: "find-btn" %>
       </h4>
+      </div>
     </div>
   </div>
 </div>
 
 
-
-<div class="container container-index">
-  <div class="row row-index">
-    <% @available_barbers_by_distance.each do |barber| %>
-    <div class="card-available-container">
+<!--
+<div class="container">
+  <div class="row">
+ -->    <% @available_barbers_by_distance.each do |barber| %>
     <div class="card-available-container">
       <%= link_to(barber) do %>
       <div class="card-background-available">
@@ -69,6 +67,7 @@
       </div>
       <div class="card-distance-available">
         <% if barber.availabilities %>
+        <h3>This barber has <%= barber.availabilities.length %> available spots!</h3>
         <% barber.availabilities.each do |a| %>
         <%= link_to new_barber_appointment_path(a.barber) do  %>
         <div class="btn btn-default" id="availability-buttons">
@@ -82,21 +81,19 @@
         <% end %>
         <br>
         <div class="distance-stats">
-         <h5>
-           Distance by foot: <%= barber.walk_distance(@lat, @lng) %> (<%= barber.walk_duration(@lat, @lng)  %>)
+         <h3>
+           Distance by <strong> foot: </strong> <%= barber.walk_distance(@lat, @lng) %> (<%= barber.walk_duration(@lat, @lng) %>)
            <br>
-           Distance by car: <%= barber.car_distance(@lat, @lng) %> (<%= barber.car_duration(@lat, @lng)  %>)
+           Distance by <strong> car: </strong> <%= barber.car_distance(@lat, @lng) %> (<%= barber.car_duration(@lat, @lng)  %>)
            <br>
-         </h5>
-
+         </h3>
        </div>
-       </div>
-     <div id="map" style="width: 350px; height: 430px; margin-top: 4px; margin-left: 40px; border-style: groove;">
+     </div>
+     <div id="map" style="width: 350px; height: 375px; margin-left: 70px; border-style: groove;">
      </div>
    </div>
- </div>
-</div>
-</div>
+ <!-- </div> -->
+<!-- </div> -->
 <% end %>
 
 
