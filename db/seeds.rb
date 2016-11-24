@@ -177,3 +177,4 @@ service8 = Service.create!(
   name: "Grey Blending"
   # description: "Hair color so subtle, all they’ll notice is the younger-looking you. The effect lasts for a month. For an additional charge, color may also be applied to mustache, beard, and sideburns."
   )
+

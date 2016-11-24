@@ -64,6 +64,21 @@
   background-color: #f3f3f3;
 }
 
-.services-info {
-  padding-bottom: 30px;
+.description {
+  width: 33%;
+  text-align: center;
+}
+
+.services-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.infobox {
+  text-align: center;
+  width: 33%;
 }
