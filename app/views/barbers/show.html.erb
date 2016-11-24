@@ -35,7 +35,7 @@
     <% @barber.barber_services.each do |barber_service|  %>
     <p><i class="fa fa-scissors" aria-hidden="true"></i> <%= barber_service.name %> Price - <%= barber_service.price %> (+- <%= barber_service.duration %> minutes)</p>
     <% end %>
-
+      <br>
     <% if current_user.barber == @barber  %>
       <%= link_to 'Agenda', barber_appointments_path(@barber), class: "edit-btn" %>
     <% else %>

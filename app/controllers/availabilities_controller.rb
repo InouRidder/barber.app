@@ -24,7 +24,7 @@ class AvailabilitiesController < ApplicationController
     distance = 40
     @available_barbers_by_distance = Barber.includes(:availabilities).where.not(availabilities: {id: nil}).near([@lat, @lng], distance).order("distance")
     @barbers = Availability.select(:barber_id).distinct
-    @coordinates = Gmaps4rails.build_markers(@barbers) do |available, marker|
+    @coordinates = Gmaps4rails.build_markers(@barber) do |available, marker|
      marker.lat available.barber.latitude
      marker.lng available.barber.longitude
      marker.infowindow render_to_string(partial: "/barbers/map_box", locals: { barber: available.barber })

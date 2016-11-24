@@ -13,7 +13,7 @@
 <!--
 <div class="container">
   <div class="row">
-  -->    <% @available_barbers_by_distance.each do |barber| %>
+  --> <% @available_barbers_by_distance.each do |barber| %>
   <div class="card-available-container">
     <%= link_to(barber) do %>
     <div class="card-background-available">
@@ -70,11 +70,12 @@
        </h4>
      </div>
    </div>
-   <div id="map" style="width: 350px; height: 375px; margin-right: 70px; border-style: groove;">
-   </div>
  </div>
   <hr>
  <% end %>
+
+    <div id="map" style="width: 100%; height: 375px;">
+   </div>
 
 
 
